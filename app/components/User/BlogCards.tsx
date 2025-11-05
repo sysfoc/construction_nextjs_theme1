@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import SlantedButton from "../General/buttons/SlantedButton";
+import SolidButton from "../General/buttons/SolidButton";
 import Link from "next/link";
 
 interface BlogPost {
@@ -36,7 +36,7 @@ const BlogCards: React.FC = () => {
     <div className="w-full bg-gray-50 dark:bg-gray-900 py-16 px-6">
       {/* View All Blogs Button */}
       <div className="mb-8 flex justify-end">
-        <SlantedButton
+        <SolidButton
           text="View all Blogs"
           onClick={() => router.push("/blogs")}
         />

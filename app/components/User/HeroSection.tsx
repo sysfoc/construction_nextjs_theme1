@@ -113,12 +113,9 @@ export default function HeroSection() {
               </Link>
 
               <div className="flex items-center gap-3 bg-background px-5 py-3 lg:py-2 rounded-full shadow-lg">
-                <div className="w-10 h-10 rounded-full bg-background shadow-md flex items-center justify-center">
+                <div className="flex gap-2 justify-center items-center">
                   <Phone className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-paragraph font-medium">CALL NOW</p>
-                  <p className="text-foreground font-bold">{settings?.phone}</p>
+                  <p className="text-foreground font-semibold">{settings?.phone}</p>
                 </div>
               </div>
             </div>

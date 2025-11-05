@@ -73,7 +73,7 @@ export default function BookService() {
     <main className='min-h-screen px-6 py-16 flex items-center justify-center'>
       <section className='max-w-3xl w-full border border-gray-100 rounded-2xl shadow-md p-10'>
         <div className='text-center mb-10'>
-          <h1 className='text-4xl font-extrabold text-[#ff6600] mb-3 tracking-tight uppercase'>
+          <h1 className='text-4xl font-extrabold text-primary mb-3 tracking-tight uppercase'>
             Book a Service
           </h1>
           <p className='text-base max-w-lg mx-auto'>
@@ -117,7 +117,7 @@ export default function BookService() {
                 placeholder={field.placeholder}
                 value={formData[field.id as keyof typeof formData]}
                 onChange={handleChange}
-                className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#ff6600]'
+                className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary'
               />
             </div>
           ))}
@@ -131,7 +131,7 @@ export default function BookService() {
               required
               value={formData.service}
               onChange={handleChange}
-              className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#ff6600]'
+              className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary'
             >
               <option value=''>Select a service</option>
               <option>Residential Construction</option>
@@ -152,7 +152,7 @@ export default function BookService() {
               required
               value={formData.date}
               onChange={handleChange}
-              className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#ff6600]'
+              className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary'
             />
           </div>
 
@@ -167,7 +167,7 @@ export default function BookService() {
               value={formData.details}
               onChange={handleChange}
               placeholder='Describe your project, location, and any specific requirements...'
-              className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#ff6600]'
+              className='w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary'
             ></textarea>
           </div>
 
@@ -175,7 +175,7 @@ export default function BookService() {
             <button
               type='submit'
               disabled={loading}
-              className='w-full bg-[#ff6600] text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all uppercase tracking-wide'
+              className='w-full bg-primary text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all uppercase tracking-wide'
             >
               {loading ? "Submitting..." : "Book Appointment"}
             </button>

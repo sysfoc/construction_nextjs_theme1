@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
 import Image from "next/image";
-import SlantedButton from "../General/buttons/SlantedButton";
+import SolidButton from "../General/buttons/SolidButton";
 import { useRouter } from "next/navigation";
 
 const ConstructionCTA: React.FC = () => {
@@ -25,8 +25,8 @@ const ConstructionCTA: React.FC = () => {
           Construction Projects
         </h2>
         <div className="flex sm:flex-row flex-col gap-4">
-       <SlantedButton text="How we work" onClick={() => router.push("/how-we-work")}/>
-       <SlantedButton text="Book Service" onClick={() => router.push("/book-service")}/>
+       <SolidButton text="How we work" onClick={() => router.push("/how-we-work")}/>
+       <SolidButton text="Book Service" onClick={() => router.push("/book-service")}/>
         </div>
       </div>
     </div>

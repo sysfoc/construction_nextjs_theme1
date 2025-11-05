@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import Image from "next/image";
-import SlantedButton from "../General/buttons/SlantedButton";
+import SolidButton from "../General/buttons/SolidButton";
 
 
 interface PricingCardProps {
@@ -51,7 +51,7 @@ export default function PricingCard({
 
         {/* Button */}
         <div className="mt-4">
-         <SlantedButton text="GET STARTED" onClick={() => console.log(`${topLabel} plan clicked`)} />
+         <SolidButton text="GET STARTED" onClick={() => console.log(`${topLabel} plan clicked`)} />
         </div>
       </div>
 

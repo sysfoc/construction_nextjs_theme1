@@ -217,7 +217,7 @@ export default function QuoteSection() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-primary dark:bg-primary text-primary-foreground px-3 py-2 font-semibold text-xs sm:text-sm h-10 sm:h-[42px]"
+                  className="bg-primary rounded-md dark:bg-primary text-primary-foreground px-3 py-2 font-semibold text-xs sm:text-sm h-10 sm:h-[42px]"
                 >
                   {loading ? "Submitting..." : "Book Appointment"}
                 </button>
