@@ -1,18 +1,38 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-interface TeamMember {
+interface Testimonial {
+  id: string;
   name: string;
-  role: string;
-  image: string;
+  designation: string;
+  photo: string | null;
+  stars: number;
+  comment: string;
 }
 
 const ConstructionTestimonial: React.FC = () => {
-  const teamMembers: TeamMember[] = [
-    { name: "John Smith", role: "CEO of Data group", image: "/teamMember_01.png" },
-    { name: "Peter parker", role: "CEO of News group", image: "/teamMember_01.png" },
-    { name: "Thamos Miller", role: "CEO Built Builder", image: "/teamMember_01.png" },
-  ];
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch("/api/testimonials");
+        const data = await response.json();
+        setTestimonials(data.testimonials?.slice(0, 3) || []);
+      } catch (error) {
+        console.error("Failed to fetch testimonials:", error);
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
+  if (testimonials.length === 0) return null;
+
+  const selectedTestimonial = testimonials[selectedIndex];
 
   return (
     <section className="relative w-full min-h-[45vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden">
@@ -36,16 +56,24 @@ const ConstructionTestimonial: React.FC = () => {
           
           {/* Left Side - Team Members */}
           <div className="flex flex-col justify-center space-y-4">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="flex items-center justify-between">
+            {testimonials.map((member, index) => (
+              <div 
+                key={member.id} 
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => setSelectedIndex(index)}
+              >
                 <div className="flex items-center gap-2">
                   <div className="relative flex-shrink-0 w-10 h-10">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="rounded-full object-cover border border-[var(--color-border)] shadow-md"
-                    />
+                    {member.photo ? (
+                      <Image
+                        src={member.photo}
+                        alt={member.name}
+                        fill
+                        className="rounded-full object-cover border border-[var(--color-border)] shadow-md"
+                      />
+                    ) : (
+                      <div className="w-full h-full rounded-full bg-gray-200 border border-[var(--color-border)] shadow-md" />
+                    )}
                     {index === 0 && (
                       <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[var(--color-border)] rounded-full border border-[var(--color-background)]" />
                     )}
@@ -55,7 +83,7 @@ const ConstructionTestimonial: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-[var(--color-header-text)] leading-tight">{member.name}</h3>
-                    <p className="text-xs text-[var(--color-primary)] font-medium leading-tight">{member.role}</p>
+                    <p className="text-xs text-[var(--color-primary)] font-medium leading-tight">{member.designation}</p>
                   </div>
                 </div>
                 <div className="w-0.5 h-10 bg-[var(--color-primary)] hidden md:block" />
@@ -67,7 +95,7 @@ const ConstructionTestimonial: React.FC = () => {
           <div className="flex flex-col justify-center">
             {/* Stars */}
             <div className="flex gap-0.5 mb-2">
-              {[...Array(5)].map((_, i) => (
+              {[...Array(selectedTestimonial.stars)].map((_, i) => (
                 <svg
                   key={i}
                   className="w-4 h-4 fill-[var(--color-primary)]"
@@ -80,28 +108,38 @@ const ConstructionTestimonial: React.FC = () => {
 
             {/* Testimonial Text */}
             <p className="text-[var(--color-paragraph)] text-sm md:text-base leading-relaxed mb-3">
-              For each project we establish relationships with partners who we know will
-              help us create added value for your project. As well as bringing together
-              the public and private sectors to ensure meaningful collaboration.
+              {selectedTestimonial.comment}
             </p>
 
             {/* Author */}
             <div className="flex items-center gap-2">
               <div className="relative w-10 h-10 flex-shrink-0">
-                <Image
-                  src="/teamMember_01.png"
-                  alt="John Smith"
-                  fill
-                  className="rounded-full object-cover border border-[var(--color-border)] shadow-sm"
-                />
+                {selectedTestimonial.photo ? (
+                  <Image
+                    src={selectedTestimonial.photo}
+                    alt={selectedTestimonial.name}
+                    fill
+                    className="rounded-full object-cover border border-[var(--color-border)] shadow-sm"
+                  />
+                ) : (
+                  <div className="w-full h-full rounded-full bg-gray-200 border border-[var(--color-border)] shadow-sm" />
+                )}
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-[var(--color-header-text)] leading-tight">John Smith</h4>
+                <h4 className="text-sm font-semibold text-[var(--color-header-text)] leading-tight">{selectedTestimonial.name}</h4>
                 <p className="text-xs text-[var(--color-primary)] font-medium leading-tight">
-                  CEO of Data group
+                  {selectedTestimonial.designation}
                 </p>
               </div>
             </div>
+
+            {/* View All Button */}
+            <button
+              onClick={() => router.push("/testimonials")}
+              className="mt-4 text-xs text-[var(--color-primary)] font-semibold hover:underline self-start"
+            >
+              View All Testimonials →
+            </button>
           </div>
         </div>
       </div>

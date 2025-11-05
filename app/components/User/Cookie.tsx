@@ -72,7 +72,7 @@ const Cookie = () => {
             <label className='flex items-center gap-2'>
               <input
                 type='checkbox'
-                className='border border-[#fa7123] checked:bg-[#fa7123] focus:outline-none focus:ring-0'
+                className='border border-primary checked:bg-primary focus:outline-none focus:ring-0'
                 checked
                 disabled
               />
@@ -85,7 +85,7 @@ const Cookie = () => {
                 type='checkbox'
                 checked={prefs.analytics}
                 onChange={() => togglePref("analytics")}
-                className='border border-[#fa7123] checked:bg-[#fa7123] focus:outline-none focus:ring-0'
+                className='border border-primary checked:bg-primary focus:outline-none focus:ring-0'
               />
               <span>
                 <strong>Analytics</strong> — Helps us improve performance
@@ -95,7 +95,7 @@ const Cookie = () => {
               <input
                 type='checkbox'
                 checked={prefs.marketing}
-                className='border border-[#fa7123] checked:bg-[#fa7123] focus:outline-none focus:ring-0'
+                className='border border-primary checked:bg-primary focus:outline-none focus:ring-0'
                 onChange={() => togglePref("marketing")}
               />
               <span>
@@ -116,7 +116,7 @@ const Cookie = () => {
           {showManage ? (
             <button
               onClick={handleSave}
-              className='bg-[#fa7123] text-white px-4 py-2 rounded-md hover:!bg-[#fa7123]/90 transition'
+              className='bg-primary text-white px-4 py-2 rounded-md hover:!bg-primary/90 transition'
             >
               Save Preferences
             </button>
@@ -130,7 +130,7 @@ const Cookie = () => {
               </button>
               <button
                 onClick={handleAcceptAll}
-                className='bg-[#fa7123] text-white px-4 py-2 rounded-md hover:!bg-[#fa7123]/90 transition'
+                className='bg-primary text-primary-foreground px-4 py-2 rounded-md hover:!bg-primary/90 transition'
               >
                 Accept All
               </button>

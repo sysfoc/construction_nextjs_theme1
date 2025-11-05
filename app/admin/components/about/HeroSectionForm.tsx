@@ -74,7 +74,7 @@ export default function HeroSectionForm({ data, onSave }: HeroSectionFormProps) 
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
           />
           {imagePreview && (
-            <div className="mt-3 relative w-full h-48">
+            <div className="mt-3 relative w-48 h-48">
               <Image src={imagePreview || "/placeholder.svg"} alt="Preview" fill className="object-cover rounded" />
             </div>
           )}

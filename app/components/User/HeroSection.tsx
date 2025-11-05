@@ -71,22 +71,22 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-opacity-40 z-[1]"></div>
 
-        {/* Left Decorative Element - desktop only */}
+        {/* Left Circular Element - desktop only */}
         <button
           onClick={handlePrev}
           disabled={slides.length <= 1}
-          className="absolute left-0 top-1/2 z-50 -translate-y-1/2 w-16 h-24 bg-primary hidden lg:flex items-center justify-center clip-left-arrow cursor-pointer"
+          className="absolute left-6 top-1/2 z-50 -translate-y-1/2 w-14 h-14 bg-primary rounded-full hidden lg:flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform duration-200"
         >
-          <ArrowRight className="w-8 h-8 lg:w-10 lg:h-10 text-primary-foreground rotate-180" />
+          <ArrowRight className="w-6 h-6 text-primary-foreground rotate-180" />
         </button>
 
-        {/* Right Decorative Element - desktop only */}
+        {/* Right Circular Button - desktop only */}
         <button
           onClick={handleNext}
           disabled={slides.length <= 1}
-          className="absolute right-0 top-1/2 z-50 -translate-y-1/2 w-16 h-24 bg-primary hidden lg:flex items-center justify-center clip-right-arrow cursor-pointer"
+          className="absolute right-6 top-1/2 z-50 -translate-y-1/2 w-14 h-14 bg-primary rounded-full hidden lg:flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition-transform duration-200"
         >
-          <ArrowRight className="w-8 h-8 lg:w-10 lg:h-10 text-primary-foreground" />
+          <ArrowRight className="w-6 h-6 text-primary-foreground" />
         </button>
 
         {/* Main Content */}
@@ -129,16 +129,16 @@ export default function HeroSection() {
             <button
               onClick={handlePrev}
               disabled={slides.length <= 1}
-              className="sm:w-16 sm:h-24 w-16 h-24 bg-primary flex items-center justify-center clip-left-arrow cursor-pointer"
+              className="w-14 h-14 bg-primary rounded-full flex items-center justify-center cursor-pointer shadow-lg"
             >
-              <ArrowRight className="w-8 h-8 text-primary-foreground rotate-180" />
+              <ArrowRight className="w-6 h-6 text-primary-foreground rotate-180" />
             </button>
             <button
               onClick={handleNext}
               disabled={slides.length <= 1}
-              className="sm:w-16 sm:h-24 w-16 h-24 bg-primary flex items-center justify-center clip-right-arrow cursor-pointer"
+              className="w-14 h-14 bg-primary rounded-full flex items-center justify-center cursor-pointer shadow-lg"
             >
-              <ArrowRight className="w-8 h-8 text-primary-foreground" />
+              <ArrowRight className="w-6 h-6 text-primary-foreground" />
             </button>
           </div>
         </div>

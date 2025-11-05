@@ -113,7 +113,7 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   />
                   {(imagePreviews[index] || service.image) && (
-                    <div className="mt-2 relative w-full h-32">
+                    <div className="mt-2 relative w-32 h-32">
                       <Image
                         src={imagePreviews[index] || service.image}
                         alt="Preview"
