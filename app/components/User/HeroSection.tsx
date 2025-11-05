@@ -92,8 +92,9 @@ export default function HeroSection() {
         {/* Main Content */}
         <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-6 lg:px-24 pt-20 lg:pt-24">
           <div className="max-w-2xl">
-            <p className="text-hero-subheading hidden lg:block text-sm lg:text-base font-semibold mb-4 uppercase tracking-wide">
-              WELCOME YOU TO BUILDER
+            <p className="bg-white w-fit text-blue-500 rounded-full px-3 py-1 text-xs sm:text-sm font-semibold mb-4 uppercase tracking-wide items-center gap-2 hidden lg:flex">
+              <span className="w-2 h-2 bg-blue-500 rounded-full inline-block"></span>
+              WELCOME YOU TO CONSTRUCT
             </p>
 
             <h1 className="text-hero-heading text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-8">

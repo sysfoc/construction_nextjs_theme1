@@ -61,19 +61,6 @@ const FaqClient: React.FC = () => {
     }
   }
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = () => {
-    console.log("Form submitted:", formData)
-  }
-
   if (!isVisible) {
     return null
   }

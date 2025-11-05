@@ -35,7 +35,7 @@ export default function HeroBanner() {
               <p className="text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">
                 Our location
               </p>
-              <p className="text-xs sm:text-sm font-bold text-black break-words overflow-hidden">
+              <p className="text-xs sm:text-sm font-bold text-primary break-words overflow-hidden">
                 {settings?.address}
               </p>
             </div>

@@ -65,7 +65,7 @@ export default function ContactUs() {
     <main className="min-h-screen">
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-[#ff6600]">Contact Us</h1>
+          <h1 className="text-4xl font-bold mb-4 text-primary">Contact Us</h1>
           <p className="text-lg">
             We’d love to hear from you. Reach out using the form or the details
             below.
@@ -75,7 +75,7 @@ export default function ContactUs() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold mb-3 text-[#ff6600]">
+              <h2 className="text-2xl font-semibold mb-3 text-primary">
                 Company Information
               </h2>
               <p className="mb-2">
@@ -85,7 +85,7 @@ export default function ContactUs() {
                 <strong>Phone:</strong>{" "}
                 <a
                   href="tel:+923001234567"
-                  className="hover:underline text-[#ff6600]"
+                  className="hover:underline text-primary"
                 >
                   +92 300 1234567
                 </a>
@@ -94,7 +94,7 @@ export default function ContactUs() {
                 <strong>Email:</strong>{" "}
                 <a
                   href="mailto:info@example.com"
-                  className="hover:underline text-[#ff6600]"
+                  className="hover:underline text-primary"
                 >
                   info@example.com
                 </a>
@@ -114,7 +114,7 @@ export default function ContactUs() {
             className="p-8 rounded-2xl shadow-md border border-gray-100 space-y-6"
             onSubmit={handleFormData}
           >
-            <h2 className="text-2xl font-semibold text-[#ff6600] mb-4">
+            <h2 className="text-2xl font-semibold text-primary mb-4">
               Send Us a Message
             </h2>
 
@@ -128,7 +128,7 @@ export default function ContactUs() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Enter your full name"
               />
             </div>
@@ -143,7 +143,7 @@ export default function ContactUs() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Enter your email"
               />
             </div>
@@ -163,14 +163,14 @@ export default function ContactUs() {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 rows={5}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Write your message..."
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#ff6600] text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all"
+              className="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all"
             >
               Send Message
             </button>

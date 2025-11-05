@@ -28,12 +28,18 @@ export default function Header() {
       ],
     },
     {
-      name: "Projects",
-      href: "/projects",
+      name: "Showcase",
+      sublinks: [
+        { name: "Portfolio", href: "/portfolio" },
+        { name: "Projects", href: "/projects" },
+        { name: "Certifications", href: "/certifications" },
+        { name: "Partners", href: "/partners" },
+        { name: "Team", href: "/team" },
+      ],
     },
     {
-      name: "Portfolio",
-      href: "/portfolio",
+      name: "FAQs",
+      href: "/FAQs",
     },
     {
       name: "News",

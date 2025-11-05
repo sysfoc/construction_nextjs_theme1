@@ -109,7 +109,7 @@ export default function QuoteSection() {
                     className={`w-full sm:w-1/2 py-2 sm:py-2.5 font-semibold text-xs sm:text-sm transition-all ${
                       selectedService === "gray"
                         ? "bg-[var(--color-primary)] text-[var(--color-primary-foreground)]"
-                        : "bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 hover:bg-orange-200 dark:hover:bg-orange-800"
+                        : "bg-primary/10 dark:bg-primary text-primary dark:text-primary/10 hover:bg-primary/10 dark:hover:bg-primary"
                     }`}
                   >
                     A+ Gray Structure
@@ -120,7 +120,7 @@ export default function QuoteSection() {
                     className={`w-full sm:w-1/2 py-2 sm:py-2.5 font-semibold text-xs sm:text-sm transition-all ${
                       selectedService === "premium"
                          ? "bg-[var(--color-primary)] text-[var(--color-primary-foreground)]"
-                        : "bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 hover:bg-orange-200 dark:hover:bg-orange-800"
+                        : "bg-primary/10 dark:bg-primary text-primary dark:text-primary/10 hover:bg-primary/10 dark:hover:bg-primary"
                     }`}
                   >
                     Premium Finishing

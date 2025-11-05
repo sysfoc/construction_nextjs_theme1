@@ -1,33 +1,40 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
 
 interface FAQItem {
+  _id: string;
   question: string;
   answer: string;
+  showOnFAQPage: boolean;
 }
 
 const AgencyFAQ: React.FC = () => {
+  const [faqs, setFaqs] = useState<FAQItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const [openIndex, setOpenIndex] = useState<number>(1);
 
-  const faqs: FAQItem[] = [
-    {
-      question: "What is Agency ?",
-      answer:
-        "Improve efficiency, provide a better customer experience with modern technolo services available around Improve efficiency, provide a better customer experience",
-    },
-    {
-      question: "Nulla vitae est risus. Aenean aliquam dolor a massa",
-      answer:
-        "Improve efficiency, provide a better customer experience with modern technolo services available around Improve efficiency, provide a better customer experience",
-    },
-    {
-      question: "Pellentesque habitant morbi tristique senectus ?",
-      answer:
-        "Improve efficiency, provide a better customer experience with modern technolo services available around Improve efficiency, provide a better customer experience",
-    },
-  ];
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/faqs");
+        const data = await response.json();
+        const faqPageFAQs = data
+          .filter((faq: FAQItem) => faq.showOnFAQPage)
+          .slice(0, 4); // show only top 4
+        setFaqs(faqPageFAQs);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFAQs();
+  }, []);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -57,17 +64,13 @@ const AgencyFAQ: React.FC = () => {
 
             {/* Badge */}
             <div className="absolute top-40 left-16 hidden md:flex items-center justify-center w-20 h-20 bg-[var(--color-primary-foreground)] rounded-full shadow-lg">
-              {/* Wrapper is relative so children can be absolutely centered */}
               <div className="relative w-full h-full flex items-center justify-center">
-                {/* Circular Text Image */}
                 <Image
                   src="/text.png"
                   alt="Watch Video Text"
                   fill
                   className="object-contain scale-90"
                 />
-
-                {/* Play Icon */}
                 <Play className="absolute w-5 h-5 text-[var(--color-primary)] " />
               </div>
             </div>
@@ -75,36 +78,42 @@ const AgencyFAQ: React.FC = () => {
 
           {/* Right Side - FAQ */}
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border-b border-[var(--color-border)] pb-4"
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-start justify-between gap-4 text-left group"
-                >
-                  <h3 className="text-lg font-semibold text-[var(--color-header-text)] transition-colors group-hover:text-[var(--color-primary)]">
-                    {faq.question}
-                  </h3>
-                  <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[var(--color-primary)] text-2xl font-light transition-transform duration-300">
-                    {openIndex === index ? "−" : "+"}
-                  </span>
-                </button>
-
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index
-                      ? "max-h-40 opacity-100 mt-3"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="text-[var(--color-paragraph)] text-sm leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
+            {loading ? (
+              <div className="text-center py-4 text-sm text-[var(--color-paragraph)]">
+                Loading FAQs...
               </div>
-            ))}
+            ) : (
+              faqs.map((faq, index) => (
+                <div
+                  key={faq._id}
+                  className="border-b border-[var(--color-border)] pb-4"
+                >
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full flex items-start justify-between gap-4 text-left group"
+                  >
+                    <h3 className="text-lg font-semibold text-[var(--color-header-text)] transition-colors group-hover:text-[var(--color-primary)]">
+                      {faq.question}
+                    </h3>
+                    <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[var(--color-primary)] text-2xl font-light transition-transform duration-300">
+                      {openIndex === index ? "−" : "+"}
+                    </span>
+                  </button>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      openIndex === index
+                        ? "max-h-40 opacity-100 mt-3"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <p className="text-[var(--color-paragraph)] text-sm leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 

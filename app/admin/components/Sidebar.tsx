@@ -97,7 +97,7 @@ export default function AdminSidebar({ isDrawerOpen, setIsDrawerOpen }: AdminSid
               <div>
                 <button
                   onClick={() => toggleMenu(item.label)}
-                  className="w-full flex items-center gap-3 px-3 py-2.5 text-gray-700 dark:text-white hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all duration-200 group"
+                  className="w-full flex items-center gap-3 px-3 py-2.5 text-gray-700 dark:text-white hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 group"
                 >
                   <item.icon className="w-5 h-5 flex-shrink-0" />
                   <span className="text-sm font-medium flex-1 text-left">{item.label}</span>
@@ -120,7 +120,7 @@ export default function AdminSidebar({ isDrawerOpen, setIsDrawerOpen }: AdminSid
                       <Link
                         key={subIndex}
                         href={subItem.path}
-                        className="flex items-center px-3 py-2 text-sm text-gray-600 dark:text-white hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all duration-200 transform hover:translate-x-1"
+                        className="flex items-center px-3 py-2 text-sm text-gray-600 dark:text-white hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 transform hover:translate-x-1"
                       >
                         <span className="relative">
                           {subItem.label}
@@ -133,7 +133,7 @@ export default function AdminSidebar({ isDrawerOpen, setIsDrawerOpen }: AdminSid
             ) : (
               <Link
                 href={item.path!}
-                className="flex items-center gap-3 px-3 py-2.5 text-gray-700 dark:text-white hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all duration-200 group"
+                className="flex items-center gap-3 px-3 py-2.5 text-gray-700 dark:text-white hover:bg-primary/10 hover:text-primary rounded-lg transition-all duration-200 group"
               >
                 <item.icon className="w-5 h-5 flex-shrink-0" />
                 <span className="text-sm font-medium">{item.label}</span>

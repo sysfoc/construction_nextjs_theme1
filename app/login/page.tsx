@@ -46,7 +46,7 @@ export default function LoginPage() {
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex flex-col md:flex-row">
           {/* Left Panel - Demo Credentials */}
-          <div className="md:w-2/5 bg-gradient-to-br from-orange-500 to-orange-600 p-8 flex flex-col justify-center text-white">
+          <div className="md:w-2/5 bg-primary p-8 flex flex-col justify-center text-primary-foreground">
             <div className="mb-6">
               <h2 className="text-2xl font-bold mb-2">Welcome Back</h2>
               <p className="text-orange-100 text-sm">Sign in to access your admin dashboard</p>
@@ -72,7 +72,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={handleAutofill}
-                className="w-full px-4 py-2.5 bg-white text-orange-600 rounded-lg font-semibold hover:bg-orange-50 transition-colors duration-200 shadow-lg"
+                className="w-full px-4 py-2.5 bg-white text-primary rounded-lg font-semibold hover:bg-orange-50 transition-colors duration-200 shadow-lg"
               >
                 Quick Fill Credentials
               </button>

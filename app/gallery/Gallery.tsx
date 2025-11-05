@@ -86,8 +86,8 @@ export default function Gallery() {
     <main className="min-h-screen text-gray-900 dark:text-gray-100 px-6 py-16">
       <section className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold text-[#ff6600] mb-3 uppercase tracking-tight">Project Gallery</h1>
-          <p className="dark:text-gray-300 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-extrabold text-primary mb-3 uppercase tracking-tight">Project Gallery</h1>
+          <p className="dark:text-gray-300 max-w-2xl text-paragraph mx-auto">
             Explore our work through photos and videos. Browse by category to see construction, renovation, and on-site
             progress.
           </p>
@@ -96,8 +96,8 @@ export default function Gallery() {
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           <button
             onClick={() => setActiveAlbum("All")}
-            className={`px-5 py-2 rounded-full border border-[#ff6600] text-sm font-medium transition-all ${
-              activeAlbum === "All" ? "bg-[#ff6600] text-white" : "text-[#ff6600] hover:bg-[#ff6600]/10"
+            className={`px-5 py-2 rounded-full border border-primary text-sm font-medium transition-all ${
+              activeAlbum === "All" ? "bg-primary text-primary-foreground" : "text-primary hover:bg-[#ff6600]/10"
             }`}
           >
             All
@@ -106,8 +106,8 @@ export default function Gallery() {
             <button
               key={category._id}
               onClick={() => setActiveAlbum(category.name)}
-              className={`px-5 py-2 rounded-full border border-[#ff6600] text-sm font-medium transition-all ${
-                activeAlbum === category.name ? "bg-[#ff6600] text-white" : "text-[#ff6600] hover:bg-[#ff6600]/10"
+              className={`px-5 py-2 rounded-full border border-primary text-sm font-medium transition-all ${
+                activeAlbum === category.name ? "bg-primary text-primary-foreground" : "text-primary hover:bg-primary/10"
               }`}
             >
               {category.name}

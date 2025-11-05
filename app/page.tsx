@@ -13,16 +13,16 @@ export default function Home() {
   return (
     <div>
       <HeroSection/>
+      <ProjectsSection/>
       <AboutSection/>
-      <PricingCard/>
       <ConstructionSection/>
       <ServicesGrid/>
-      <ProjectsSection/>
       <QuoteSection/>
       <ConstructionTestimonial/>
-      <AgencyFAQ/>
+      <PricingCard/>
       <ConstructionCTA/>
       <BlogCards/>
+      <AgencyFAQ/>
     </div>
   );
 }

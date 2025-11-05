@@ -66,7 +66,7 @@ export default function RequestQuote() {
     <main className="min-h-screen flex items-center justify-center px-6 py-16">
       <section className="w-full max-w-2xl border border-gray-100 rounded-2xl shadow-md p-10">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-[#ff6600] mb-3">
+          <h1 className="text-4xl font-bold text-primary mb-3">
             Request a Quote
           </h1>
           <p className="text-base">
@@ -86,7 +86,7 @@ export default function RequestQuote() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your full name"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
           <div>
@@ -100,7 +100,7 @@ export default function RequestQuote() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
           <div>
@@ -114,7 +114,7 @@ export default function RequestQuote() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Enter your phone number"
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
           <div>
@@ -130,12 +130,12 @@ export default function RequestQuote() {
                 setFormData({ ...formData, details: e.target.value })
               }
               placeholder="Describe your project goals, requirements, and timeline..."
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#ff6600]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
             ></textarea>
           </div>
           <button
             type="submit"
-            className="w-full bg-[#ff6600] text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all"
+            className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:opacity-90 transition-all"
           >
             Submit Request
           </button>

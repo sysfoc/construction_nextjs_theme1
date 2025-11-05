@@ -88,15 +88,15 @@ export default function ProjectsClient() {
       <section className="px-4 max-w-6xl mx-auto py-10">
         {/* Header */}
         <div className="mb-8">
-          <span className="text-[#ff6600] font-semibold text-sm uppercase tracking-wide">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wide">
             Our Projects
           </span>
           <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
             <div>
-              <h2 className="text-3xl font-bold text-[#1a2b4c]">
+              <h2 className="text-3xl font-bold text-page-heading">
                 Active & Completed Projects
               </h2>
-              <p className="text-[#1a2b4c]/70 mt-1">
+              <p className="text-page-heading/70 mt-1">
                 Showcasing our portfolio of successful infrastructure and
                 construction projects
               </p>
@@ -109,8 +109,8 @@ export default function ProjectsClient() {
               onClick={() => handleFilter("all")}
               className={`py-1.5 px-5 rounded-full text-sm font-medium cursor-pointer transition-all ${
                 activeFilter === "all"
-                  ? "bg-[#ff6600] text-white shadow-lg"
-                  : "border border-[#1a2b4c] text-[#1a2b4c] hover:border-[#ff6600] hover:text-[#ff6600]"
+                  ? "bg-primary text-white shadow-lg"
+                  : "border border-page-heading text-page-heading hover:border-primary hover:text-primary"
               }`}
             >
               All Projects
@@ -119,8 +119,8 @@ export default function ProjectsClient() {
               onClick={() => handleFilter("ongoing")}
               className={`py-1.5 px-5 rounded-full text-sm font-medium cursor-pointer transition-all ${
                 activeFilter === "ongoing"
-                  ? "bg-[#ff6600] text-white shadow-lg"
-                  : "border border-[#1a2b4c] text-[#1a2b4c] hover:border-[#ff6600] hover:text-[#ff6600]"
+                  ? "bg-primary text-white shadow-lg"
+                  : "border border-page-heading text-page-heading hover:border-primary hover:text-primary"
               }`}
             >
               Ongoing
@@ -129,8 +129,8 @@ export default function ProjectsClient() {
               onClick={() => handleFilter("completed")}
               className={`py-1.5 px-5 rounded-full text-sm font-medium cursor-pointer transition-all ${
                 activeFilter === "completed"
-                  ? "bg-[#ff6600] text-white shadow-lg"
-                  : "border border-[#1a2b4c] text-[#1a2b4c] hover:border-[#ff6600] hover:text-[#ff6600]"
+                  ? "bg-primary text-white shadow-lg"
+                  : "border border-page-heading text-page-heading hover:border-primary hover:text-primary"
               }`}
             >
               Completed
@@ -139,8 +139,8 @@ export default function ProjectsClient() {
               onClick={() => handleFilter("upcoming")}
               className={`py-1.5 px-5 rounded-full text-sm font-medium cursor-pointer transition-all ${
                 activeFilter === "upcoming"
-                  ? "bg-[#ff6600] text-white shadow-lg"
-                  : "border border-[#1a2b4c] text-[#1a2b4c] hover:border-[#ff6600] hover:text-[#ff6600]"
+                  ? "bg-primary text-white shadow-lg"
+                  : "border border-page-heading text-page-heading hover:border-primary hover:text-primary"
               }`}
             >
               Upcoming
@@ -191,13 +191,13 @@ export default function ProjectsClient() {
                         <span className="text-xs font-semibold text-[#1a2b4c]">
                           Progress
                         </span>
-                        <span className="text-xs font-bold text-[#ff6600]">
+                        <span className="text-xs font-bold text-primary">
                           {project.progress}%
                         </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
-                          className="bg-[#ff6600] h-2 rounded-full transition-all duration-300"
+                          className="bg-primary h-2 rounded-full transition-all duration-300"
                           style={{ width: `${project.progress}%` }}
                         ></div>
                       </div>
@@ -207,20 +207,20 @@ export default function ProjectsClient() {
                 {/* Project Info */}
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
-                    <MapPin className="w-4 h-4 text-[#ff6600] flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-[#1a2b4c]/70">
                       {project.location}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <Calendar className="w-4 h-4 text-[#ff6600] flex-shrink-0" />
+                    <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-[#1a2b4c]/70">
                       {project.startDate}
                       {project.endDate && ` - ${project.endDate}`}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <Users className="w-4 h-4 text-[#ff6600] flex-shrink-0" />
+                    <Users className="w-4 h-4 text-primary flex-shrink-0" />
                     <span className="text-[#1a2b4c]/70">
                       {project.team} Team Members
                     </span>
