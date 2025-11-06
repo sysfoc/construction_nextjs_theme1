@@ -29,9 +29,9 @@ export function EmergencyServiceModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center justify-between">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+      <div className="bg-background rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-background border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center justify-between">
+          <h2 className="text-lg sm:text-xl font-bold">
             {editingId ? "Edit Service" : "Add Emergency Service"}
           </h2>
           <button onClick={onClose} className="text-gray-400">
@@ -60,7 +60,7 @@ export function EmergencyServiceModal({
               name="slug"
               value={form.slug}
               onChange={onFormChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>

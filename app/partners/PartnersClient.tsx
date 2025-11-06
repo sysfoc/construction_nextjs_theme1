@@ -52,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       } gap-0 mb-8 lg:mb-4 overflow-hidden rounded-lg shadow-lg max-w-6xl mx-auto`}
     >
       {/* Image Section */}
-      <div className="w-full lg:w-2/5 relative h-64 sm:h-72 lg:h-64 bg-white">
+      <div className="w-full lg:w-2/5 relative h-64 sm:h-72 lg:h-64">
         <Image
           src={imageSrc || "/placeholder.svg"}
           alt={title}
@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
 
       {/* Text Section */}
-      <div className="w-full lg:w-3/5 bg-gray-50 dark:bg-gray-900 px-4 lg:px-6 py-4 lg:py-6 flex flex-col justify-center">
+      <div className="w-full lg:w-3/5 bg-background/90 px-4 lg:px-6 py-4 lg:py-6 flex flex-col justify-center">
         <h3 className="text-lg md:text-xl font-bold text-[var(--page-heading)] mb-2">
           {title}
         </h3>
@@ -101,7 +101,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {certifications.map((cert, index) => (
             <span
               key={index}
-              className="px-2 py-0.5 bg-white text-xs font-medium text-[var(--paragraph-color)] rounded-full border border-[var(--border-color)]"
+              className="px-2 py-0.5 bg-background/90 text-xs font-medium text-[var(--paragraph-color)] rounded-full border border-[var(--border-color)]"
             >
               {cert}
             </span>
@@ -188,9 +188,9 @@ const PartnersClient: React.FC = () => {
       </div>
 
       {/* Partners Slider Section */}
-      <section className="py-6 lg:py-4 bg-gray-50 dark:bg-gray-900">
+      <section className="py-6 lg:py-4 bg-background/90">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h3 className="text-base md:text-lg font-semibold text-[var(--page-heading)] mb-6 lg:mb-3 text-center">
+          <h3 className="text-base md:text-lg font-semibold text-paragraph mb-6 lg:mb-3 text-center">
             Our Trusted Partners
           </h3>
 

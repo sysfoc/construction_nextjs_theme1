@@ -167,7 +167,7 @@ export default function NewsletterManagementPage() {
   const activeSubscribersCount = subscribers.filter((s) => s.status === "active").length
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 max-w-5xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 items-stretch sm:items-center justify-between mb-4 sm:mb-6">
@@ -236,11 +236,11 @@ export default function NewsletterManagementPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value as "all" | "active" | "inactive")}
-                className="px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm"
+                className="px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm"
               >
-                <option value="all">All</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+                <option className="bg-background" value="all">All</option>
+                <option className="bg-background" value="active">Active</option>
+                <option className="bg-background" value="inactive">Inactive</option>
               </select>
             </div>
 

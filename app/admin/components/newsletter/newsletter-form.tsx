@@ -69,7 +69,7 @@ export function NewsletterForm({ activeSubscribers, onSend, onClose }: Newslette
           />
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded p-3">
+        <div className="border bg-background w-fit border-blue-200 rounded p-3">
           <p className="text-xs sm:text-sm text-blue-800">
             This newsletter will be sent to <strong>{activeSubscribers}</strong> active subscribers.
           </p>

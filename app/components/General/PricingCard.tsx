@@ -24,7 +24,7 @@ export default function PricingCard({
       {/* Top Diagonal Bar */}
       <div className="relative">
         <div className="absolute -top-3 left-10 w-[40%] h-full bg-[var(--color-primary)] dark:bg-gray-900 -z-10 clip-top-bar"></div>
-        <div className="bg-[var(--color-foreground)] h-20 text-[var(--color-primary-foreground)] dark:bg-gray-800 font-semibold text-xs px-3 clip-top-bar flex items-center">
+        <div className="bg-foreground h-20 text-background font-semibold text-xs px-3 clip-top-bar flex items-center">
           {topLabel}
         </div>
       </div>

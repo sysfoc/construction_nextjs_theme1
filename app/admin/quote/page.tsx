@@ -149,7 +149,7 @@ export default function QuoteManagement() {
               key={tab}
               onClick={() => setActiveTab(tab as "all" | "pending" | "completed" )}
               className={`px-4 py-2 font-medium capitalize transition-colors whitespace-nowrap ${
-                activeTab === tab ? "text-[#ff6600] border-b-2 border-[#ff6600]" : "text-gray-600 hover:text-gray-900"
+                activeTab === tab ? "text-[#ff6600] border-b-2 border-[#ff6600]" : "text-paragraph"
               }`}
             >
               {tab}
@@ -179,11 +179,11 @@ export default function QuoteManagement() {
                       <a href={`mailto:${quote.email}`} className="text-[#ff6600] hover:underline">
                         {quote.email}
                       </a>
-                      <p>{quote.phone}</p>
+                      <p className="text-paragraph">{quote.phone}</p>
                     </div>
 
-                    <p className="text-gray-700 mb-3 whitespace-pre-wrap line-clamp-2">{quote.details}</p>
-                    <p className="text-sm text-gray-500">{formatDate(quote.createdAt)}</p>
+                    <p className="text-paragraph mb-3 whitespace-pre-wrap line-clamp-2">{quote.details}</p>
+                    <p className="text-sm text-paragraph">{formatDate(quote.createdAt)}</p>
                   </div>
 
                   <div className="flex flex-col gap-2">

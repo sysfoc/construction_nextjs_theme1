@@ -43,9 +43,9 @@ export default function CategoryList({
   onEditingCategoryChange,
 }: CategoryListProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4">
+    <div className="bg-background border border-gray-200 rounded-lg p-4">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900">Categories</h2>
+        <h2 className="text-lg font-semibold">Categories</h2>
         <button onClick={onAddCategory} className="p-2 text-[var(--primary)] hover:bg-blue-50 rounded transition-colors">
           <Plus className="w-5 h-5" />
         </button>
@@ -58,7 +58,7 @@ export default function CategoryList({
             className={`px-3 py-2 rounded cursor-pointer transition-colors text-sm font-medium ${
               selectedCategory === category._id
                 ? "bg-[var(--primary)] text-[var(--primary-foreground)]"
-                : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                : "text-paragraph bg-background border border-paragraph"
             }`}
             onClick={() => {
               onSelectCategory(category._id)

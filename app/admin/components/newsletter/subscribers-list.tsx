@@ -70,11 +70,11 @@ export function SubscribersList({ subscribers, onUpdate, onDelete }: Subscribers
                 <select
                   value={editStatus}
                   onChange={(e) => setEditStatus(e.target.value as "active" | "inactive")}
-                  className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base"
                   disabled={isLoading}
                 >
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
+                  <option className="bg-background" value="active">Active</option>
+                  <option className="bg-background" value="inactive">Inactive</option>
                 </select>
               </div>
 

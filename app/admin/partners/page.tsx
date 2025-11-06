@@ -188,14 +188,14 @@ export default function PartnersManagementPage() {
 
   if (loading) {
     return (
-      <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="w-full min-h-screen bg-background flex items-center justify-center">
         <p className="text-gray-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 max-w-6xl mx-auto">
         <div className="flex gap-2 mb-8 border-b border-[var(--border-color)]">
           <button
@@ -203,7 +203,7 @@ export default function PartnersManagementPage() {
             className={`px-4 py-2 font-medium text-sm sm:text-base transition-colors ${
               activeTab === "stats"
                 ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
-                : "text-gray-600 hover:text-gray-900"
+                : "text-gray-600"
             }`}
           >
             Partnership Stats
@@ -213,7 +213,7 @@ export default function PartnersManagementPage() {
             className={`px-4 py-2 font-medium text-sm sm:text-base transition-colors ${
               activeTab === "partners"
                 ? "text-[var(--primary)] border-b-2 border-[var(--primary)]"
-                : "text-gray-600 hover:text-gray-900"
+                : "text-gray-600"
             }`}
           >
             Partners
@@ -332,7 +332,7 @@ export default function PartnersManagementPage() {
 
                     <div>
                       <label className="block text-xs text-[var(--header-text)] mb-2">Partner Logo</label>
-                      <div className="w-full h-24 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-gray-50 dark:bg-gray-900 mb-3 relative">
+                      <div className="w-full h-24 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-background mb-3 relative">
                         {formData.logoPreview ? (
                           <img
                             src={formData.logoPreview || "/placeholder.svg"}

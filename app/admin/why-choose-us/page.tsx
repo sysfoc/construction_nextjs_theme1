@@ -140,132 +140,221 @@ export default function StepsAdmin() {
     }
   }
 
-  const renderEditForm = () => (
-    <div className="bg-[var(--background)] border border-[var(--border-color)] rounded p-3 sm:p-4 mb-4">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-base sm:text-lg font-semibold text-[var(--header-text)]">
-          {isAddingNew ? "Add New Step" : "Edit Step"}
-        </h3>
-        <button onClick={handleCancel} className="text-gray-500">
-          <X className="w-5 h-5" />
-        </button>
-      </div>
-
-      <div className="space-y-4">
-        <div>
-          <label className="block text-sm text-[var(--header-text)] mb-2">Step Icon Image</label>
-          <div className="relative w-40 h-32 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-gray-50 dark:bg-gray-900 mb-2 overflow-hidden">
-            {formData.iconPreview ? (
-              <img
-                src={formData.iconPreview || "/placeholder.svg"}
-                alt="Icon preview"
-                className="w-full h-full object-contain rounded"
-              />
-            ) : (
-              <Upload className="w-6 h-6 text-gray-400" />
-            )}
-          </div>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="block text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-medium file:bg-[var(--primary)] file:text-[var(--primary-foreground)] cursor-pointer"
-          />
-          <p className="text-xs text-gray-500 mt-1">Recommended: 100x100px</p>
-        </div>
-
-        <div>
-          <label className="block text-sm text-[var(--header-text)] mb-2">Title</label>
-          <input
-            type="text"
-            placeholder="Step title"
-            value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-            className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm text-[var(--header-text)] mb-2">Description</label>
-          <textarea
-            placeholder="Step description"
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-            rows={3}
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm text-[var(--header-text)] mb-2">Order</label>
-          <input
-            type="number"
-            placeholder="Order"
-            value={formData.order}
-            onChange={(e) => setFormData({ ...formData, order: Number.parseInt(e.target.value) })}
-            className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-          />
-        </div>
-
-        <label className="flex items-center gap-2 text-[var(--foreground)]">
-          <input
-            type="checkbox"
-            checked={formData.isReversed}
-            onChange={(e) => setFormData({ ...formData, isReversed: e.target.checked })}
-          />
-          <span className="text-sm">Reversed Layout (Icon at top)</span>
-        </label>
-
-        <div className="flex flex-col sm:flex-row justify-end gap-2 pt-2">
-          <button
-            onClick={handleCancel}
-            className="w-full sm:w-auto px-4 py-2 border border-[var(--border-color)] rounded text-[var(--header-text)]"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleSave}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded font-medium"
-          >
-            <Save className="w-4 h-4" />
-            Save Step
-          </button>
-        </div>
-      </div>
-    </div>
-  )
+  const handleAddStep = () => {
+    setIsAddingNew(true)
+    setEditingId(null)
+    setFormData({
+      title: "",
+      description: "",
+      iconSrc: "",
+      isReversed: false,
+      order: 0,
+      iconPreview: null,
+    })
+  }
 
   if (loading) return <div className="p-8">Loading...</div>
 
   return (
-    <div className="p-4 sm:p-6 mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-4 sm:p-6 mx-auto bg-background min-h-screen">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-6">
         <h1 className="text-lg sm:text-2xl font-semibold text-[var(--header-text)]">Steps Management</h1>
         <button
-          onClick={() => {
-            setIsAddingNew(true)
-            setEditingId(null)
-            setFormData({
-              title: "",
-              description: "",
-              iconSrc: "",
-              isReversed: false,
-              order: 0,
-              iconPreview: null,
-            })
-          }}
+          onClick={handleAddStep}
           className="flex items-center gap-2 px-4 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded font-medium whitespace-nowrap"
         >
           <Plus className="w-4 h-4" /> Add Step
         </button>
       </div>
 
-      {(isAddingNew || editingId) && renderEditForm()}
-
       <div className="space-y-3 sm:space-y-4">
+        {isAddingNew && (
+          <div className="bg-[var(--background)] border border-[var(--border-color)] rounded p-3 sm:p-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-[var(--header-text)]">Add New Step</h3>
+              <button onClick={handleCancel} className="text-gray-500">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm text-[var(--header-text)] mb-2">Step Icon Image</label>
+                <div className="relative w-40 h-32 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-background mb-2 overflow-hidden">
+                  {formData.iconPreview ? (
+                    <img
+                      src={formData.iconPreview || "/placeholder.svg"}
+                      alt="Icon preview"
+                      className="w-full h-full object-contain rounded"
+                    />
+                  ) : (
+                    <Upload className="w-6 h-6 text-gray-400" />
+                  )}
+                </div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="block text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-medium file:bg-[var(--primary)] file:text-[var(--primary-foreground)] cursor-pointer"
+                />
+                <p className="text-xs text-gray-500 mt-1">Recommended: 100x100px</p>
+              </div>
+
+              <div>
+                <label className="block text-sm text-[var(--header-text)] mb-2">Title</label>
+                <input
+                  type="text"
+                  placeholder="Step title"
+                  value={formData.title}
+                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-[var(--header-text)] mb-2">Description</label>
+                <textarea
+                  placeholder="Step description"
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  rows={3}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-[var(--header-text)] mb-2">Order</label>
+                <input
+                  type="number"
+                  placeholder="Order"
+                  value={formData.order}
+                  onChange={(e) => setFormData({ ...formData, order: Number.parseInt(e.target.value) })}
+                  className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                />
+              </div>
+
+              <label className="flex items-center gap-2 text-[var(--foreground)]">
+                <input
+                  type="checkbox"
+                  checked={formData.isReversed}
+                  onChange={(e) => setFormData({ ...formData, isReversed: e.target.checked })}
+                />
+                <span className="text-sm">Reversed Layout (Icon at top)</span>
+              </label>
+
+              <div className="flex flex-col sm:flex-row justify-end gap-2 pt-2">
+                <button
+                  onClick={handleCancel}
+                  className="w-full sm:w-auto px-4 py-2 border border-[var(--border-color)] rounded text-[var(--header-text)]"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSave}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded font-medium"
+                >
+                  <Save className="w-4 h-4" />
+                  Save Step
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {steps.map((step) => (
-          <div key={step._id}>
-            <div className="bg-[var(--background)] border border-[var(--border-color)] rounded p-3 sm:p-4 hover:shadow-md transition-shadow">
+          <div key={step._id} className="bg-[var(--background)] border border-[var(--border-color)] rounded p-3 sm:p-4 hover:shadow-md transition-shadow">
+            {editingId === step._id ? (
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-[var(--header-text)]">Edit Step</h3>
+                  <button onClick={handleCancel} className="text-gray-500">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm text-[var(--header-text)] mb-2">Step Icon Image</label>
+                    <div className="relative w-40 h-32 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-background mb-2 overflow-hidden">
+                      {formData.iconPreview ? (
+                        <img
+                          src={formData.iconPreview || "/placeholder.svg"}
+                          alt="Icon preview"
+                          className="w-full h-full object-contain rounded"
+                        />
+                      ) : (
+                        <Upload className="w-6 h-6 text-gray-400" />
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="block text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-medium file:bg-[var(--primary)] file:text-[var(--primary-foreground)] cursor-pointer"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Recommended: 100x100px</p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-[var(--header-text)] mb-2">Title</label>
+                    <input
+                      type="text"
+                      placeholder="Step title"
+                      value={formData.title}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-[var(--header-text)] mb-2">Description</label>
+                    <textarea
+                      placeholder="Step description"
+                      value={formData.description}
+                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                      className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                      rows={3}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-[var(--header-text)] mb-2">Order</label>
+                    <input
+                      type="number"
+                      placeholder="Order"
+                      value={formData.order}
+                      onChange={(e) => setFormData({ ...formData, order: Number.parseInt(e.target.value) })}
+                      className="w-full px-4 py-2 border border-[var(--border-color)] rounded bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    />
+                  </div>
+
+                  <label className="flex items-center gap-2 text-[var(--foreground)]">
+                    <input
+                      type="checkbox"
+                      checked={formData.isReversed}
+                      onChange={(e) => setFormData({ ...formData, isReversed: e.target.checked })}
+                    />
+                    <span className="text-sm">Reversed Layout (Icon at top)</span>
+                  </label>
+
+                  <div className="flex flex-col sm:flex-row justify-end gap-2 pt-2">
+                    <button
+                      onClick={handleCancel}
+                      className="w-full sm:w-auto px-4 py-2 border border-[var(--border-color)] rounded text-[var(--header-text)]"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleSave}
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded font-medium"
+                    >
+                      <Save className="w-4 h-4" />
+                      Save Step
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
               <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-0">
                 <div className="flex items-start gap-3 sm:gap-4 flex-1 w-full min-w-0">
                   <div className="w-20 h-20 bg-gray-100 border border-[var(--border-color)] rounded flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -299,7 +388,7 @@ export default function StepsAdmin() {
                   </button>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         ))}
       </div>

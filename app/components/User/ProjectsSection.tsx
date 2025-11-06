@@ -131,7 +131,7 @@ export default function ProjectsSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Tabs */}
-        <div className="flex justify-end pr-10 gap-1 mb-6">
+        <div className="flex justify-start pr-10 gap-1 mb-6">
           {tabs.map((tab, index) => (
             <button
               key={index}

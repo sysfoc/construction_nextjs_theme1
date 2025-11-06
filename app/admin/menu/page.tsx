@@ -44,18 +44,18 @@ export default function MenuManagementPage() {
   if (loading) return <div className="p-4">Loading...</div>
 
   return (
-    <div className="p-4 mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-4 mx-auto bg-background min-h-screen">
       <div className="flex sm:flex-row flex-col items-baseline gap-2 justify-start mb-4">
         <h1 className="text-2xl font-semibold text-[var(--header-text)]">Menu Management</h1>
         <p className="text-sm text-gray-600">Toggle visibility for pages</p>
       </div>
 
-      <div className="bg-[var(--background)] border border-[var(--border-color)] rounded p-2">
+      <div className="bg-background border border-[var(--border-color)] rounded p-2">
         <div className="space-y-2 mb-4">
           {menuItems.map((item) => (
             <div
               key={item._id}
-              className="flex items-center justify-between p-2 border border-[var(--border-color)] rounded bg-white transition-all cursor-default"
+              className="flex items-center justify-between p-2 border border-[var(--border-color)] rounded transition-all cursor-default"
             >
               <div className="flex items-center gap-2 flex-1">
                 <span className="text-sm text-[var(--header-text)] font-medium">{item.name}</span>

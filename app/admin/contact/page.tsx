@@ -140,7 +140,7 @@ export default function ContactManagement() {
               className={`px-3 py-1.5 text-sm font-medium capitalize transition-colors ${
                 activeTab === tab
                   ? "text-[#ff6600] border-b-2 border-[#ff6600]"
-                  : "text-gray-600 hover:text-gray-900"
+                  : "text-paragraph"
               }`}
             >
               {tab}

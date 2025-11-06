@@ -183,14 +183,14 @@ export default function JobsManagementPage() {
 
   if (loading) {
     return (
-      <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="w-full min-h-screen bg-background flex items-center justify-center">
         <p className="text-gray-600">Loading jobs...</p>
       </div>
     )
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 items-stretch sm:items-center justify-between mb-4 sm:mb-6">
           <h1 className="text-xl sm:text-2xl font-semibold text-[var(--header-text)] break-words">Jobs Management</h1>
@@ -217,7 +217,7 @@ export default function JobsManagementPage() {
                 <div className="w-full">
                   <label className="block text-xs sm:text-sm text-[var(--header-text)] mb-2">Job Image</label>
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-32 h-32 sm:w-40 sm:h-28 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-gray-50 dark:bg-gray-900 flex-shrink-0 relative">
+                    <div className="w-32 h-32 sm:w-40 sm:h-28 border-2 border-dashed border-[var(--border-color)] rounded flex items-center justify-center bg-background flex-shrink-0 relative">
                       {formData.imagePreview ? (
                         <Image
                           src={formData.imagePreview || "/placeholder.svg"}
@@ -303,10 +303,10 @@ export default function JobsManagementPage() {
                       name="jobType"
                       value={formData.jobType}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base"
                     >
                       {jobTypes.map((type) => (
-                        <option key={type} value={type}>
+                        <option className="bg-background" key={type} value={type}>
                           {type}
                         </option>
                       ))}
@@ -452,10 +452,10 @@ export default function JobsManagementPage() {
                         name="jobType"
                         value={formData.jobType}
                         onChange={handleInputChange}
-                        className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                        className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base"
                       >
                         {jobTypes.map((type) => (
-                          <option key={type} value={type}>
+                          <option className="bg-background" key={type} value={type}>
                             {type}
                           </option>
                         ))}

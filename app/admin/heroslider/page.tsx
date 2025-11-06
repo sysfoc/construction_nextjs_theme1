@@ -165,14 +165,14 @@ export default function HeroSliderPage() {
 
   if (loading) {
     return (
-      <div className="p-6 max-w-5xl mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+      <div className="p-6 max-w-5xl mx-auto bg-background min-h-screen flex items-center justify-center">
         <p className="text-gray-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="p-4 sm:p-6 max-w-5xl mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-4 sm:p-6 max-w-5xl mx-auto bg-background min-h-screen">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-6">
         <h1 className="text-lg sm:text-2xl font-semibold text-[var(--header-text)]">Hero Slider Management</h1>
         <button

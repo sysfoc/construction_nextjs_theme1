@@ -133,7 +133,7 @@ export default function Gallery() {
                 <video controls autoPlay src={item.src} className="w-full h-56 object-cover bg-black" />
               )}
               <div className="p-4 text-center">
-                <p className="text-sm font-medium dark:text-gray-300">
+                <p className="text-sm font-medium text-paragraph">
                   {categories.find((c) => c._id === item.categoryId)?.name}
                 </p>
               </div>

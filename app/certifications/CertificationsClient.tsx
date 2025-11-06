@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronsRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { isPageVisible } from "@/lib/api/pageVisibility";
@@ -68,13 +67,13 @@ export default function CertificationsClient() {
 
   return (
     <>
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6 py-16">
+      <main className="min-h-screen bg-background px-6 py-16">
         <section className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-[#ff6600] uppercase tracking-tight mb-4">
+            <h1 className="text-4xl font-extrabold text-primary uppercase tracking-tight mb-4">
               Certifications & Licenses
             </h1>
-            <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-paragraph max-w-2xl mx-auto">
               Our certifications reflect our dedication to safety, quality, and
               sustainability in every construction project.
             </p>
@@ -83,7 +82,7 @@ export default function CertificationsClient() {
             {certifications.map((cert) => (
               <div
                 key={cert._id}
-                className="bg-gray-50 dark:bg-gray-900 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all"
+                className="bg-background/90 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all"
               >
                 <div className="relative h-56 w-full overflow-hidden">
                   {cert.image ? (
@@ -101,10 +100,10 @@ export default function CertificationsClient() {
                   )}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-[#ff6600] mb-2">
+                  <h3 className="text-xl font-semibold text-primary mb-2">
                     {cert.title}
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                  <p className="text-paragraph text-sm leading-relaxed">
                     {cert.description}
                   </p>
                 </div>

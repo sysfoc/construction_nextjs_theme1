@@ -104,7 +104,7 @@ export default function SEOSettingsPage() {
   }
 
   return (
-    <div className="p-6 mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-6 mx-auto bg-background min-h-screen">
       <h1 className="text-2xl font-semibold text-[var(--header-text)] mb-6">SEO Settings</h1>
 
       <div className="bg-[var(--background)] border border-[var(--border-color)] rounded p-6">
@@ -115,14 +115,14 @@ export default function SEOSettingsPage() {
 
         <div className="space-y-4">
           <div>
-            <label className="block text-sm text-[var(--header-text)] mb-2">Select Page</label>
+            <label className="block text-sm text-paragraph mb-2">Select Page</label>
             <select
               value={selectedPage}
               onChange={handlePageChange}
-              className="w-full px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white"
+              className="w-full px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
             >
               {pages.map((page) => (
-                <option key={page.value} value={page.value}>
+                <option className="bg-background" key={page.value} value={page.value}>
                   {page.label}
                 </option>
               ))}

@@ -52,31 +52,7 @@ const AgencyFAQ: React.FC = () => {
     <div className="w-full bg-[var(--color-background)] text-[var(--color-foreground)] py-6 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Image */}
-          <div className="relative w-full max-w-md mx-auto aspect-[4/3]">
-            <Image
-              src="/workers_02.png"
-              alt="Construction workers"
-              fill
-              className="object-contain"
-              priority
-            />
-
-            {/* Badge */}
-            <div className="absolute top-40 left-16 hidden md:flex items-center justify-center w-20 h-20 bg-[var(--color-primary-foreground)] rounded-full shadow-lg">
-              <div className="relative w-full h-full flex items-center justify-center">
-                <Image
-                  src="/text.png"
-                  alt="Watch Video Text"
-                  fill
-                  className="object-contain scale-90"
-                />
-                <Play className="absolute w-5 h-5 text-[var(--color-primary)] " />
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side - FAQ */}
+          {/* Left Side - FAQ */}
           <div className="space-y-4">
             {loading ? (
               <div className="text-center py-4 text-sm text-[var(--color-paragraph)]">
@@ -114,6 +90,30 @@ const AgencyFAQ: React.FC = () => {
                 </div>
               ))
             )}
+          </div>
+
+          {/* Right Side - Image */}
+          <div className="relative w-full max-w-md mx-auto aspect-[4/3]">
+            <Image
+              src="/workers_02.png"
+              alt="Construction workers"
+              fill
+              className="object-contain"
+              priority
+            />
+
+            {/* Badge */}
+            <div className="absolute top-40 left-16 hidden md:flex items-center justify-center w-20 h-20 bg-[var(--color-primary-foreground)] rounded-full shadow-lg">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src="/text.png"
+                  alt="Watch Video Text"
+                  fill
+                  className="object-contain scale-90"
+                />
+                <Play className="absolute w-5 h-5 text-[var(--color-primary)] " />
+              </div>
+            </div>
           </div>
         </div>
 

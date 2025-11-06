@@ -43,12 +43,12 @@ export default function ImageUploadForm({ formData, onFormDataChange, onAddImage
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Add Image</h3>
+    <div className="bg-background border border-gray-200 rounded-lg p-4">
+      <h3 className="text-lg font-semibold mb-4">Add Image</h3>
 
       <div className="space-y-4">
         <div>
-          <label className="block text-sm text-gray-700 mb-2">Image Type</label>
+          <label className="block text-sm mb-2">Image Type</label>
           <select
             value={formData.imageType}
             onChange={(e) =>
@@ -57,7 +57,7 @@ export default function ImageUploadForm({ formData, onFormDataChange, onAddImage
                 imageType: e.target.value as "photo" | "video",
               })
             }
-            className="w-full px-3 py-2 border border-gray-300 rounded text-sm text-gray-900"
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
           >
             <option value="photo">Photo</option>
             <option value="video">Video</option>
@@ -65,11 +65,11 @@ export default function ImageUploadForm({ formData, onFormDataChange, onAddImage
         </div>
 
         <div>
-          <label className="block text-sm text-gray-700 mb-2">
+          <label className="block text-sm mb-2">
             Upload {formData.imageType === "photo" ? "Image" : "Video"}
           </label>
           <div className="flex items-start gap-4">
-            <div className="w-24 h-24 border-2 border-dashed border-gray-300 rounded flex items-center justify-center bg-gray-50 dark:bg-gray-900 flex-shrink-0">
+            <div className="w-24 h-24 border-2 border-dashed border-gray-300 rounded flex items-center justify-center flex-shrink-0">
               {formData.imagePreview ? (
                 formData.imageType === "photo" ? (
                   <Image

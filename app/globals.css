@@ -33,6 +33,43 @@
   --border-color: #c2c7d2;
 }
 
+/* ================================
+   Dark Mode Support
+   ================================ */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  --header-background: #0f0f0f;
+  --header-text: #dbe4f0;      /* Softer bluish for navlinks */
+
+  --hero-heading: #ffffff;
+  --hero-subheading: var(--primary);
+  --hero-text: #cbd5e1;
+
+  --paragraph-color: #ffffff;
+  --border-color: #333;
+
+  --page-heading: #f5f7f9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.dark) {
+    --background: #ececec;
+    --foreground: #3b2e2e;
+
+    --header-background: #0f0f0f;
+    --header-text: #dbe4f0;      /* Softer bluish for navlinks */
+
+    --hero-heading: #ffffff;
+    --hero-subheading: var(--primary);
+    --hero-text: #cbd5e1;
+
+    --paragraph-color: #dbe4f0;
+    --border-color: #333;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -57,26 +94,6 @@
 }
 
 /* ================================
-   Dark Mode Support
-   ================================ */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-
-    --header-background: #0f0f0f;
-    --header-text: #dbe4f0;      /* Softer bluish for navlinks */
-
-    --hero-heading: #ffffff;
-    --hero-subheading: var(--primary);
-    --hero-text: #cbd5e1;
-
-    --paragraph-color: #dbe4f0;
-    --border-color: #333;
-  }
-}
-
-/* ================================
    Global Body
    ================================ */
 body {
@@ -87,7 +104,7 @@ body {
 
 
 .clip-diagonal {
-  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
 }
 
 .clip-diagonal1 {
@@ -154,4 +171,3 @@ body {
 .clip-project-section {
   clip-path: polygon(0 0, 90% 0%, 100% 100%, 0 100%);
 }
-

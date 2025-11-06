@@ -18,7 +18,7 @@ export default function TeamClient() {
   const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
 
-  // 🔹 Page visibility check
+  
   useEffect(() => {
     const checkVisibility = async () => {
       const visible = await isPageVisible("team");
@@ -78,7 +78,7 @@ export default function TeamClient() {
                   </div>
                 )}
               </div>
-              <div className='bg-gray-100 dark:bg-gray-800 p-4 rounded-bl-2xl'>
+              <div className='bg-background p-4 rounded-bl-2xl'>
                 <h3 className="font-bold">{team.name}</h3>
                 <p className="text-sm">{team.designation}</p>
               </div>

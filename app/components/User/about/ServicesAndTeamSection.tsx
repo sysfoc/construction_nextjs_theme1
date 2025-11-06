@@ -77,7 +77,7 @@ export default function ServicesAndTeamSection({
               {/* Button */}
               <Link
                 href={service.buttonUrl || "#"}
-                className="bg-header-text dark:bg-gray-700 text-primary-foreground w-[80%] mx-auto py-2 sm:py-2.5 mb-5 rounded-t-full hover:bg-primary transition-colors inline-flex items-center justify-center gap-2"
+                className=" text-primary-foreground w-[80%] mx-auto py-2 sm:py-2.5 mb-5 rounded-t-full bg-primary transition-colors inline-flex items-center justify-center gap-2"
               >
                 <span className="text-sm sm:text-base">{service.buttonText}</span>
                 <ArrowRight className="w-4 h-4" />

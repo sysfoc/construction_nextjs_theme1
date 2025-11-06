@@ -226,17 +226,17 @@ export default function AdminEmergencyServicePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-4 sm:py-5 px-3 sm:px-4">
+    <div className="min-h-screen bg-background py-4 sm:py-5 px-3 sm:px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-900">Emergency Services Management</h1>
-        <p className="text-sm sm:text-base text-gray-600 mb-8">Manage emergency contact settings and services</p>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-paragraph">Emergency Services Management</h1>
+        <p className="text-sm sm:text-base text-paragraph mb-8">Manage emergency contact settings and services</p>
 
         <div className="mb-8 border-b border-gray-200">
           <nav className="flex gap-4 sm:gap-8 overflow-x-auto">
             <button
               onClick={() => setActiveTab("services")}
               className={`pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap ${
-                activeTab === "services" ? "text-primary" : "border-transparent text-gray-500"
+                activeTab === "services" ? "text-primary" : "border-transparent text-paragraph"
               }`}
             >
               Services Management
@@ -244,7 +244,7 @@ export default function AdminEmergencyServicePage() {
             <button
               onClick={() => setActiveTab("settings")}
               className={`pb-4 px-1 border-b-2 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap ${
-                activeTab === "settings" ? "text-primary" : "border-transparent text-gray-500"
+                activeTab === "settings" ? "text-primary" : "border-transparent text-paragraph"
               }`}
             >
               Email & Phone Settings

@@ -16,8 +16,8 @@ interface ImageGridProps {
 
 export default function ImageGrid({ images, onDeleteImage }: ImageGridProps) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+    <div className="bg-background border border-gray-200 rounded-lg p-4">
+      <h3 className="text-lg font-semibold mb-4">
         Images ({images.length})
       </h3>
 

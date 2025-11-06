@@ -58,7 +58,7 @@ export default function ServicesGrid() {
       <div className="container mx-auto px-5  sm:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service) => (
-            <div key={service.id} className="bg-gray-50 dark:bg-gray-900 p-5 relative group">
+            <div key={service.id} className="bg-background p-5 relative group">
               {/* Icon and Title Row */}
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
@@ -71,17 +71,17 @@ export default function ServicesGrid() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-black dark:text-gray-200 font-bold text-lg leading-tight">
+                  <h3 className="text-paragraph font-bold text-lg leading-tight">
                     {service.title || "Service"}
                   </h3>
-                  <h3 className="text-black dark:text-gray-200 font-semibold text-sm leading-tight">
+                  <h3 className="text-paragraph font-semibold text-sm leading-tight">
                     {service.subtitle || "Subtitle"}
                   </h3>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+              <p className="text-paragraph text-sm mb-4">
                 {service.description || "No description available"}
               </p>
 
@@ -90,7 +90,7 @@ export default function ServicesGrid() {
             </div>
           ))}
 
-          <div className="bg-white dark:bg-gray-800 p-6 flex items-center justify-center">
+          <div className=" p-6 flex items-center justify-center">
             {button && (
               <Link href={button.buttonUrl || "#"}>
                 <SolidButton text={button.buttonText || "GET STARTED"} />

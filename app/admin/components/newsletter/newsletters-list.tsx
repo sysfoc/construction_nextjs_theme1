@@ -21,7 +21,7 @@ export function NewslettersList({ newsletters, onDelete }: NewslettersListProps)
       {newsletters.map((newsletter) => (
         <div
           key={newsletter._id}
-          className="p-4 border border-[var(--border-color)] rounded bg-white dark:bg-gray-800 hover:shadow-sm transition-shadow"
+          className="p-4 border border-[var(--border-color)] rounded bg-background hover:shadow-sm transition-shadow"
         >
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">

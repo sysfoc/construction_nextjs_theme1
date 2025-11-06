@@ -12,7 +12,7 @@ export default function ServicesManagementPage() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 max-w-5xl mx-auto">
         <h1 className="text-xl sm:text-2xl font-semibold text-[var(--header-text)] break-words mb-6">
           Services Management

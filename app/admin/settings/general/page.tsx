@@ -150,14 +150,14 @@ const handleSocialLinkChange = (platform: string, url: string) => {
 
   if (loading) {
     return (
-      <div className="p-4 mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+      <div className="p-4 mx-auto bg-background min-h-screen flex items-center justify-center">
         <p className="text-gray-600">Loading settings...</p>
       </div>
     )
   }
 
   return (
-    <div className="p-4 mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-4 mx-auto bg-background min-h-screen">
       <h1 className="text-2xl font-semibold text-[var(--header-text)] mb-6">General Settings</h1>
 
       <div className="space-y-6">

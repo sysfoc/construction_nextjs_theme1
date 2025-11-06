@@ -1,59 +1,64 @@
-"use client"
-import { useState, useEffect } from "react"
-import HeroSectionForm from "@/app/admin/components/about/HeroSectionForm"
-import WhatWeDoForm from "@/app/admin/components/about/WhatWeDoForm"
-import ServicesForm from "@/app/admin/components/about/ServicesForm"
+"use client";
+import { useState, useEffect } from "react";
+import HeroSectionForm from "@/app/admin/components/about/HeroSectionForm";
+import WhatWeDoForm from "@/app/admin/components/about/WhatWeDoForm";
+import ServicesForm from "@/app/admin/components/about/ServicesForm";
 
 interface AboutPageData {
-  _id?: string
+  _id?: string;
   hero: {
-    heading: string
-    image: string
-    paragraph: string
-    subheadings: Array<{ title: string; description: string }>
-    buttonText: string
-    buttonUrl: string
-  }
+    heading: string;
+    image: string;
+    paragraph: string;
+    subheadings: Array<{ title: string; description: string }>;
+    buttonText: string;
+    buttonUrl: string;
+  };
   whatWeDo: {
-    firstHeading: string
-    firstSteps: string[]
-    secondHeading: string
-    secondSteps: string[]
-  }
+    firstHeading: string;
+    firstSteps: string[];
+    secondHeading: string;
+    secondSteps: string[];
+  };
   services: {
     services: Array<{
-      image: string
-      title: string
-      description: string
-      buttonText: string
-      buttonUrl: string
-    }>
-  }
+      image: string;
+      title: string;
+      description: string;
+      buttonText: string;
+      buttonUrl: string;
+    }>;
+  };
 }
 
 export default function AboutManagementPage() {
-  const [data, setData] = useState<AboutPageData | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
-  const [activeSection, setActiveSection] = useState<"hero" | "whatWeDo" | "services">("hero")
+  const [data, setData] = useState<AboutPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+  const [activeSection, setActiveSection] = useState<
+    "hero" | "whatWeDo" | "services"
+  >("hero");
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     try {
-      setLoading(true)
-      const response = await fetch("/api/about")
-      const result = await response.json()
-      setData(result)
+      setLoading(true);
+      const response = await fetch("/api/about");
+      const result = await response.json();
+      setData(result);
     } catch (error) {
-      console.error("Error fetching about page:", error)
-      setMessage({ type: "error", text: "Failed to fetch data" })
+      console.error("Error fetching about page:", error);
+      setMessage({ type: "error", text: "Failed to fetch data" });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleSave = async (updatedData: AboutPageData) => {
     try {
@@ -61,20 +66,20 @@ export default function AboutManagementPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),
-      })
+      });
 
-      if (!response.ok) throw new Error("Failed to save")
+      if (!response.ok) throw new Error("Failed to save");
 
-      const result = await response.json()
-      setData(result)
-      setMessage({ type: "success", text: "Changes saved successfully" })
+      const result = await response.json();
+      setData(result);
+      setMessage({ type: "success", text: "Changes saved successfully" });
 
-      setTimeout(() => setMessage(null), 3000)
+      setTimeout(() => setMessage(null), 3000);
     } catch (error) {
-      console.error("Error saving:", error)
-      setMessage({ type: "error", text: "Failed to save changes" })
+      console.error("Error saving:", error);
+      setMessage({ type: "error", text: "Failed to save changes" });
     }
-  }
+  };
 
   if (loading)
     return (
@@ -84,17 +89,24 @@ export default function AboutManagementPage() {
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       </div>
-    )
+    );
 
-  if (!data) return <div className="p-6 text-center text-red-600">Failed to load data</div>
+  if (!data)
+    return (
+      <div className="p-6 text-center text-red-600">Failed to load data</div>
+    );
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <main className="min-h-screen bg-background">
       <div className="max-w-5xl mx-auto p-4 sm:p-6">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-[var(--page-heading)] dark:text-white mb-2">About Page Management</h1>
-          <p className="text-gray-600 dark:text-gray-400">Manage content for all three sections</p>
+          <h1 className="text-3xl font-bold text-[var(--page-heading)] dark:text-white mb-2">
+            About Page Management
+          </h1>
+          <p className="text-paragraph">
+            Manage content for all three sections
+          </p>
         </div>
 
         {/* Message Alert */}
@@ -117,7 +129,7 @@ export default function AboutManagementPage() {
             className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
               activeSection === "hero"
                 ? "border-b-2 border-[var(--primary)] text-[var(--primary)]"
-                : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                : "text-paragraph"
             }`}
           >
             Hero Section
@@ -127,7 +139,7 @@ export default function AboutManagementPage() {
             className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
               activeSection === "whatWeDo"
                 ? "border-b-2 border-[var(--primary)] text-[var(--primary)]"
-                : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                : "text-paragraph"
             }`}
           >
             What We Do
@@ -137,7 +149,7 @@ export default function AboutManagementPage() {
             className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
               activeSection === "services"
                 ? "border-b-2 border-[var(--primary)] text-[var(--primary)]"
-                : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                : "text-paragraph"
             }`}
           >
             Services
@@ -145,10 +157,16 @@ export default function AboutManagementPage() {
         </div>
 
         {/* Content Sections */}
-        {activeSection === "hero" && <HeroSectionForm data={data} onSave={handleSave} />}
-        {activeSection === "whatWeDo" && <WhatWeDoForm data={data} onSave={handleSave} />}
-        {activeSection === "services" && <ServicesForm data={data} onSave={handleSave} />}
+        {activeSection === "hero" && (
+          <HeroSectionForm data={data} onSave={handleSave} />
+        )}
+        {activeSection === "whatWeDo" && (
+          <WhatWeDoForm data={data} onSave={handleSave} />
+        )}
+        {activeSection === "services" && (
+          <ServicesForm data={data} onSave={handleSave} />
+        )}
       </div>
     </main>
-  )
+  );
 }

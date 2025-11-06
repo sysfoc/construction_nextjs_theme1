@@ -94,7 +94,7 @@ export function ApplicationDetailModal({ application, isOpen, onClose }: Applica
           {/* Cover Letter */}
           <div>
             <h3 className="text-lg font-semibold text-[var(--foreground)] mb-3">Cover Letter</h3>
-            <div className="bg-gray-50 dark:bg-gray-900 dark:bg-gray-800 p-4 rounded text-[var(--paragraph-color)] whitespace-pre-wrap break-words">
+            <div className="bg-background p-4 rounded text-[var(--paragraph-color)] whitespace-pre-wrap break-words">
               {application.coverLetter}
             </div>
           </div>

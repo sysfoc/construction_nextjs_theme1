@@ -32,7 +32,7 @@ export function StatusTabs({ activeTab, onTabChange, counts }: StatusTabsProps) 
           }`}
         >
           {tab.label}
-          <span className="ml-2 text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded-full">{tab.count}</span>
+          <span className="ml-2 text-xs bg-gray-200 text-black px-2 py-1 rounded-full">{tab.count}</span>
         </button>
       ))}
     </div>

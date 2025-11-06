@@ -51,7 +51,7 @@ export default function CustomerSupportPage() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 max-w-5xl mx-auto">
         {/* Header Section */}
         <div className="mb-6">
@@ -136,7 +136,7 @@ export default function CustomerSupportPage() {
               <div key={index} className="bg-[var(--background)] border border-[var(--border-color)] rounded overflow-hidden">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                  className="w-full flex items-center justify-between p-4 text-left transition-colors"
                 >
                   <span className="text-sm font-medium text-[var(--header-text)] pr-4">
                     {faq.question}

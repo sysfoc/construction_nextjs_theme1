@@ -51,26 +51,26 @@ export default function WhatWeDoForm({ data, onSave }: WhatWeDoFormProps) {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+    <div className="bg-background rounded-lg border border-gray-200 dark:border-gray-700 p-6">
       <div className="space-y-6">
         {/* First Section */}
         <div className="pb-6 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">First Section</h3>
+          <h3 className="text-lg font-medium mb-4">First Section</h3>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Heading</label>
+            <label className="block text-sm font-medium mb-1">Heading</label>
             <input
               type="text"
               value={formData.firstHeading}
               onChange={(e) => handleHeadingChange("firstHeading", e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               placeholder="Enter heading"
             />
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Steps/Items</label>
+              <label className="text-sm font-medium ">Steps/Items</label>
               <button
                 onClick={() => addStep("first")}
                 className="px-3 py-1 text-sm bg-[var(--primary)] text-[var(--primary-foreground)] rounded hover:opacity-90 transition-opacity"
@@ -84,7 +84,7 @@ export default function WhatWeDoForm({ data, onSave }: WhatWeDoFormProps) {
                   type="text"
                   value={step}
                   onChange={(e) => handleStepChange("first", index, e.target.value)}
-                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   placeholder={`Step ${index + 1}`}
                 />
                 <button
@@ -100,22 +100,22 @@ export default function WhatWeDoForm({ data, onSave }: WhatWeDoFormProps) {
 
         {/* Second Section */}
         <div>
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Second Section</h3>
+          <h3 className="text-lg font-medium mb-4">Second Section</h3>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Heading</label>
+            <label className="block text-sm font-medium mb-1">Heading</label>
             <input
               type="text"
               value={formData.secondHeading}
               onChange={(e) => handleHeadingChange("secondHeading", e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               placeholder="Enter heading"
             />
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Steps/Items</label>
+              <label className="text-sm font-medium ">Steps/Items</label>
               <button
                 onClick={() => addStep("second")}
                 className="px-3 py-1 text-sm bg-[var(--primary)] text-[var(--primary-foreground)] rounded hover:opacity-90 transition-opacity"
@@ -129,7 +129,7 @@ export default function WhatWeDoForm({ data, onSave }: WhatWeDoFormProps) {
                   type="text"
                   value={step}
                   onChange={(e) => handleStepChange("second", index, e.target.value)}
-                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   placeholder={`Step ${index + 1}`}
                 />
                 <button

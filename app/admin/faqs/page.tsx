@@ -136,7 +136,7 @@ export default function FAQManagementPage() {
   }
 
   return (
-    <div className="p-4 mx-auto bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-4 mx-auto bg-background min-h-screen">
       <div className="flex sm:flex-row flex-col gap-2 items-center justify-between mb-6">
         <h1 className="text-xl sm:text-2xl font-semibold text-[var(--header-text)]">FAQ Management</h1>
         <button

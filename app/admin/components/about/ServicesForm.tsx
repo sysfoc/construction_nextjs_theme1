@@ -73,10 +73,10 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+    <div className="bg-background rounded-lg border border-gray-200 dark:border-gray-700 p-6">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white">Services</h3>
+          <h3 className="text-lg font-medium">Services</h3>
           <button
             onClick={addService}
             className="flex items-center gap-2 px-3 py-2 text-sm bg-[var(--primary)] text-[var(--primary-foreground)] rounded hover:opacity-90 transition-opacity"
@@ -90,10 +90,10 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
           {formData.services.map((service: any, index: number) => (
             <div
               key={index}
-              className="p-4 bg-gray-50 dark:bg-gray-700 rounded border border-gray-200 dark:border-gray-600"
+              className="p-4 rounded border border-gray-200 dark:border-gray-600"
             >
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-sm font-medium text-gray-900 dark:text-white">Service {index + 1}</h4>
+                <h4 className="text-sm font-medium">Service {index + 1}</h4>
                 <button
                   onClick={() => removeService(index)}
                   className="p-1 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded transition-colors"
@@ -105,12 +105,12 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
               <div className="space-y-3">
                 {/* Image */}
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Image</label>
+                  <label className="block text-xs font-medium mb-1">Image</label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={(e) => handleImageUpload(index, e)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   />
                   {(imagePreviews[index] || service.image) && (
                     <div className="mt-2 relative w-32 h-32">
@@ -126,23 +126,23 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
 
                 {/* Title */}
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+                  <label className="block text-xs font-medium mb-1">Title</label>
                   <input
                     type="text"
                     value={service.title}
                     onChange={(e) => handleServiceChange(index, "title", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    className="w-full px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                     placeholder="Service title"
                   />
                 </div>
 
                 {/* Description */}
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+                  <label className="block text-xs font-medium mb-1">Description</label>
                   <textarea
                     value={service.description}
                     onChange={(e) => handleServiceChange(index, "description", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)] min-h-16"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)] min-h-16"
                     placeholder="Service description"
                   />
                 </div>
@@ -157,7 +157,7 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
                       type="text"
                       value={service.buttonText}
                       onChange={(e) => handleServiceChange(index, "buttonText", e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                       placeholder="Button text"
                     />
                   </div>
@@ -169,7 +169,7 @@ export default function ServicesForm({ data, onSave }: ServicesFormProps) {
                       type="text"
                       value={service.buttonUrl}
                       onChange={(e) => handleServiceChange(index, "buttonUrl", e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-600 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                       placeholder="Button URL"
                     />
                   </div>

@@ -148,7 +148,7 @@ export default function UserManagementPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 mx-auto">
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 items-stretch sm:items-center justify-between mb-4 sm:mb-6">
           <h1 className="text-xl sm:text-2xl font-semibold text-[var(--header-text)] break-words">
@@ -216,10 +216,10 @@ export default function UserManagementPage() {
                       name="role"
                       value={formData.role}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base"
                     >
                       {roles.map((r) => (
-                        <option key={r.id} value={r.id}>
+                        <option className="bg-background" key={r.id} value={r.id}>
                           {r.name}
                         </option>
                       ))}
@@ -315,10 +315,10 @@ export default function UserManagementPage() {
                         name="role"
                         value={formData.role}
                         onChange={handleInputChange}
-                        className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                        className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] text-sm sm:text-base"
                       >
                         {roles.map((r) => (
-                          <option key={r.id} value={r.id}>
+                          <option className="bg-background" key={r.id} value={r.id}>
                             {r.name}
                           </option>
                         ))}

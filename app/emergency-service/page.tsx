@@ -88,7 +88,7 @@ export default function EmergencyServicePage() {
   return (
     <main className="max-w-7xl mx-auto">
       {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 md:px-12 py-12 bg-gray-50">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 md:px-12 py-12 bg-background">
         <div className="flex flex-col justify-center order-2 lg:order-1">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 text-header-text">
             Emergency Services
@@ -144,7 +144,7 @@ export default function EmergencyServicePage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="px-6 md:px-12 py-10 bg-gray-100">
+      <section className="px-6 md:px-12 py-10 bg-background">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-header-text">
           Why Choose Our Emergency Services?
         </h2>
@@ -181,8 +181,8 @@ export default function EmergencyServicePage() {
       </section>
 
       {/* Service List Section */}
-      <section className="px-6 md:px-12 py-10 bg-gray-100">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-800">
+      <section className="px-6 md:px-12 py-10 bg-background">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-header-text">
           Services We Provide
         </h2>
 
@@ -190,7 +190,7 @@ export default function EmergencyServicePage() {
           {services.map((service) => (
             <div
               key={service._id}
-              className="p-6 border border-gray-300 rounded bg-white shadow-sm hover:shadow-md transition-shadow"
+              className="p-6 border border-gray-300 rounded bg-background shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-center rounded overflow-hidden h-48 mb-4">
                 <Image
@@ -201,14 +201,14 @@ export default function EmergencyServicePage() {
                   className="object-cover w-full h-full"
                 />
               </div>
-              <h3 className="text-lg font-bold text-gray-800 text-center mb-3">
+              <h3 className="text-lg font-bold text-paragraph text-center mb-3">
                 {service.title}
               </h3>
               <div className="mb-4 pb-4 border-b border-gray-200">
                 <p className="text-xs font-semibold mb-1 text-primary text-center">
                   PRICE RANGE
                 </p>
-                <p className="text-lg font-bold text-gray-700 text-center">
+                <p className="text-lg font-bold text-paragraph text-center">
                   ${service.price}
                 </p>
               </div>
@@ -224,7 +224,7 @@ export default function EmergencyServicePage() {
       </section>
 
       {/* Contact Section */}
-      <section className="px-6 md:px-12 py-10 bg-gray-50">
+      <section className="px-6 md:px-12 py-10 bg-background">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-header-text">
             Contact Us for Emergency Assistance

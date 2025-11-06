@@ -108,7 +108,7 @@ export default function EmergencyServicePage() {
   return (
     <main className="max-w-7xl mx-auto">
       {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 md:px-12 py-12 bg-gray-50">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-6 md:px-12 py-12 bg-background">
         <div className="flex flex-col justify-center order-2 lg:order-1">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 text-header-text">
             Emergency Services
@@ -154,7 +154,7 @@ export default function EmergencyServicePage() {
         </div>
 
         <div className="flex items-center justify-center rounded overflow-hidden h-60 md:h-80 order-1 lg:order-2">
-          <div className="w-full h-full relative flex items-center justify-center bg-gray-100">
+          <div className="w-full h-full relative flex items-center justify-center bg-background">
             <Image
               src="/emergency-services/img_01 (3).jpg"
               alt="Emergency Response"
@@ -167,7 +167,7 @@ export default function EmergencyServicePage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="px-6 md:px-12 py-10 bg-gray-100">
+      <section className="px-6 md:px-12 py-10 bg-background">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-header-text">
           Why Choose Our Emergency Services?
         </h2>
@@ -204,7 +204,7 @@ export default function EmergencyServicePage() {
       </section>
 
       {/* Service List Section */}
-      <section className="px-6 md:px-12 py-10 bg-gray-100">
+      <section className="px-6 md:px-12 py-10 bg-background">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-800">
           Services We Provide
         </h2>

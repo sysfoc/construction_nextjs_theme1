@@ -54,7 +54,7 @@ export default function QuoteSection() {
   };
 
   return (
-    <div className="relative w-full h-auto bg-white dark:bg-gray-900">
+    <div className="relative w-full h-auto">
       {/* Full-Width Top Image */}
       <div className="relative w-full">
         <Image
@@ -78,8 +78,8 @@ export default function QuoteSection() {
       </div>
 
       {/* Content Section */}
-      <div className="relative w-full flex justify-center -mt-20 px-3 sm:px-4">
-        <div className="z-10 max-w-3xl w-full grid grid-cols-1 md:grid-cols-2 shadow-lg bg-white dark:bg-gray-800">
+      <div className="relative bg-background w-full flex justify-center -mt-20 px-3 sm:px-4">
+        <div className="z-10 max-w-3xl w-full grid grid-cols-1 md:grid-cols-2 shadow-lg">
           {/* Left Section */}
           <div className="hidden md:flex items-stretch justify-end p-0 m-0">
             <Image
@@ -92,13 +92,13 @@ export default function QuoteSection() {
           </div>
 
           {/* Right Form Section */}
-          <div className="bg-white dark:bg-gray-800 p-5 sm:p-6 md:p-8 flex flex-col justify-center">
+          <div className="bg-background p-5 sm:p-6 md:p-8 flex flex-col justify-center">
             <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
               {/* Full Name */}
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
+                  className="block text-paragraph text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
                 >
                   Full Name
                 </label>
@@ -118,7 +118,7 @@ export default function QuoteSection() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
+                    className="block text-paragraph dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
                   >
                     Email Address
                   </label>
@@ -135,7 +135,7 @@ export default function QuoteSection() {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
+                    className="block text-paragraph dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
                   >
                     Phone Number
                   </label>
@@ -155,7 +155,7 @@ export default function QuoteSection() {
               <div>
                 <label
                   htmlFor="service"
-                  className="block text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
+                  className="block text-paragraph dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
                 >
                   Service Type
                 </label>
@@ -179,7 +179,7 @@ export default function QuoteSection() {
               <div>
                 <label
                   htmlFor="date"
-                  className="block text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
+                  className="block text-paragraph text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
                 >
                   Preferred Date
                 </label>
@@ -197,7 +197,7 @@ export default function QuoteSection() {
               <div>
                 <label
                   htmlFor="details"
-                  className="block text-gray-800 dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
+                  className="block text-paragraph text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
                 >
                   Project Details
                 </label>

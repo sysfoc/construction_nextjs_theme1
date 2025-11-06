@@ -153,7 +153,7 @@ export default function ProjectsClient() {
           {filteredProjects.map((project) => (
             <div
               key={project._id}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+              className="bg-background rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100"
             >
               {/* Image Container */}
               <div className="relative h-52 overflow-hidden bg-gray-200">
@@ -176,10 +176,10 @@ export default function ProjectsClient() {
 
               {/* Content */}
               <div className="p-4">
-                <h3 className="text-base font-bold text-[#1a2b4c] mb-1.5 line-clamp-2">
+                <h3 className="text-base font-bold text-paragraph mb-1.5 line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="text-sm text-[#1a2b4c]/70 mb-3 line-clamp-2">
+                <p className="text-sm text-paragraph/70 mb-3 line-clamp-2">
                   {project.description}
                 </p>
 
@@ -188,7 +188,7 @@ export default function ProjectsClient() {
                   project.progress !== undefined && (
                     <div className="mb-3">
                       <div className="flex justify-between items-center mb-1.5">
-                        <span className="text-xs font-semibold text-[#1a2b4c]">
+                        <span className="text-xs font-semibold text-paragraph">
                           Progress
                         </span>
                         <span className="text-xs font-bold text-primary">
@@ -208,20 +208,20 @@ export default function ProjectsClient() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-[#1a2b4c]/70">
+                    <span className="text-paragraph/70">
                       {project.location}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-[#1a2b4c]/70">
+                    <span className="text-paragraph/70">
                       {project.startDate}
                       {project.endDate && ` - ${project.endDate}`}
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-[#1a2b4c]/70">
+                    <span className="text-paragraph/70">
                       {project.team} Team Members
                     </span>
                   </div>

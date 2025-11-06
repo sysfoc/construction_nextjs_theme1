@@ -6,7 +6,84 @@ import { useRouter } from "next/navigation";
 export default function AboutSection() {
   const router = useRouter();
   return (
-    <section className="w-full bg-background dark:bg-gray-900 py-16 mt-10 px-8">
+    <section className="w-full bg-background dark:bg-gray-900 py-12 px-8">
+      
+      {/* Stats Banner */}
+      <div className="mb-5 p-4 sm:p-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+          {/* Stat 1 */}
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1 mb-2">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
+                10
+              </span>
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-text dark:text-gray-200">
+                +
+              </span>
+              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
+                COUNTRY
+              </h3>
+            </div>
+            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
+              Construction Simulator
+            </p>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1 mb-2">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
+                15
+              </span>
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-text dark:text-gray-200">
+                +
+              </span>
+              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
+                PROJECT
+              </h3>
+            </div>
+            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
+              Construction Simulator
+            </p>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1 mb-2">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
+                50K
+              </span>
+              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
+                HAPPY
+              </h3>
+            </div>
+            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
+              Professional Experience
+            </p>
+          </div>
+
+          {/* Stat 4 */}
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1 mb-2">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
+                10
+              </span>
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-text dark:text-gray-200">
+                +
+              </span>
+              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
+                YEARS
+              </h3>
+            </div>
+            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
+              Professional Experience
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Images */}
@@ -123,80 +200,6 @@ export default function AboutSection() {
             <div className="mt-8">
               <SolidButton text="Testimonials" onClick={() => router.push("/testimonials")}/>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Stats Banner */}
-      <div className="mt-3 p-4 sm:p-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-          {/* Stat 1 */}
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 mb-2">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
-                10
-              </span>
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-text dark:text-gray-200">
-                +
-              </span>
-              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
-                COUNTRY
-              </h3>
-            </div>
-            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
-              Construction Simulator
-            </p>
-          </div>
-
-          {/* Stat 2 */}
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 mb-2">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
-                15
-              </span>
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-text dark:text-gray-200">
-                +
-              </span>
-              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
-                PROJECT
-              </h3>
-            </div>
-            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
-              Construction Simulator
-            </p>
-          </div>
-
-          {/* Stat 3 */}
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 mb-2">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
-                50K
-              </span>
-              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
-                HAPPY
-              </h3>
-            </div>
-            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
-              Professional Experience
-            </p>
-          </div>
-
-          {/* Stat 4 */}
-          <div className="text-center">
-            <div className="flex items-center justify-center gap-1 mb-2">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-header-text dark:text-gray-200 stroke-text">
-                10
-              </span>
-              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-text dark:text-gray-200">
-                +
-              </span>
-              <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-header-text dark:text-gray-200">
-                YEARS
-              </h3>
-            </div>
-            <p className="text-sm sm:text-base text-paragraph dark:text-gray-300">
-              Professional Experience
-            </p>
           </div>
         </div>
       </div>

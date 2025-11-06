@@ -36,7 +36,7 @@ export default function AdminBookings() {
   }, []);
 
   return (
-    <main className="min-h-screen px-6 py-10 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <main className="min-h-screen px-6 py-10 bg-background transition-colors duration-300">
       <section className="max-w-6xl mx-auto">
         <div className="mb-10 text-center">
           <h1 className="text-4xl font-bold text-[#ff6600] mb-2 uppercase tracking-tight">
@@ -59,7 +59,7 @@ export default function AdminBookings() {
           <div className="overflow-x-auto bg-white dark:bg-gray-800 shadow-md rounded-2xl">
             <table className="min-w-full border-collapse">
               <thead>
-                <tr className="bg-[#ff6600]/10 dark:bg-gray-700 text-[#ff6600] uppercase text-sm">
+                <tr className="bg-[#ff6600]/10 text-[#ff6600] uppercase text-sm">
                   <th className="py-3 px-4 text-left">Client</th>
                   <th className="py-3 px-4 text-left">Contact</th>
                   <th className="py-3 px-4 text-left">Service</th>
@@ -72,13 +72,9 @@ export default function AdminBookings() {
                 {bookings.map((booking, index) => (
                   <tr
                     key={booking._id}
-                    className={`border-t hover:bg-[#ff6600]/5 dark:hover:bg-gray-700 transition ${
-                      index % 2 === 0
-                        ? "bg-gray-50 dark:bg-gray-700"
-                        : "bg-white dark:bg-gray-800"
-                    }`}
+                    className="border-t bg-background"
                   >
-                    <td className="py-4 px-4 font-medium text-gray-800 dark:text-white">
+                    <td className="py-4 px-4 font-medium text-gray-700">
                       {booking.name}
                       <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">
                         {new Date(booking.createdAt).toLocaleString()}
@@ -123,8 +119,8 @@ export default function AdminBookings() {
         )}
       </section>
       {selectedBooking && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg max-w-lg w-full p-6 relative animate-in fade-in duration-300">
+        <div className="fixed inset-0 bg-background backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-background border border-gray-300 rounded-2xl shadow-lg max-w-lg w-full p-6 relative animate-in fade-in duration-300">
             <button
               onClick={() => setSelectedBooking(null)}
               className="absolute top-3 right-3 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"
@@ -156,7 +152,7 @@ export default function AdminBookings() {
               </p>
               <div>
                 <p className="font-semibold mb-1">Project Details:</p>
-                <p className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 text-sm">
+                <p className=" rounded-lg p-3 text-sm">
                   {selectedBooking.details}
                 </p>
               </div>

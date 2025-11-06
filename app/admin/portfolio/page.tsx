@@ -156,20 +156,17 @@ export default function PortfolioManagementPage() {
     }
   }
 
-  const handleSubmit = () => {
-    console.log("Projects saved:", projects)
-  }
 
   if (loading) {
     return (
-      <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="w-full min-h-screen bg-background flex items-center justify-center">
         <p className="text-gray-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-background overflow-x-hidden">
       <div className="p-4 sm:p-6 max-w-full mx-auto">
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 items-stretch sm:items-center justify-between mb-4 sm:mb-6">
           <h1 className="text-xl sm:text-2xl font-semibold text-[var(--header-text)] break-words">
@@ -215,10 +212,10 @@ export default function PortfolioManagementPage() {
                       name="category"
                       value={formData.category}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-background text-sm sm:text-base"
                     >
                       {categories.map((cat) => (
-                        <option key={cat} value={cat}>
+                        <option className="bg-background" key={cat} value={cat}>
                           {cat}
                         </option>
                       ))}
@@ -252,7 +249,7 @@ export default function PortfolioManagementPage() {
                     </div>
                   )}
 
-                  <div className="border-2 border-dashed border-[var(--border-color)] rounded p-4 sm:p-6 text-center bg-gray-50 dark:bg-gray-900 w-full">
+                  <div className="border-2 border-dashed border-[var(--border-color)] rounded p-4 sm:p-6 text-center bg-background w-full">
                     <Upload className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400 mx-auto mb-2" />
                     <label className="cursor-pointer">
                       <span className="text-xs sm:text-sm text-[var(--primary)] font-medium">Upload Photos</span>
@@ -315,10 +312,10 @@ export default function PortfolioManagementPage() {
                         name="category"
                         value={formData.category}
                         onChange={handleInputChange}
-                        className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-white text-sm sm:text-base"
+                        className="w-full px-3 sm:px-4 py-2 border border-[var(--border-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--primary)] bg-background text-sm sm:text-base"
                       >
                         {categories.map((cat) => (
-                          <option key={cat} value={cat}>
+                          <option className="bg-background" key={cat} value={cat}>
                             {cat}
                           </option>
                         ))}
@@ -352,7 +349,7 @@ export default function PortfolioManagementPage() {
                       </div>
                     )}
 
-                    <div className="border-2 border-dashed border-[var(--border-color)] rounded p-4 sm:p-6 text-center bg-gray-50 dark:bg-gray-900 w-full">
+                    <div className="border-2 border-dashed border-[var(--border-color)] rounded p-4 sm:p-6 text-center bg-background w-full">
                       <Upload className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400 mx-auto mb-2" />
                       <label className="cursor-pointer">
                         <span className="text-xs sm:text-sm text-[var(--primary)] font-medium">Upload Photos</span>
@@ -409,16 +406,6 @@ export default function PortfolioManagementPage() {
               )}
             </div>
           ))}
-        </div>
-
-        <div className="flex justify-end mt-4 sm:mt-6 w-full">
-          <button
-            onClick={handleSubmit}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2 bg-[var(--primary)] text-[var(--primary-foreground)] rounded font-medium text-sm sm:text-base"
-          >
-            <Save className="w-4 h-4 flex-shrink-0" />
-            <span>Save All Changes</span>
-          </button>
         </div>
       </div>
     </div>

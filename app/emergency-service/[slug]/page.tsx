@@ -98,7 +98,7 @@ export default function EmergencyServiceDetailPage() {
   return (
     <main className="max-w-6xl mx-auto">
       {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 sm:px-12 py-10 bg-gray-50">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 sm:px-12 py-10 bg-background">
         <div className="flex flex-col justify-center order-2 md:order-1">
           <h1 className="text-2xl sm:text-3xl font-bold text-header-text mb-4">
             {service.title}
@@ -109,7 +109,7 @@ export default function EmergencyServiceDetailPage() {
             expertise and care.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-            <div className="p-3 bg-white rounded border border-gray-200">
+            <div className="p-3 bg-background rounded border border-gray-200">
               <p className="text-xs font-semibold mb-1 text-primary">
                 CALLOUT FEE
               </p>
@@ -117,7 +117,7 @@ export default function EmergencyServiceDetailPage() {
                 ${service.calloutPrice}
               </p>
             </div>
-            <div className="p-3 bg-white rounded border border-gray-200">
+            <div className="p-3 bg-background rounded border border-gray-200">
               <p className="text-xs font-semibold mb-1 text-primary">
                 RESPONSE TIME
               </p>
@@ -134,25 +134,25 @@ export default function EmergencyServiceDetailPage() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+              className="flex items-center gap-3 p-3 bg-primary/10 rounded-lg"
             >
-              <MessageCircle size={20} className="text-green-600" />
+              <MessageCircle size={20} className="text-primary" />
               <div className="text-left">
-                <p className="text-xs text-gray-600 font-semibold">
+                <p className="text-xs text-paragraph font-semibold">
                   Quick Response via WhatsApp
                 </p>
-                <p className="text-base font-bold text-green-600 break-all">
+                <p className="text-sm font-medium text-primary break-all">
                   {settings.emergencyPhone}
                 </p>
               </div>
             </a>
             <a
               href={`mailto:${settings.emergencyEmail}`}
-              className="flex items-center gap-3 p-3 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors"
+              className="flex items-center gap-3 p-3 bg-primary/10 rounded-lg"
             >
               <MailIcon size={20} className="text-primary" />
               <div className="text-left">
-                <p className="text-xs text-gray-600 font-semibold">
+                <p className="text-xs text-paragraph font-semibold">
                   Email for Support
                 </p>
                 <p className="text-sm font-medium text-primary break-all">
@@ -176,7 +176,7 @@ export default function EmergencyServiceDetailPage() {
       </section>
 
       {/* What We Help With Section */}
-      <section className="px-6 sm:px-12 py-8 bg-white">
+      <section className="px-6 sm:px-12 py-8 bg-background">
         <h2 className="text-xl sm:text-2xl font-bold mb-6 text-header-text">
           In What {service.title} Emergencies We Can Help You With
         </h2>
@@ -194,7 +194,7 @@ export default function EmergencyServiceDetailPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="px-6 sm:px-12 py-8 bg-gray-50">
+      <section className="px-6 sm:px-12 py-8 bg-background">
         <h2 className="text-xl sm:text-2xl font-bold mb-6 text-header-text">
           How It Works
         </h2>
@@ -221,7 +221,7 @@ export default function EmergencyServiceDetailPage() {
           ].map((item) => (
             <div
               key={item.step}
-              className="bg-white p-5 rounded border border-gray-200"
+              className="bg-background p-5 rounded border border-gray-200"
             >
               <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold text-lg mb-3">
                 {item.step}
@@ -238,7 +238,7 @@ export default function EmergencyServiceDetailPage() {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="px-6 sm:px-12 py-10 bg-white">
+      <section className="px-6 sm:px-12 py-10 bg-background">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-xl sm:text-2xl font-bold mb-4 text-header-text">
             Need Immediate Assistance?

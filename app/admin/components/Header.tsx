@@ -21,7 +21,7 @@ export default function AdminHeader({ onMenuClick }: AdminHeaderProps) {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-900 fixed top-0 border-b w-full border-gray-200 z-50">
+    <header className="bg-background fixed top-0 border-b w-full border-gray-200 z-50">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-1 z-20">

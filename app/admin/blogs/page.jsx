@@ -65,7 +65,7 @@ export default function Blog() {
       })
     : formData;
   return (
-    <section className='my-5 p-5'>
+    <section className='h-full p-5 bg-background'>
       <div>
         <div className='flex items-center justify-between mb-3'>
           <h2 className='text-2xl font-semibold'>Blogs</h2>

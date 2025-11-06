@@ -91,7 +91,7 @@ export default function AdminSidebar({ isDrawerOpen, setIsDrawerOpen }: AdminSid
   ];
 
   const SidebarContent = () => (
-    <div className="h-full dark:bg-gray-800 dark:text-white flex flex-col">
+    <div className="h-full bg-background flex flex-col">
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         {menuItems.map((item, index) => (
           <div key={index}>

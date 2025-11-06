@@ -118,7 +118,7 @@ export default function ConstructionSection(): React.JSX.Element {
                 className={`font-medium text-sm pb-2 transition ${
                   activeTab === "architecture"
                     ? "text-[var(--color-primary-foreground)]"
-                    : "text-gray-400 hover:text-[var(--color-primary-foreground)]"
+                    : "text-background"
                 }`}
               >
                 Architecture Design
@@ -133,7 +133,7 @@ export default function ConstructionSection(): React.JSX.Element {
                 className={`font-medium text-sm pb-2 transition ${
                   activeTab === "renovation"
                     ? "text-[var(--color-primary-foreground)]"
-                    : "text-gray-400 hover:text-[var(--color-primary-foreground)]"
+                    : "text-background"
                 }`}
               >
                 Building Renovation
@@ -148,7 +148,7 @@ export default function ConstructionSection(): React.JSX.Element {
                 className={`font-medium text-sm pb-2 transition ${
                   activeTab === "material"
                     ? "text-[var(--color-primary-foreground)]"
-                    : "text-gray-400 hover:text-[var(--color-primary-foreground)]"
+                    : "text-background"
                 }`}
               >
                 Material Supply
@@ -161,7 +161,7 @@ export default function ConstructionSection(): React.JSX.Element {
 
           {/* Description Text */}
           <div className="mb-8">
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-background text-sm leading-relaxed">
               {currentContent.description}
             </p>
           </div>
@@ -183,7 +183,7 @@ export default function ConstructionSection(): React.JSX.Element {
                 <div className="text-[var(--color-primary)] text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-bold">
                   {currentContent.stats[0].number}
                 </div>
-                <div className="text-gray-400 text-sm mt-1">
+                <div className="text-background text-sm mt-1">
                   {currentContent.stats[0].label}
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function ConstructionSection(): React.JSX.Element {
                 <div className="text-[var(--color-primary)] text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-bold">
                   {currentContent.stats[1].number}
                 </div>
-                <div className="text-gray-400 text-sm mt-1">
+                <div className="text-background text-sm mt-1">
                   {currentContent.stats[1].label}
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function ConstructionSection(): React.JSX.Element {
             <div className="w-4 h-4 rounded-full border-[1.5px] border-[var(--color-primary)] flex items-center justify-center">
               <Check className="w-3 h-3 text-[var(--color-primary)]" />
             </div>
-            <span className="text-[var(--color-primary-foreground)] text-xs font-medium">{label}</span>
+            <span className="text-background text-xs font-medium">{label}</span>
           </div>
         ))}
       </div>

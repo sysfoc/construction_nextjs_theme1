@@ -9,6 +9,7 @@ import MobileSidebar from "./MobileSidebar";
 import { useGeneralSettings } from "@/app/context/GeneralSettingsContext";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import ThemeToggle from "@/app/components/ThemeToggle";
 
 export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
@@ -93,22 +94,22 @@ export default function Header() {
             <div className="relative flex items-center justify-between py-4 lg:py-4 px-4 lg:px-8 bg-header-background lg:bg-transparent">
               {/* Logo */}
               <Link href="/">
-              <div className="flex items-center gap-1 z-20">
-                {settings?.logo && (
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 relative">
-                    <Image
-                      src={settings.logo}
-                      alt="Company Logo"
-                      fill
-                      className="object-contain"
+                <div className="flex items-center gap-1 z-20">
+                  {settings?.logo && (
+                    <div className="w-10 h-10 lg:w-12 lg:h-12 relative">
+                      <Image
+                        src={settings.logo}
+                        alt="Company Logo"
+                        fill
+                        className="object-contain"
                       />
-                  </div>
-                )}
-                <span className="text-xl lg:text-2xl font-bold text-header-text">
-                  {settings?.companyName}
-                </span>
-              </div>
-                </Link>
+                    </div>
+                  )}
+                  <span className="text-xl lg:text-2xl font-bold text-header-text">
+                    {settings?.companyName}
+                  </span>
+                </div>
+              </Link>
 
               {/* Desktop Navigation */}
               <nav className="hidden lg:flex flex-wrap justify-center gap-1 lg:gap-4 xl:gap-8 z-10">
@@ -120,7 +121,7 @@ export default function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     {link.sublinks ? (
-                      <button className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg hover:bg-gray-50 dark:bg-gray-900">
+                      <button className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
                         {link.name}
                         <ChevronDown
                           className={`w-4 h-4 transition-transform duration-200 ${
@@ -131,7 +132,7 @@ export default function Header() {
                     ) : (
                       <Link
                         href={link.href!}
-                        className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg hover:bg-gray-50 dark:bg-gray-900"
+                        className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
                       >
                         {link.name}
                       </Link>
@@ -154,21 +155,23 @@ export default function Header() {
                 ))}
               </nav>
 
-              {/* Desktop CTA Button */}
-              <div className="hidden lg:block relative z-10">
+              {/* Desktop CTA and Theme Toggle */}
+              <div className="hidden lg:flex items-center gap-3 relative z-10">
+                <ThemeToggle />
                 <SolidButton text="GET A QUOTE" onClick={() => router.push("/quote")} />
               </div>
 
               {/* Mobile Header Right Section */}
               <div className="flex lg:hidden items-center gap-3 z-20">
+                <ThemeToggle />
                 <Link href="/quote">
-                <div className="hidden sm:block bg-primary text-primary-foreground px-4 py-2 font-semibold cursor-pointer hover:opacity-90 transition-colors duration-200 text-sm rounded">
-                  GET A QUOTE
-                </div>
+                  <div className="hidden sm:block bg-primary text-primary-foreground px-4 py-2 font-semibold cursor-pointer hover:opacity-90 transition-colors duration-200 text-sm rounded">
+                    GET A QUOTE
+                  </div>
                 </Link>
 
                 <button
-                  className="p-2 rounded-md text-header-text hover:bg-gray-100"
+                  className="p-2 rounded-md text-header-text hover:bg-gray-100 dark:hover:bg-gray-800"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                   <Menu className="w-6 h-6" />
