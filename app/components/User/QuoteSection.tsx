@@ -55,174 +55,211 @@ export default function QuoteSection() {
 
   return (
     <div className="relative w-full h-auto">
-      {/* Full-Width Top Image */}
-      <div className="relative w-full">
+      {/* Hero Banner Section */}
+      <div className="relative w-full h-[400px] sm:h-[500px] overflow-hidden">
         <Image
           src="/worker_01.jpg"
           alt="Worker at Construction Site"
-          width={1920}
-          height={600}
-          className="w-full h-auto object-cover"
+          fill
+          className="object-cover"
           priority
         />
-        <div className="absolute hidden md:block  top-1/2 left-6 sm:left-12 transform -translate-y-1/2 text-white max-w-xl space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight drop-shadow-md">
-            Schedule your service to receive personalized consultation and
-            professional support.
-          </h2>
-          <span className="flex gap-2 text-primary taxt-sm font-bold">
-            BOOK YOUR SERVICE NOW
-            <ChevronsDown />
-          </span>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+        
+        {/* Hero Text */}
+        <div className="absolute inset-0 flex items-center">
+          <div className="container mx-auto px-6 sm:px-12 max-w-6xl">
+            <div className="max-w-2xl space-y-3">
+              <div className="inline-block px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full mb-2">
+                <span className="text-primary text-xs font-bold uppercase tracking-wide">
+                  Professional Service
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                Schedule Your Service Today
+              </h2>
+              <p className="text-white/90 text-sm sm:text-base max-w-xl">
+                Receive personalized consultation and professional support tailored to your project needs.
+              </p>
+              <div className="flex items-center gap-2 text-primary text-xs sm:text-sm font-bold pt-2">
+                <span>SCROLL TO BOOK</span>
+                <ChevronsDown className="w-4 h-4 animate-bounce" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Content Section */}
-      <div className="relative bg-background w-full flex justify-center -mt-20 px-3 sm:px-4">
-        <div className="z-10 max-w-3xl w-full grid grid-cols-1 md:grid-cols-2 shadow-lg">
-          {/* Left Section */}
-          <div className="hidden md:flex items-stretch justify-end p-0 m-0">
-            <Image
-              src="/quote_01.jpg"
-              alt="Construction Equipment"
-              width={300}
-              height={400}
-              className="object-contain"
-            />
-          </div>
-
-          {/* Right Form Section */}
-          <div className="bg-background p-5 sm:p-6 md:p-8 flex flex-col justify-center">
-            <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
-              {/* Full Name */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-paragraph text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
-                >
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  placeholder="John Doe"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs sm:text-sm focus:outline-none focus:border-gray-500 dark:focus:border-gray-400 rounded"
+      {/* Form Section */}
+      <div className="relative bg-background py-8 sm:py-12">
+        <div className="container mx-auto px-3 sm:px-4 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+            
+            {/* Left Side - Image & Info */}
+            <div className="hidden lg:flex flex-col justify-center space-y-4">
+              <div className="relative w-full h-[500px] rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src="/quote_01.jpg"
+                  alt="Construction Equipment"
+                  fill
+                  className="object-cover"
                 />
-              </div>
-
-              {/* Email & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-paragraph dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs sm:text-sm focus:outline-none focus:border-gray-500 dark:focus:border-gray-400 rounded"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-paragraph dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    required
-                    placeholder="+92 300 1234567"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs sm:text-sm focus:outline-none focus:border-gray-500 dark:focus:border-gray-400 rounded"
-                  />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                
+                {/* Info Cards Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 space-y-3">
+                  <div className="bg-background backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-paragraph">Fast Response</p>
+                        <p className="text-xs text-paragraph/70">Within 24 hours</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-background backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-paragraph">Expert Team</p>
+                        <p className="text-xs text-paragraph/70">Licensed professionals</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Service Type */}
-              <div>
-                <label
-                  htmlFor="service"
-                  className="block text-paragraph dark:text-gray-200 text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
-                >
-                  Service Type
-                </label>
-                <select
-                  id="service"
-                  required
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs sm:text-sm focus:outline-none focus:border-gray-500 dark:focus:border-gray-400 rounded"
-                >
-                  <option value="">Select a service</option>
-                  <option>Residential Construction</option>
-                  <option>Commercial Renovation</option>
-                  <option>Site Inspection</option>
-                  <option>Material Supply</option>
-                  <option>Custom Project</option>
-                </select>
+            {/* Right Side - Form */}
+            <div className="bg-background border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-4 sm:p-6">
+              <div className="mb-4">
+                <h3 className="text-lg sm:text-2xl font-bold text-paragraph mb-1">Book Your Appointment</h3>
+                <p className="text-sm text-paragraph/70">Fill out the form below and we'll get back to you soon</p>
               </div>
 
-              {/* Preferred Date */}
-              <div>
-                <label
-                  htmlFor="date"
-                  className="block text-paragraph text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
-                >
-                  Preferred Date
-                </label>
-                <input
-                  id="date"
-                  type="date"
-                  required
-                  value={formData.date}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs sm:text-sm focus:outline-none focus:border-gray-500 dark:focus:border-gray-400 rounded"
-                />
-              </div>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                {/* Full Name */}
+                <div>
+                  <label htmlFor="name" className="block text-paragraph text-sm font-semibold mb-1">
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-3 px-4 text-xs focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary dark:focus:border-gray-400 rounded"
+                  />
+                </div>
 
-              {/* Project Details */}
-              <div>
-                <label
-                  htmlFor="details"
-                  className="block text-paragraph text-xs sm:text-sm font-semibold mb-1.5 sm:mb-2"
-                >
-                  Project Details
-                </label>
-                <input
-                  id="details"
-                  type="text"
-                  required
-                  placeholder="Describe your project..."
-                  value={formData.details}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs sm:text-sm focus:outline-none focus:border-gray-500 dark:focus:border-gray-400 rounded"
-                />
-              </div>
+                {/* Email & Phone */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="email" className="block text-paragraph dark:text-gray-200 text-sm font-semibold mb-1">
+                      Email Address
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-3 px-4 text-xs focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary dark:focus:border-gray-400 rounded"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-paragraph dark:text-gray-200 text-sm font-semibold mb-1">
+                      Phone Number
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      required
+                      placeholder="+92 300 1234567"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-3 px-4 text-xs focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary dark:focus:border-gray-400 rounded"
+                    />
+                  </div>
+                </div>
 
-              {/* Submit Button */}
-              <div className="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-3">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-primary rounded-md dark:bg-primary text-primary-foreground px-3 py-2 font-semibold text-xs sm:text-sm h-10 sm:h-[42px]"
-                >
-                  {loading ? "Submitting..." : "Book Appointment"}
-                </button>
-              </div>
-            </form>
+                {/* Service Type & Date */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label htmlFor="service" className="block text-paragraph dark:text-gray-200 text-sm font-semibold mb-1">
+                      Service Type
+                    </label>
+                    <select
+                      id="service"
+                      required
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-3 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary dark:focus:border-gray-400 rounded"
+                    >
+                      <option value="">Select a service</option>
+                      <option>Residential Construction</option>
+                      <option>Commercial Renovation</option>
+                      <option>Site Inspection</option>
+                      <option>Material Supply</option>
+                      <option>Custom Project</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="date" className="block text-paragraph text-sm font-semibold mb-1">
+                      Preferred Date
+                    </label>
+                    <input
+                      id="date"
+                      type="date"
+                      required
+                      value={formData.date}
+                      onChange={handleChange}
+                      className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-3 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary dark:focus:border-gray-400 rounded"
+                    />
+                  </div>
+                </div>
+
+                {/* Project Details */}
+                <div>
+                  <label htmlFor="details" className="block text-paragraph text-sm font-semibold mb-1">
+                    Project Details
+                  </label>
+                  <input
+                    id="details"
+                    type="text"
+                    required
+                    placeholder="Describe your project..."
+                    value={formData.details}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 py-3 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary dark:focus:border-gray-400 rounded"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-primary rounded-md dark:bg-primary text-primary-foreground px-4 py-3 font-bold text-sm uppercase tracking-wide hover:opacity-90 transition-opacity disabled:opacity-50"
+                  >
+                    {loading ? "Submitting..." : "Book Appointment Now"}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

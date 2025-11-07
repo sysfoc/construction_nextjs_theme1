@@ -1,8 +1,7 @@
 "use client";
 import { ReactNode } from "react";
 import Image from "next/image";
-import SolidButton from "../General/buttons/SolidButton";
-
+import SlantedButton from "./buttons/SlantedButton";
 
 interface PricingCardProps {
   topLabel: string;
@@ -20,48 +19,39 @@ export default function PricingCard({
   imageSrc,
 }: PricingCardProps) {
   return (
-    <div className="w-[280px] sm:w-[300px] p-2 overflow-hidden">
-      {/* Top Diagonal Bar */}
-      <div className="relative">
-        <div className="absolute -top-3 left-10 w-[40%] h-full bg-[var(--color-primary)] dark:bg-gray-900 -z-10 clip-top-bar"></div>
-        <div className="bg-foreground h-20 text-background font-semibold text-xs px-3 clip-top-bar flex items-center">
-          {topLabel}
-        </div>
+    <div className="w-[280px] sm:w-[300px] bg-[var(--color-background)] rounded-xl overflow-hidden shadow-lg border border-[var(--color-border)] flex flex-col">
+      
+      {/* Top Label Ribbon */}
+      <div className="bg-[var(--color-primary)] text-[var(--color-background)] text-xs font-semibold px-4 py-1 self-start rounded-br-xl">
+        {topLabel}
       </div>
 
-      {/* Card Body */}
-      <div className="p-5">
-        {/* Price Section */}
-        <div className="flex items-center gap-2">
-          <span className="text-4xl font-bold text-[var(--color-foreground)]">
-            {price}
-          </span>
-          <div className="text-sm text-[var(--color-paragraph)] leading-tight">
-            {billingInfo}
-          </div>
+      {/* Price & Billing Info */}
+      <div className="p-5 flex flex-col gap-2">
+        <div className="flex items-end gap-2">
+          <span className="text-4xl font-bold text-[var(--color-foreground)]">{price}</span>
+          <span className="text-sm text-[var(--color-paragraph)] leading-tight">{billingInfo}</span>
         </div>
 
-        {/* Divider Line */}
-        <div className="border-t border-[var(--color-border)] my-3"></div>
+        {/* Divider */}
+        <div className="border-t border-[var(--color-border)]" />
 
         {/* Description */}
-        <p className="text-sm text-[var(--color-paragraph)] leading-snug">
-          {description}
-        </p>
+        <p className="text-sm text-[var(--color-paragraph)] leading-snug">{description}</p>
 
         {/* Button */}
-        <div className="mt-4">
-         <SolidButton text="GET STARTED" onClick={() => console.log(`${topLabel} plan clicked`)} />
+        <div className="mt-3">
+          <SlantedButton text="GET STARTED" onClick={() => console.log(`${topLabel} plan clicked`)} />
         </div>
       </div>
 
       {/* Bottom Image */}
-      <div className="w-full relative h-64">
+      <div className="w-full h-60 relative mt-auto">
         <Image
           src={imageSrc}
-          alt="Construction worker"
+          alt="Pricing illustration"
           fill
-          className="object-contain"
+          className="object-cover"
         />
       </div>
     </div>

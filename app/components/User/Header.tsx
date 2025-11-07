@@ -121,7 +121,7 @@ export default function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     {link.sublinks ? (
-                      <button className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <button className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg">
                         {link.name}
                         <ChevronDown
                           className={`w-4 h-4 transition-transform duration-200 ${
@@ -132,7 +132,7 @@ export default function Header() {
                     ) : (
                       <Link
                         href={link.href!}
-                        className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800"
+                        className="flex items-center gap-1 text-header-text hover:text-primary font-medium transition-colors py-2 px-3 lg:px-4 rounded-lg"
                       >
                         {link.name}
                       </Link>

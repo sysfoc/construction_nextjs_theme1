@@ -185,7 +185,7 @@ export default function JobApply() {
                   name="position"
                   value={position}
                   readOnly
-                  className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-lg w-full p-2.5 bg-gray-100 dark:bg-gray-800 cursor-not-allowed outline-none"
+                  className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-lg w-full p-2.5 cursor-not-allowed outline-none"
                 />
               </div>
               <div className="flex flex-col md:col-span-2 gap-2">

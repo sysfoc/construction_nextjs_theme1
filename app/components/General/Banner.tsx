@@ -7,29 +7,45 @@ import { useRouter } from "next/navigation";
 const ConstructionCTA: React.FC = () => {
   const router = useRouter();
   return (
-    <div className="relative w-full h-80 overflow-hidden">
-      {/* Background Image */}
+    <section className="relative w-full h-96 sm:h-[300px] lg:h-[400px] overflow-hidden flex items-center justify-center">
+      {/* Background Overlay */}
       <div className="absolute inset-0">
         <Image
           src="/worker_03.jpg"
           alt="Construction worker"
           fill
-          className="object-cover"
+          className="object-cover brightness-75"
           priority
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-8 tracking-wide">
-          Construction Projects
+      {/* Content Box */}
+      <div className="relative z-10 max-w-3xl text-center px-6">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
+          Build With Confidence
         </h2>
-        <div className="flex sm:flex-row flex-col gap-4">
-       <SolidButton text="How we work" onClick={() => router.push("/how-we-work")}/>
-       <SolidButton text="Book Service" onClick={() => router.push("/book-service")}/>
+        <p className="text-white/90 text-sm sm:text-base lg:text-lg mb-8 leading-relaxed">
+          Discover how our expert team delivers construction projects with precision, quality, and reliability. Let's create spaces that inspire.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex w-fit mx-auto flex-col sm:flex-row gap-4">
+          <SolidButton
+            text="How We Work"
+            onClick={() => router.push("/how-we-work")}
+          />
+          <SolidButton
+            text="Book Service"
+            onClick={() => router.push("/book-service")}
+          />
         </div>
       </div>
-    </div>
+
+      {/* Decorative Accent Shapes */}
+      <div className="hidden lg:block absolute -top-10 -left-10 w-32 h-32 bg-primary/40 rounded-full animate-pulse"></div>
+      <div className="hidden lg:block absolute -bottom-12 -right-12 w-40 h-40 bg-secondary/30 rounded-full animate-pulse"></div>
+    </section>
   );
 };
 

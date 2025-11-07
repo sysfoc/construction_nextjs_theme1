@@ -43,10 +43,10 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-[url('/loginPic.jpg')] bg-cover bg-center bg-no-repeat p-6">
-      <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <div className="w-full max-w-4xl bg-background rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex flex-col md:flex-row">
           {/* Left Panel - Demo Credentials */}
-          <div className="md:w-2/5 bg-primary p-8 flex flex-col justify-center text-primary-foreground">
+          <div className="md:w-2/5 bg-primary p-8 flex flex-col justify-center text-white">
             <div className="mb-6">
               <h2 className="text-2xl font-bold mb-2">Welcome Back</h2>
               <p className="text-orange-100 text-sm">Sign in to access your admin dashboard</p>
@@ -72,7 +72,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={handleAutofill}
-                className="w-full px-4 py-2.5 bg-white text-primary rounded-lg font-semibold hover:bg-orange-50 transition-colors duration-200 shadow-lg"
+                className="w-full px-4 py-2.5 bg-white text-primary rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg"
               >
                 Quick Fill Credentials
               </button>
@@ -84,16 +84,16 @@ export default function LoginPage() {
           </div>
 
           {/* Right Panel - Login Form */}
-          <div className="md:w-3/5 p-8 md:p-10">
+          <div className="md:w-3/5 p-8 md:p-10 text-paragraph">
             <div className="max-w-md mx-auto">
               <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-800 mb-2">Admin Login</h1>
-                <p className="text-gray-500">Enter your credentials to continue</p>
+                <h1 className="text-2xl font-bold mb-2">Admin Login</h1>
+                <p>Enter your credentials to continue</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold mb-2">
                     Email Address
                   </label>
                   <input
@@ -101,14 +101,14 @@ export default function LoginPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-2.5 placeholder-paragraph/50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                     placeholder="Enter your email"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="password" className="block text-sm font-semibold mb-2">
                     Password
                   </label>
                   <input
@@ -116,7 +116,7 @@ export default function LoginPage() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-2.5 placeholder-paragraph/50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                     placeholder="Enter your password"
                     required
                   />
@@ -162,36 +162,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-/*
-"use client";
-
-import { useUser } from "../context/UserContext";
-
-export default function UserProfile() {
-  const { user, loading, logout } = useUser();
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!user) {
-    return <div>Please log in</div>;
-  }
-
-  return (
-    <div>
-      <h2>Welcome, {user.name}</h2>
-      <p>Email: {user.email}</p>
-      <p>Role: {user.role}</p>
-      <button onClick={logout}>Logout</button>
-    </div>
-  );
-}
-*/

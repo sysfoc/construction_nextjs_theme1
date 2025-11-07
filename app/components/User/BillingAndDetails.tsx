@@ -3,7 +3,8 @@ import PricingCard from "../General/PricingCard";
 
 export default function BillingAndDetails() {
   return (
-    <div className="flex flex-wrap justify-around gap-y-5 sm:gap-y-0 dark:bg-gray-900">
+    <div className="my-5">
+    <div className="flex flex-wrap justify-around gap-y-5 dark:bg-gray-900">
       <PricingCard
         topLabel="STANDARD PLAN"
         price="$20"
@@ -42,6 +43,7 @@ export default function BillingAndDetails() {
         description="A comprehensive package for enterprises requiring tailored solutions."
         imageSrc="/priceCard/priceCard_03.png"
       />
+    </div>
     </div>
   );
 }

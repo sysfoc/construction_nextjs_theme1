@@ -31,207 +31,142 @@ export default function ConstructionSection(): React.JSX.Element {
   const tabContent: TabContentMap = {
     architecture: {
       description:
-        "For each project we establish relationships with partners who we know will help us create added value for your project. As well as bringing together the public and private sectors added value for your project. As well as bringing together",
+        "For each project we establish relationships with partners who we know will help us create added value for your project, bringing together public and private sectors.",
       stats: [
         { number: "434+", label: "Projects Completed" },
         { number: "20+", label: "Awards Won" },
       ],
-      consulting: [
-        "General Consulting",
-        "Project Management",
-        "Strategic Planning",
-      ],
+      consulting: ["General Consulting", "Project Management", "Strategic Planning"],
     },
     renovation: {
       description:
-        "Our building renovation services transform existing structures into modern, efficient spaces. We specialize in restoring and upgrading properties while maintaining their character and ensuring compliance with current standards.",
+        "Our renovation services transform structures into modern, efficient spaces while preserving character and ensuring compliance with standards.",
       stats: [
         { number: "285+", label: "Buildings Renovated" },
         { number: "42+", label: "Heritage Restorations" },
       ],
-      consulting: [
-        "Structural Assessment",
-        "Interior Redesign",
-        "Energy Efficiency",
-      ],
+      consulting: ["Structural Assessment", "Interior Redesign", "Energy Efficiency"],
     },
     material: {
       description:
-        "We provide comprehensive material supply solutions for construction projects of all scales. Our network ensures timely delivery of high-quality materials, competitive pricing, and expert guidance on material selection.",
+        "We provide material supply solutions for all scales, ensuring timely delivery, high quality, competitive pricing, and expert guidance.",
       stats: [
         { number: "520+", label: "Supply Projects" },
         { number: "95+", label: "Partner Suppliers" },
       ],
-      consulting: [
-        "Material Sourcing",
-        "Quality Control",
-        "Logistics Management",
-      ],
+      consulting: ["Material Sourcing", "Quality Control", "Logistics Management"],
     },
   };
 
-  const currentContent: TabContentData = tabContent[activeTab];
+  const currentContent = tabContent[activeTab];
 
- return (
-  <div className="bg-[var(--color-foreground)] text-[var(--color-primary-foreground)] dark:bg-gray-800 min-h-screen relative overflow-hidden">
-    {/* Background geometric shapes */}
-    <div className="absolute inset-0 opacity-20">
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-br from-gray-800 to-transparent transform rotate-12"></div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-gray-800 to-transparent transform -rotate-12"></div>
-    </div>
+  return (
+    <div className="bg-[var(--color-foreground)] dark:bg-gray-800 text-[var(--color-primary-foreground)] py-12 relative overflow-hidden">
+      {/* Background Shapes */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-gray-800 to-transparent rotate-12"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-gray-800 to-transparent -rotate-12"></div>
+      </div>
 
-    <div className="container mx-auto px-6 py-16 relative z-10">
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        {/* Left Column - Image and Financing Box */}
-        <div className="flex flex-row items-end justify-center gap-0">
-          {/* Construction Image */}
-          <div className="hidden sm:flex flex-1 min-w-0 h-44 relative">
-            <Image
-              src="/priceCard/priceCard_02.png"
-              alt="Construction Site"
-              fill
-              className="object-cover"
-            />
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Tabs */}
+        <div className="flex gap-3 mb-6 text-xs font-semibold">
+          {(["architecture", "renovation", "material"] as TabKey[]).map((tabKey) => (
+            <button
+              key={tabKey}
+              onClick={() => setActiveTab(tabKey)}
+              className={`px-3 py-1 transition rounded ${
+                activeTab === tabKey
+                  ? "bg-[var(--color-primary)] text-[var(--color-primary-foreground)]"
+                  : "bg-[var(--color-header-background)] text-[var(--color-header-text)] hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700"
+              }`}
+            >
+              {tabKey === "architecture"
+                ? "Architecture Design"
+                : tabKey === "renovation"
+                ? "Building Renovation"
+                : "Material Supply"}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left - Image + Financing Box (kept original layout) */}
+          <div className="flex items-end justify-center gap-0">
+            {/* Construction Image */}
+            <div className="hidden sm:flex flex-1 min-w-0 h-44 relative">
+              <Image
+                src="/priceCard/priceCard_02.png"
+                alt="Construction Site"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Mortgage Financing Box */}
+            <div className="bg-[var(--color-primary)] p-6 flex flex-col justify-center items-center text-center flex-shrink-0 w-64 h-44">
+              <div className="text-[var(--color-primary-foreground)] text-lg font-medium mb-2">
+                Start From
+              </div>
+              <div className="text-[var(--color-primary-foreground)] text-xs mb-2">
+                Mortgage Credit
+              </div>
+              <div className="text-[var(--color-primary-foreground)] text-5xl font-bold mb-2">
+                15.5
+              </div>
+              <div className="text-[var(--color-primary-foreground)] text-sm flex items-center gap-1">
+                % interest →
+              </div>
+            </div>
           </div>
 
-          {/* Mortgage Financing Box */}
-          <div className="bg-[var(--color-primary)] p-8 flex flex-col justify-center items-center text-center flex-shrink-0 w-64 h-44">
-            <div className="text-[var(--color-primary-foreground)] text-lg font-medium mb-2">
-              Start From
+          {/* Right - Content */}
+          <div className="flex flex-col justify-between gap-4">
+            <p className="text-background text-sm leading-snug">{currentContent.description}</p>
+
+            {/* Stats */}
+            <div className="flex gap-4">
+              {currentContent.stats.map((stat, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-8 h-8 flex items-center justify-center rounded">
+                    <Image
+                      src={`/serviceDetail/serviceDetail_0${i + 1}.png`}
+                      alt={stat.label}
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[var(--color-primary)] text-xl font-bold">
+                      {stat.number}
+                    </span>
+                    <span className="text-background text-xs">{stat.label}</span>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="text-[var(--color-primary-foreground)] text-xs mb-4">Mortgage Credit</div>
-            <div className="text-[var(--color-primary-foreground)] text-6xl font-bold mb-4">15.5</div>
-            <div className="text-[var(--color-primary-foreground)] text-sm flex items-center gap-1">
-              % interest →
+
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-2">
+              <SolidButton text="Our Projects" onClick={() => router.push("/projects")} />
+              <SolidButton text="Emergency Services" onClick={() => router.push("/emergency-services")} />
+            </div>
+
+            {/* Consulting Labels */}
+            <div className="flex gap-4 flex-wrap mt-2">
+              {currentContent.consulting.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-1 text-xs">
+                  <div className="w-4 h-4 flex items-center justify-center rounded-full border-[1.5px] border-[var(--color-primary)]">
+                    <Check className="w-3 h-3 text-[var(--color-primary)]" />
+                  </div>
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-
-        {/* Right Column - Tabs, Description and Stats */}
-        <div className="flex flex-col justify-between">
-          {/* Top Navigation Tabs */}
-          <div className="flex gap-6 mb-6">
-            <div className="relative">
-              <button
-                onClick={() => setActiveTab("architecture")}
-                className={`font-medium text-sm pb-2 transition ${
-                  activeTab === "architecture"
-                    ? "text-[var(--color-primary-foreground)]"
-                    : "text-background"
-                }`}
-              >
-                Architecture Design
-              </button>
-              {activeTab === "architecture" && (
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-primary)]"></div>
-              )}
-            </div>
-            <div className="relative">
-              <button
-                onClick={() => setActiveTab("renovation")}
-                className={`font-medium text-sm pb-2 transition ${
-                  activeTab === "renovation"
-                    ? "text-[var(--color-primary-foreground)]"
-                    : "text-background"
-                }`}
-              >
-                Building Renovation
-              </button>
-              {activeTab === "renovation" && (
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-primary)]"></div>
-              )}
-            </div>
-            <div className="relative">
-              <button
-                onClick={() => setActiveTab("material")}
-                className={`font-medium text-sm pb-2 transition ${
-                  activeTab === "material"
-                    ? "text-[var(--color-primary-foreground)]"
-                    : "text-background"
-                }`}
-              >
-                Material Supply
-              </button>
-              {activeTab === "material" && (
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-primary)]"></div>
-              )}
-            </div>
-          </div>
-
-          {/* Description Text */}
-          <div className="mb-8">
-            <p className="text-background text-sm leading-relaxed">
-              {currentContent.description}
-            </p>
-          </div>
-
-          {/* Statistics */}
-          <div className="grid grid-cols-2 gap-8 mb-8">
-            {/* Projects Completed Stat 1 */}
-            <div className="flex items-start gap-4">
-              <div className="md:p-3 rounded flex items-center justify-center">
-                <Image
-                  src="/serviceDetail/serviceDetail_02.png"
-                  alt="Service Detail"
-                  width={36}
-                  height={36}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <div className="text-[var(--color-primary)] text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-bold">
-                  {currentContent.stats[0].number}
-                </div>
-                <div className="text-background text-sm mt-1">
-                  {currentContent.stats[0].label}
-                </div>
-              </div>
-            </div>
-
-            {/* Projects Completed Stat 2 */}
-            <div className="flex items-start gap-4">
-              <div className="md:p-3 rounded">
-                <Image
-                  src="/serviceDetail/serviceDetail_01.png"
-                  alt="Service Detail"
-                  width={36}
-                  height={36}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <div className="text-[var(--color-primary)] text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-bold">
-                  {currentContent.stats[1].number}
-                </div>
-                <div className="text-background text-sm mt-1">
-                  {currentContent.stats[1].label}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Get Started Button */}
-          <div className="flex sm:flex-row flex-col gap-4">
-           <SolidButton text="Our Projects" onClick={() => router.push("/projects")} />
-           <SolidButton text="Emergency Services" onClick={() => router.push("/emergency-services")} />
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Consulting Labels - Smaller and Closer */}
-
-      <div className="flex gap-6 mt-8">
-        {currentContent.consulting.map((label: string, index: number) => (
-          <div key={index} className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full border-[1.5px] border-[var(--color-primary)] flex items-center justify-center">
-              <Check className="w-3 h-3 text-[var(--color-primary)]" />
-            </div>
-            <span className="text-background text-xs font-medium">{label}</span>
-          </div>
-        ))}
       </div>
     </div>
-  </div>
-);
+  );
 }

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import SolidButton from "../General/buttons/SolidButton";
+import SlantedButton from "../General/buttons/SlantedButton";
 import Link from "next/link";
 
 interface BlogPost {
@@ -20,9 +20,7 @@ const BlogCards: React.FC = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("/api/blog/all", {
-          method: "GET",
-        });
+        const res = await fetch("/api/blog/all");
         const data = await res.json();
         setBlogPosts(data.blogs.slice(0, 3));
       } catch (error) {
@@ -33,23 +31,20 @@ const BlogCards: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full py-16 px-6">
-      {/* View All Blogs Button */}
-      <div className="mb-8 flex justify-end">
-        <SolidButton
-          text="View all Blogs"
-          onClick={() => router.push("/blogs")}
-        />
+    <div className="w-full py-12 px-4">
+      {/* View All Blogs */}
+      <div className="mb-6 flex justify-end">
+        <SlantedButton text="View all Blogs" onClick={() => router.push("/blogs")} />
       </div>
 
-      <div className="max-w-5xl mx-auto">
-        {/* Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <Link href={`/blogs/${post.slug}`} key={index}>
-              <div className="flex flex-col">
+      <div className="max-w-6xl mx-auto">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {blogPosts.map((post, idx) => (
+            <Link href={`/blogs/${post.slug}`} key={idx}>
+              <div className="flex flex-col bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* Image */}
-                <div className="relative w-full h-56">
+                <div className="relative w-full h-48">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -57,28 +52,21 @@ const BlogCards: React.FC = () => {
                     className="object-cover"
                   />
                   {/* Date Badge */}
-                  <div className="absolute top-4 left-4 bg-primary text-primary-foreground font-bold text-center leading-tight w-16 h-16 flex flex-col items-center justify-center transform -skew-x-6">
-                    <span className="text-2xl">
-                      {new Date(post.createdAt).getDate()}
-                    </span>
+                  <div className="absolute top-3 left-3 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] font-bold w-14 h-14 flex flex-col items-center justify-center text-center transform -skew-x-6">
+                    <span className="text-xl">{new Date(post.createdAt).getDate()}</span>
                     <span className="text-xs">
-                      {new Date(post.createdAt).toLocaleDateString("en-US", {
-                        month: "short",
-                      })}
+                      {new Date(post.createdAt).toLocaleDateString("en-US", { month: "short" })}
                     </span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="text-lg font-bold text-paragraph mb-4 leading-tight">
+                <div className="p-3 flex flex-col flex-1">
+                  <h3 className="text-md font-semibold text-paragraph mb-2 line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-paragraph/90 mt-auto">
-                    By{" "}
-                    <span className="text-paragraph">
-                      {post.blogWriter}
-                    </span>
+                  <p className="text-xs text-paragraph/80 mt-auto">
+                    By <span className="text-paragraph">{post.blogWriter}</span>
                   </p>
                 </div>
               </div>

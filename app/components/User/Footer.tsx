@@ -1,5 +1,4 @@
 "use client";
-import { GiHouse } from "react-icons/gi";
 import {
   Facebook,
   Twitter,
@@ -17,6 +16,10 @@ import {
   Users,
   BookOpen,
   AtSign,
+  Mail,
+  Phone,
+  Clock,
+  MapPin,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -90,38 +93,13 @@ function Footer() {
 
   return (
     <footer className="bg-black text-white">
-      <div className="bg-gray-900 py-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white text-center md:text-left">
-              Join Newsletter
-            </h2>
-            <form
-              className="flex flex-wrap md:flex-nowrap w-auto md:w-auto"
-              onSubmit={handleForm}
-            >
-              <input
-                type="email"
-                placeholder="Your email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-[180px] sm:w-80 px-4 py-3 bg-gray-800 text-white placeholder-gray-500 rounded-l-full focus:outline-none focus:ring-0"
-              />
-              <button
-                type="submit"
-                className="bg-primary hover:bg-primary/90 text-white px-4 md:px-6 py-3 rounded-r-full font-semibold transition-colors duration-200"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+      {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div className="flex items-center gap-1 z-20 mb-3">
+        {/* Top Section - Company Info & Newsletter Side by Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 pb-6 border-b border-gray-800">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
               {settings?.logo && (
                 <div className="w-10 h-10 lg:w-12 lg:h-12 relative">
                   <Image
@@ -132,26 +110,98 @@ function Footer() {
                   />
                 </div>
               )}
-              <span className="text-xl lg:text-2xl font-bold">
+              <span className="text-xl lg:text-2xl font-bold text-white">
                 {settings?.companyName}
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            <p className="text-gray-400 text-sm leading-relaxed max-w-lg">
               Construct is a trusted construction company committed to quality,
               innovation, and reliability. We deliver efficient and lasting
               solutions for residential, commercial, and infrastructure
               projects.
             </p>
+
+            {/* Social Media Icons - Horizontal Below Description */}
+            {settings?.socialLinks && settings.socialLinks.length > 0 && (
+              <div className="pt-2">
+                <div className="flex flex-wrap gap-2">
+                  {settings.socialLinks
+                    .filter((link) => link.url)
+                    .map((link) => {
+                      const socialConfig =
+                        SOCIAL_ICONS[
+                          link.platform as keyof typeof SOCIAL_ICONS
+                        ];
+                      if (!socialConfig) return null;
+                      const Icon = socialConfig.icon;
+                      return (
+                        <a
+                          key={link.platform}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-9 h-9 rounded-full bg-gray-800 ${socialConfig.color} transition-all duration-300 flex items-center justify-center hover:scale-110`}
+                          aria-label={link.platform}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </a>
+                      );
+                    })}
+                </div>
+              </div>
+            )}
           </div>
 
+          {/* Newsletter Section */}
+          <div className="bg-gray-900 rounded-xl p-6 max-w-lg">
+            <h2 className="text-xl font-bold text-white mb-2">
+              Join Newsletter
+            </h2>
+            <p className="text-gray-400 text-xs mb-4">
+              Stay updated with our latest news and offerings
+            </p>
+            <div className="space-y-3">
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleForm(e as any);
+                    }
+                  }}
+                  className="w-full pl-10 pr-3 py-2.5 bg-gray-800 text-white text-sm placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={handleForm as any}
+                className="bg-primary hover:bg-primary/90 text-white px-4 py-2.5 text-sm rounded-lg font-semibold transition-all duration-200 hover:shadow-lg"
+              >
+                Subscribe Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Middle Section - Links Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 mb-6 sm:px-10">
+          {/* Quick Links */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-6">Quick Link</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white text-base font-bold mb-3 relative inline-block">
+              Quick Link
+              <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-primary"></span>
+            </h3>
+            <ul className="space-y-2">
               {QUICK_LINKS.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-primary transition-colors duration-200"
+                    className="text-gray-400 hover:text-primary transition-colors duration-200 text-sm hover:pl-1 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -160,14 +210,18 @@ function Footer() {
             </ul>
           </div>
 
+          {/* Showcase Links */}
           <div>
-            <h3 className="text-white text-lg font-bold mb-6">Showcase</h3>
-            <ul className="space-y-3">
+            <h3 className="text-white text-base font-bold mb-3 relative inline-block">
+              Showcase
+              <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-primary"></span>
+            </h3>
+            <ul className="space-y-2">
               {SHOWCASE_LINKS.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-primary transition-colors duration-200"
+                    className="text-gray-400 hover:text-primary transition-colors duration-200 text-sm hover:pl-1 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -176,74 +230,50 @@ function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-white text-lg font-bold mb-6">Contact Info</h3>
-            <div className="space-y-4">
-              <div>
-                <span className="text-primary font-semibold">Email:</span>
-                <span className="text-gray-400 ml-2">{settings?.email}</span>
+          {/* Contact Info */}
+          <div className="col-span-2 md:col-span-1">
+            <h3 className="text-white text-base font-bold mb-3 relative inline-block">
+              Contact Info
+              <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-primary"></span>
+            </h3>
+            <div className="space-y-2.5">
+              <div className="flex items-start gap-2">
+                <Mail className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-gray-400 text-sm break-all">
+                  {settings?.email}
+                </p>
               </div>
-              <div>
-                <span className="text-primary font-semibold">Phone:</span>
-                <span className="text-gray-400 ml-2">{settings?.phone}</span>
+              <div className="flex items-start gap-2">
+                <Phone className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-gray-400 text-sm">{settings?.phone}</p>
               </div>
-              <div>
-                <span className="text-primary font-semibold">Work Time:</span>
-                <span className="text-gray-400 ml-1">
-                  {settings?.officeHours}
-                </span>
+              <div className="flex items-start gap-2">
+                <Clock className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-gray-400 text-sm">{settings?.officeHours}</p>
               </div>
-              <div>
-                <span className="text-primary font-semibold">Address:</span>
-                <span className="text-gray-400 ml-2 break-words">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-gray-400 text-sm break-words">
                   {settings?.address}
-                </span>
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Dynamic Social Media Icons */}
-        {settings?.socialLinks && settings.socialLinks.length > 0 && (
-          <div className="mb-8 min-h-5">
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              {settings.socialLinks
-                .filter((link) => link.url)
-                .map((link) => {
-                  const socialConfig =
-                    SOCIAL_ICONS[link.platform as keyof typeof SOCIAL_ICONS];
-                  if (!socialConfig) return null;
-                  const Icon = socialConfig.icon;
-                  return (
-                    <a
-                      key={link.platform}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-10 h-10 bg-gray-800 ${socialConfig.color} transition-colors duration-200 flex items-center justify-center`}
-                      aria-label={link.platform}
-                    >
-                      <Icon className="w-4 h-4" />
-                    </a>
-                  );
-                })}
-            </div>
-          </div>
-        )}
-
-        <div className="border-t border-gray-800 pt-6">
-          <p className="text-gray-400 text-sm">
+        {/* Bottom Copyright Section */}
+        <div className="border-t border-gray-800 pt-5">
+          <p className="text-gray-400 text-xs text-start">
             © {new Date().getFullYear()} Powered by{" "}
             <Link
-              className="hover:underline hover:text-app-bg"
               href="https://sysfoc.com"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Visit Sysfoc website"
+              className="hover:underline hover:text-primary font-semibold transition-colors duration-200"
             >
-              Sysfoc.
-            </Link>{" "}
-            All Rights Reserved.
+              Sysfoc
+            </Link>
+            . All Rights Reserved.
           </p>
         </div>
       </div>

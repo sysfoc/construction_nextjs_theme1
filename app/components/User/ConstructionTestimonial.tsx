@@ -30,13 +30,12 @@ const ConstructionTestimonial: React.FC = () => {
     fetchTestimonials();
   }, []);
 
-  if (testimonials.length === 0) return null;
-
+  if (!testimonials.length) return null;
   const selectedTestimonial = testimonials[selectedIndex];
 
   return (
     <section className="relative w-full min-h-[45vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/construction_01.jpg"
@@ -46,100 +45,105 @@ const ConstructionTestimonial: React.FC = () => {
           quality={100}
           className="object-cover object-top sm:object-center"
         />
-        {/* Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/90 via-[var(--color-background)]/60 to-transparent" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 py-10 sm:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 md:gap-10 items-center bg-[var(--color-background)]/75 backdrop-blur-md rounded-2xl shadow-lg p-6 md:p-10 border border-[var(--color-border)]">
-          
-          {/* Left Side - Team Members */}
-          <div className="flex flex-col justify-center space-y-4">
-            {testimonials.map((member, index) => (
-              <div 
-                key={member.id} 
-                className="flex items-center justify-between cursor-pointer"
-                onClick={() => setSelectedIndex(index)}
-              >
-                <div className="flex items-center gap-2">
-                  <div className="relative flex-shrink-0 w-10 h-10">
-                    {member.photo ? (
-                      <Image
-                        src={member.photo}
-                        alt={member.name}
-                        fill
-                        className="rounded-full object-cover border border-[var(--color-border)] shadow-md"
-                      />
-                    ) : (
-                      <div className="w-full h-full rounded-full bg-gray-200 border border-[var(--color-border)] shadow-md" />
-                    )}
-                    {index === 0 && (
-                      <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[var(--color-border)] rounded-full border border-[var(--color-background)]" />
-                    )}
-                    {index === 2 && (
-                      <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-[var(--color-border)] rounded-full border border-[var(--color-background)]" />
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-[var(--color-header-text)] leading-tight">{member.name}</h3>
-                    <p className="text-xs text-[var(--color-primary)] font-medium leading-tight">{member.designation}</p>
-                  </div>
-                </div>
-                <div className="w-0.5 h-10 bg-[var(--color-primary)] hidden md:block" />
-              </div>
-            ))}
-          </div>
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 py-8 sm:py-10">
+        <div className="bg-[var(--color-background)]/75 backdrop-blur-md rounded-2xl shadow-lg border border-[var(--color-border)] overflow-hidden">
+          {/* Testimonial Card */}
+          <div className="p-6 md:p-4">
+            <div className="mb-2">
+              <svg className="w-10 h-10 text-[var(--color-primary)] opacity-30" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+              </svg>
+            </div>
 
-          {/* Right Side - Testimonial */}
-          <div className="flex flex-col justify-center">
-            {/* Stars */}
-            <div className="flex gap-0.5 mb-2">
+            <div className="flex gap-1 mb-2">
               {[...Array(selectedTestimonial.stars)].map((_, i) => (
-                <svg
-                  key={i}
-                  className="w-4 h-4 fill-[var(--color-primary)]"
-                  viewBox="0 0 20 20"
-                >
+                <svg key={i} className="w-4 h-4 fill-[var(--color-primary)]" viewBox="0 0 20 20">
                   <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                 </svg>
               ))}
             </div>
 
-            {/* Testimonial Text */}
-            <p className="text-[var(--color-paragraph)] text-sm md:text-base leading-relaxed mb-3">
-              {selectedTestimonial.comment}
+            <p className="text-[var(--color-paragraph)] text-base md:text-lg leading-snug mb-6 italic">
+              "{selectedTestimonial.comment}"
             </p>
 
-            {/* Author */}
-            <div className="flex items-center gap-2">
-              <div className="relative w-10 h-10 flex-shrink-0">
+            <div className="flex items-center gap-3 border-b border-[var(--color-border)] pb-3">
+              <div className="relative w-12 h-12 flex-shrink-0">
                 {selectedTestimonial.photo ? (
                   <Image
                     src={selectedTestimonial.photo}
                     alt={selectedTestimonial.name}
                     fill
-                    className="rounded-full object-cover border border-[var(--color-border)] shadow-sm"
+                    className="rounded-full object-cover border-2 border-[var(--color-primary)] shadow-md"
                   />
                 ) : (
-                  <div className="w-full h-full rounded-full bg-gray-200 border border-[var(--color-border)] shadow-sm" />
+                  <div className="w-full h-full rounded-full bg-gray-200 border-2 border-[var(--color-primary)] shadow-md" />
                 )}
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-[var(--color-header-text)] leading-tight">{selectedTestimonial.name}</h4>
-                <p className="text-xs text-[var(--color-primary)] font-medium leading-tight">
-                  {selectedTestimonial.designation}
-                </p>
+                <h4 className="text-sm md:text-base font-bold text-[var(--color-header-text)]">{selectedTestimonial.name}</h4>
+                <p className="text-xs md:text-sm text-[var(--color-primary)] font-semibold">{selectedTestimonial.designation}</p>
               </div>
             </div>
+          </div>
 
-            {/* View All Button */}
-            <button
-              onClick={() => router.push("/testimonials")}
-              className="mt-4 text-xs text-[var(--color-primary)] font-semibold hover:underline self-start"
-            >
-              View All Testimonials →
-            </button>
+          {/* Team Selector */}
+          <div className="bg-[var(--color-background)]/50 px-6 md:px-10 py-4 border-t border-[var(--color-border)]">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-center gap-3 flex-wrap">
+                {testimonials.map((member, index) => (
+                  <div
+                    key={member.id}
+                    onClick={() => setSelectedIndex(index)}
+                    className={`group cursor-pointer transition-all duration-300 ${selectedIndex === index ? 'scale-110' : 'opacity-60 hover:opacity-100'}`}
+                  >
+                    <div className="relative w-10 h-10 md:w-12 md:h-12">
+                      {member.photo ? (
+                        <Image
+                          src={member.photo}
+                          alt={member.name}
+                          fill
+                          className={`rounded-full object-cover border-2 shadow-md transition-all ${selectedIndex === index ? 'border-[var(--color-primary)]' : 'border-[var(--color-border)] group-hover:border-[var(--color-primary)]'}`}
+                        />
+                      ) : (
+                        <div className={`w-full h-full rounded-full bg-gray-200 border-2 shadow-md transition-all ${selectedIndex === index ? 'border-[var(--color-primary)]' : 'border-[var(--color-border)] group-hover:border-[var(--color-primary)]'}`} />
+                      )}
+                      {selectedIndex === index && (
+                        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[var(--color-primary)] rounded-full border-2 border-[var(--color-background)]" />
+                      )}
+                      {index === 0 && selectedIndex !== index && (
+                        <div className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[var(--color-border)] rounded-full border border-[var(--color-background)]" />
+                      )}
+                      {index === 2 && selectedIndex !== index && (
+                        <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 bg-[var(--color-border)] rounded-full border border-[var(--color-background)]" />
+                      )}
+                    </div>
+                    <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity mt-1 text-center">
+                      <p className="text-[10px] md:text-xs font-semibold text-[var(--color-header-text)] whitespace-nowrap">{member.name}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={() => router.push("/testimonials")}
+                className="flex items-center gap-1.5 text-xs md:text-sm text-[var(--color-primary)] font-bold hover:gap-2 transition-all duration-300 group whitespace-nowrap"
+              >
+                <span>View All Testimonials</span>
+                <svg 
+                  className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

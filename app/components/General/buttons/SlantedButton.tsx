@@ -7,24 +7,25 @@ interface SlantedButtonProps {
   onClick?: () => void;
 }
 
-const SlantedButton: React.FC<SlantedButtonProps> = ({ text = "GET STARTED", onClick }) => {
+const SlantedButton: React.FC<SlantedButtonProps> = ({
+  text = "GET STARTED",
+  onClick,
+}) => {
   return (
-    <div className="">
-      <button
-        onClick={onClick}
-        className="relative cursor-pointer flex items-center font-semibold px-4 text-[var(--color-primary-foreground)] text-sm overflow-hidden clip-slant"
-      >
-        {/* Orange main area */}
-        <span className="bg-[var(--color-primary)] py-3 px-5 pr-12">
-          {text}
-        </span>
+    <button
+      onClick={onClick}
+      className="relative flex items-center font-semibold text-sm text-[var(--color-primary-foreground)] cursor-pointer rounded-md overflow-hidden"
+    >
+      {/* Orange main area */}
+      <span className="bg-[var(--color-primary)] py-3 px-5 pr-14 flex items-center">
+        {text}
+      </span>
 
-        {/* Black diagonal side */}
-        <span className="absolute right-0 top-0 h-full w-[50px] bg-[var(--color-foreground)] dark:bg-gray-800 clip-button-side flex items-center justify-center">
-          <RiArrowRightDoubleLine className="w-5 h-5 text-[var(--color-primary-foreground)]" />
-        </span>
-      </button>
-    </div>
+      {/* Black arrow side */}
+      <span className="absolute right-0 top-0 h-full w-[40px] bg-black flex items-center justify-center">
+        <RiArrowRightDoubleLine className="w-5 h-5 text-[var(--color-primary-foreground)]" />
+      </span>
+    </button>
   );
 };
 
