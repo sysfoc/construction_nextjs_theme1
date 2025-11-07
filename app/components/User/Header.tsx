@@ -171,7 +171,7 @@ export default function Header() {
                 </Link>
 
                 <button
-                  className="p-2 rounded-md text-header-text hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="p-2 rounded-md text-header-text"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                   <Menu className="w-6 h-6" />

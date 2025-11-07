@@ -68,7 +68,7 @@ export default function MobileSidebar({
             </span>
           </div>
           <button
-            className="p-2 rounded-md text-header-text hover:bg-gray-100"
+            className="p-2 rounded-md text-header-text"
             onClick={onClose}
           >
             <X className="w-6 h-6" />

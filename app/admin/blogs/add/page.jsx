@@ -2,7 +2,7 @@
 import { Alert, Button, FileInput, Label, TextInput } from "flowbite-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import React, { Suspense, useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const LazyJoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
@@ -92,7 +92,7 @@ export default function AddBlog() {
     }
   };
   return (
-    <section className='my-5 mx-5'>
+    <section className='py-5 px-5 bg-background'>
       <div className='flex items-center justify-between'>
         <h2 className='text-2xl font-semibold mb-4'>Create a new Blog</h2>
         <div>
@@ -115,7 +115,7 @@ export default function AddBlog() {
           )}
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='title'>H1/Title</Label>
+              <Label className="text-paragraph" htmlFor='title'>H1/Title</Label>
               <TextInput
                 type='text'
                 id='title'
@@ -127,7 +127,7 @@ export default function AddBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='slug'>Slug</Label>
+              <Label className="text-paragraph" htmlFor='slug'>Slug</Label>
               <TextInput
                 type='text'
                 id='slug'
@@ -139,7 +139,7 @@ export default function AddBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='metaTitle'>Meta Title</Label>
+              <Label className="text-paragraph" htmlFor='metaTitle'>Meta Title</Label>
               <TextInput
                 type='text'
                 id='metaTitle'
@@ -151,7 +151,7 @@ export default function AddBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='metaDescription'>Meta Description</Label>
+              <Label className="text-paragraph" htmlFor='metaDescription'>Meta Description</Label>
               <TextInput
                 type='text'
                 id='metaDescription'
@@ -163,7 +163,7 @@ export default function AddBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='writer'>Writer</Label>
+              <Label className="text-paragraph" htmlFor='writer'>Writer</Label>
               <TextInput
                 type='text'
                 id='writer'
@@ -188,7 +188,7 @@ export default function AddBlog() {
               </div>
             </div>
             <div className='flex flex-col gap-1 col-span-2'>
-              <Label htmlFor='image'>Image</Label>
+              <Label className="text-paragraph" htmlFor='image'>Image</Label>
               <FileInput
                 id='image'
                 name='image'

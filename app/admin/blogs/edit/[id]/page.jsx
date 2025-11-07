@@ -99,7 +99,7 @@ export default function EditBlog() {
     }
   };
   return (
-    <section className='my-5 mx-5'>
+    <section className='py-5 px-5 bg-background'>
       <div className='flex items-center justify-between'>
         <h2 className='text-2xl font-semibold mb-4'>Edit Blog</h2>
         <div>
@@ -122,7 +122,7 @@ export default function EditBlog() {
           )}
           <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='title'>H1/Title</Label>
+              <Label className="text-paragraph" htmlFor='title'>H1/Title</Label>
               <TextInput
                 type='text'
                 id='title'
@@ -133,7 +133,7 @@ export default function EditBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='slug'>Slug</Label>
+              <Label className="text-paragraph" htmlFor='slug'>Slug</Label>
               <TextInput
                 type='text'
                 id='slug'
@@ -144,7 +144,7 @@ export default function EditBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='metaTitle'>Meta Title</Label>
+              <Label className="text-paragraph" htmlFor='metaTitle'>Meta Title</Label>
               <TextInput
                 type='text'
                 id='metaTitle'
@@ -155,7 +155,7 @@ export default function EditBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='metaDescription'>Meta Description</Label>
+              <Label className="text-paragraph" htmlFor='metaDescription'>Meta Description</Label>
               <TextInput
                 type='text'
                 id='metaDescription'
@@ -166,7 +166,7 @@ export default function EditBlog() {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <Label htmlFor='blogWriter'>Writer</Label>
+              <Label className="text-paragraph" htmlFor='blogWriter'>Writer</Label>
               <TextInput
                 type='text'
                 id='blogWriter'
@@ -182,6 +182,7 @@ export default function EditBlog() {
                 <Suspense fallback={<p>Loading editor...</p>}>
                   <LazyJoditEditor
                     value={formData.content}
+                    className="text-black"
                     config={config}
                     tabIndex={1}
                     onBlur={handleContentChange}
@@ -190,7 +191,7 @@ export default function EditBlog() {
               </div>
             </div>
             <div className='flex flex-col gap-1 col-span-2'>
-              <Label htmlFor='image'>Image</Label>
+              <Label className="text-paragraph" htmlFor='image'>Image</Label>
               <FileInput
                 id='image'
                 name='image'

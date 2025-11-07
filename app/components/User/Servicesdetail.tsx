@@ -160,7 +160,7 @@ export default function ConstructionSection(): React.JSX.Element {
                   <div className="w-4 h-4 flex items-center justify-center rounded-full border-[1.5px] border-[var(--color-primary)]">
                     <Check className="w-3 h-3 text-[var(--color-primary)]" />
                   </div>
-                  <span>{item}</span>
+                  <span className="text-background">{item}</span>
                 </div>
               ))}
             </div>

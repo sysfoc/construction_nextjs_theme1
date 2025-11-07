@@ -52,11 +52,11 @@ export function EmergencySettings({ initialSettings, onSettingsSaved }: Emergenc
   }
 
   return (
-    <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-gray-200">
-      <h2 className="text-lg sm:text-xl font-bold mb-6 text-gray-900">Global Emergency Contact Settings</h2>
+    <div className="bg-background p-4 sm:p-6 rounded-lg shadow-sm border border-gray-200">
+      <h2 className="text-lg sm:text-xl font-bold mb-6 text-paragraph">Global Emergency Contact Settings</h2>
       <form onSubmit={handleSaveSettings} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Emergency Email *</label>
+          <label className="block text-sm font-medium text-paragraph mb-1">Emergency Email *</label>
           <input
             type="email"
             name="emergencyEmail"
@@ -68,7 +68,7 @@ export function EmergencySettings({ initialSettings, onSettingsSaved }: Emergenc
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Emergency Phone *</label>
+          <label className="block text-sm font-medium text-paragraph mb-1">Emergency Phone *</label>
           <input
             type="tel"
             name="emergencyPhone"

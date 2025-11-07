@@ -13,68 +13,42 @@ export function StepRow({ index, title, description, imageSrc }: StepRowProps) {
 
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 md:gap-6 border-t border-[var(--border-color,_var(--border))] py-4"
+      className="relative border-t border-[var(--border-color,_var(--border))] pt-3 pb-2"
       aria-label={`Step ${index + 1}`}
     >
-      {!isEven ? (
-        <>
-          {/* Step Number - Half Width */}
-          <div className="flex items-center justify-center">
-            <span className="text-[var(--primary)] text-6xl md:text-7xl lg:text-8xl font-bold leading-none">
+      <div className={`flex flex-col md:flex-row gap-3 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+        {/* Number Badge - Absolute positioned on desktop */}
+        <div className="flex md:absolute md:left-1/2 md:-translate-x-1/2 md:top-0 md:-translate-y-1/2 md:z-10 justify-start md:justify-center mb-2 md:mb-0">
+          <div className="inline-flex items-center justify-center min-w-[60px] h-[60px] md:min-w-[70px] md:h-[70px] border-2 border-[var(--border-color,_var(--border))] bg-[var(--background)] rounded-full">
+            <span className="text-[var(--primary)] text-2xl md:text-3xl font-bold">
               {displayNum}
             </span>
           </div>
+        </div>
 
-          {/* Content Box - Half Width */}
-          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-            {/* Image */}
-            <div className="w-full md:w-1/2 flex-shrink-0">
-              <div className="relative w-full aspect-[4/3] border border-[var(--border-color,_var(--border))] rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-900">
-                <Image src={imageSrc || "/placeholder.svg"} alt="" fill className="object-contain" />
-              </div>
+        {/* Content Card */}
+        <div className="flex-1 flex flex-col md:flex-row gap-3 border border-[var(--border-color,_var(--border))] rounded-lg p-3 bg-[var(--background)]">
+          {/* Image Section */}
+          <div className="w-full md:w-[45%] flex-shrink-0">
+            <div className="relative w-full aspect-video border border-[var(--border-color,_var(--border))] rounded overflow-hidden bg-gray-50 dark:bg-gray-900">
+              <Image src={imageSrc || "/placeholder.svg"} alt="" fill className="object-cover" />
             </div>
+          </div>
 
-            {/* Text Content */}
-            <div className="flex-1">
-              <h3 className="text-[var(--page-heading,_var(--foreground))] text-base md:text-lg font-semibold leading-tight mb-1.5">
+          {/* Text Section */}
+          <div className="flex-1 flex flex-col justify-center gap-1.5">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-0.5 bg-[var(--primary)]"></div>
+              <h3 className="text-[var(--page-heading,_var(--foreground))] text-base md:text-lg font-semibold leading-tight">
                 {title}
               </h3>
-              <p className="text-[var(--paragraph-color,_var(--foreground))] text-xs md:text-sm leading-snug">
-                {description}
-              </p>
             </div>
+            <p className="text-[var(--paragraph-color,_var(--foreground))] text-xs md:text-sm leading-relaxed">
+              {description}
+            </p>
           </div>
-        </>
-      ) : (
-        <>
-          {/* Content Box - Half Width */}
-          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-4 order-2 md:order-none">
-            {/* Image */}
-            <div className="w-full md:w-1/2 flex-shrink-0">
-              <div className="relative w-full aspect-[4/3] border border-[var(--border-color,_var(--border))] rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-900">
-                <Image src={imageSrc || "/placeholder.svg"} alt="" fill className="object-contain" />
-              </div>
-            </div>
-
-            {/* Text Content */}
-            <div className="flex-1">
-              <h3 className="text-[var(--page-heading,_var(--foreground))] text-base md:text-lg font-semibold leading-tight mb-1.5">
-                {title}
-              </h3>
-              <p className="text-[var(--paragraph-color,_var(--foreground))] text-xs md:text-sm leading-snug">
-                {description}
-              </p>
-            </div>
-          </div>
-
-          {/* Step Number - Half Width */}
-          <div className="flex items-center justify-center order-1 md:order-none">
-            <span className="text-[var(--primary)] text-6xl md:text-7xl lg:text-8xl font-bold leading-none">
-              {displayNum}
-            </span>
-          </div>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   )
 }

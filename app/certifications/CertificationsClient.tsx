@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { isPageVisible } from "@/lib/api/pageVisibility";
 import { useRouter } from "next/navigation";
+import { Award, Shield } from "lucide-react";
 
 interface Certification {
   _id: string;
@@ -19,7 +20,6 @@ export default function CertificationsClient() {
   const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
 
-  // 🔹 Visibility check
   useEffect(() => {
     const checkVisibility = async () => {
       const visible = await isPageVisible("certifications");
@@ -31,7 +31,6 @@ export default function CertificationsClient() {
     checkVisibility();
   }, [router]);
 
-  // 🔹 Fetch certifications
   useEffect(() => {
     const fetchCertifications = async () => {
       try {
@@ -48,17 +47,19 @@ export default function CertificationsClient() {
     fetchCertifications();
   }, []);
 
-  // 🔹 Stop rendering if hidden
   if (!isVisible) {
     return null;
   }
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-6 py-16">
-        <section className="max-w-6xl mx-auto">
-          <div className="text-center">
-            <p className="text-gray-500">Loading certifications...</p>
+      <main className="min-h-screen bg-background dark:bg-gray-900 px-6 py-12">
+        <section className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Loading certifications...</p>
+            </div>
           </div>
         </section>
       </main>
@@ -66,57 +67,76 @@ export default function CertificationsClient() {
   }
 
   return (
-    <>
-      <main className="min-h-screen bg-background px-6 py-16">
-        <section className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-primary uppercase tracking-tight mb-4">
-              Certifications & Licenses
-            </h1>
-            <p className="text-paragraph max-w-2xl mx-auto">
-              Our certifications reflect our dedication to safety, quality, and
-              sustainability in every construction project.
-            </p>
+    <main className="min-h-screen bg-background dark:bg-gray-900 px-6 py-12">
+      <section className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-2">
+            <Shield className="w-5 h-5 text-primary" />
+            <span className="text-primary text-sm font-semibold uppercase tracking-wide">Quality Assurance</span>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h1 className="text-4xl font-bold text-primary uppercase tracking-tight mb-3">
+            Certifications & Licenses
+          </h1>
+          <p className="text-paragraph dark:text-gray-300 text-sm max-w-3xl">
+            Our certifications reflect our dedication to safety, quality, and
+            sustainability in every construction project.
+          </p>
+        </div>
+
+        {/* Certifications Grid */}
+        {certifications.length === 0 ? (
+          <div className="text-center py-20">
+            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Award className="w-8 h-8 text-gray-400" />
+            </div>
+            <p className="text-gray-500 dark:text-gray-400 text-sm">No certifications available at this moment.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {certifications.map((cert) => (
               <div
                 key={cert._id}
-                className="bg-background/90 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all"
+                className="group bg-background dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:border-primary transition-all duration-300"
               >
-                <div className="relative h-56 w-full overflow-hidden">
+                {/* Image Section */}
+                <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
                   {cert.image ? (
                     <Image
                       src={cert.image || "/placeholder.svg"}
                       alt={cert.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                      <span className="text-gray-400">No image</span>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Award className="w-12 h-12 text-gray-300 dark:text-gray-600" />
                     </div>
                   )}
+                  
+                  {/* Badge Overlay */}
+                  <div className="absolute top-3 right-3">
+                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                      <Award className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-primary mb-2">
+
+                {/* Content Section */}
+                <div className="p-5 border-t-4 border-primary">
+                  <h3 className="text-lg font-bold text-foreground dark:text-white mb-2 line-clamp-2">
                     {cert.title}
                   </h3>
-                  <p className="text-paragraph text-sm leading-relaxed">
+                  <p className="text-paragraph dark:text-gray-400 text-sm leading-relaxed line-clamp-3">
                     {cert.description}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-          {certifications.length === 0 && (
-            <div className="text-center mt-10 text-gray-500 dark:text-gray-400">
-              No certifications available at this moment.
-            </div>
-          )}
-        </section>
-      </main>
-    </>
+        )}
+      </section>
+    </main>
   );
 }

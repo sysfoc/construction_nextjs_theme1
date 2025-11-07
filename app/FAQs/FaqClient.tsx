@@ -2,9 +2,10 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronsRight } from "lucide-react"
 import { isPageVisible } from "@/lib/api/pageVisibility"
 import { useRouter } from "next/navigation"
+import { HelpCircle, ChevronDown, MessageCircle } from "lucide-react"
+import Link from "next/link"
 
 interface FAQItem {
   _id: string
@@ -13,27 +14,12 @@ interface FAQItem {
   showOnFAQPage: boolean
 }
 
-interface FormData {
-  fastName: string
-  phoneNumber: string
-  emailAddress: string
-  serviceType: string
-  message: string
-}
-
 const FaqClient: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true)
   const [faqs, setFaqs] = useState<FAQItem[]>([])
   const [loading, setLoading] = useState(true)
   const router = useRouter()
   const [openIndex, setOpenIndex] = useState<number>(0)
-  const [formData, setFormData] = useState<FormData>({
-    fastName: "",
-    phoneNumber: "",
-    emailAddress: "",
-    serviceType: "",
-    message: "",
-  })
 
   useEffect(() => {
     const checkVisibility = async () => {
@@ -66,7 +52,14 @@ const FaqClient: React.FC = () => {
   }
 
   if (loading) {
-    return <div className="text-center py-10">Loading FAQs...</div>
+    return (
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center py-20">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+          <p className="text-[var(--color-paragraph)] text-sm">Loading FAQs...</p>
+        </div>
+      </div>
+    )
   }
 
   const toggleFAQ = (index: number) => {
@@ -74,72 +67,100 @@ const FaqClient: React.FC = () => {
   }
 
   return (
-    <>
-      <div className="max-w-5xl mx-auto bg-[var(--color-background)] text-[var(--color-foreground)] py-10 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="px-8 grid md:grid-cols-2 items-center mb-10">
-            <div>
-              <p className="text-[var(--color-primary)] text-sm font-medium mb-2">Great Experience in building</p>
-              <h2 className="text-4xl font-bold text-[var(--color-page-heading)] leading-tight">
-                Frequently Asked
-                <br />
-                Any Questions
-              </h2>
+    <div className="bg-[var(--color-background)] text-[var(--color-foreground)] py-16 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Top Section - Images in horizontal row */}
+        <div className="mb-12">
+          <div className="flex flex-wrap md:flex-nowrap gap-4 items-center justify-center">
+            <div className="relative w-64 h-80 flex-shrink-0">
+              <Image src="/FAQ/FAQ_01.png" alt="Construction worker" fill className="object-contain rounded-lg" />
             </div>
-
-            <div>
-              <p className="text-[var(--color-paragraph)] text-sm leading-relaxed">
-                Aliquam tempus libero eget arcu euismod. In bibendum nisl posuere. Donec gravida sem eu odio rhoncus
-                viverra. In vel cursus ante.
-              </p>
+            <div className="relative w-64 h-80 flex-shrink-0">
+              <Image src="/FAQ/FAQ_02.png" alt="Construction workers" fill className="object-contain rounded-lg" />
             </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-start justify-items-center gap-10">
-            <div className="relative w-full">
-              <div className="relative w-auto h-72 sm:w-full sm:h-96 mb-4">
-                <Image src="/FAQ/FAQ_01.png" alt="Construction worker" fill className="object-contain" />
-              </div>
+        {/* Header - Centered */}
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <MessageCircle className="w-6 h-6 text-[var(--color-primary)]" />
+            <span className="text-[var(--color-primary)] text-sm font-bold uppercase tracking-widest">
+              Great Experience in building
+            </span>
+          </div>
+          <p className="text-[var(--color-paragraph)] text-sm leading-relaxed">
+            Aliquam tempus libero eget arcu euismod. In bibendum nisl posuere. Donec gravida sem eu odio rhoncus
+            viverra. In vel cursus ante.
+          </p>
+        </div>
 
-              <div className="relative mt-5 sm:right-20 sm:bottom-20 w-auto h-56 sm:w-full sm:h-72 sm:-mt-12">
-                <Image src="/FAQ/FAQ_02.png" alt="Construction workers" fill className="object-contain" />
-              </div>
-            </div>
+        {/* FAQ Accordion - Single Column Centered */}
+        <div className="max-w-4xl mx-auto">
+          <div className="space-y-3">
+            {faqs.map((faq, index) => (
+              <div
+                key={faq._id}
+                className="bg-[var(--color-background)] border-2 border-[var(--color-border)] rounded-xl overflow-hidden hover:border-[var(--color-primary)] transition-all duration-300"
+              >
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex items-center gap-4 p-3 text-left group"
+                >
+                  <div className="flex-shrink-0 mt-1">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      openIndex === index 
+                        ? 'bg-[var(--color-primary)] text-white' 
+                        : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]'
+                    }`}>
+                      <HelpCircle className="w-5 h-5" />
+                    </div>
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-sm sm:text-lg font-bold text-[var(--color-header-text)] group-hover:text-[var(--color-primary)] transition-colors">
+                      {faq.question}
+                    </h3>
+                  </div>
 
-            <div className="w-full">
-              <div className="space-y-0">
-                {faqs.map((faq, index) => (
-                  <div key={faq._id} className="border-b border-[var(--color-border)]">
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full flex items-center justify-between py-3 text-left group"
-                    >
-                      <h3 className="text-base font-semibold text-[var(--color-header-text)] pr-4">
-                        {faq.question}
-                      </h3>
-                      <span className="flex-shrink-0 text-[var(--color-primary)] text-xl font-light">
-                        {openIndex === index ? "−" : "+"}
-                      </span>
-                    </button>
-
-                    <div
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        openIndex === index ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
+                  <div className="flex-shrink-0">
+                    <ChevronDown 
+                      className={`w-6 h-6 text-[var(--color-primary)] transition-transform duration-300 ${
+                        openIndex === index ? 'rotate-180' : ''
                       }`}
-                    >
-                      <p className="text-[var(--color-paragraph)] text-sm leading-relaxed pb-4">
+                    />
+                  </div>
+                </button>
+
+                <div
+                  className={`transition-all duration-300 ease-in-out ${
+                    openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="px-5 pb-5 sm:pl-[4.5rem]">
+                    <div className="border-l-2 border-[var(--color-primary)] pl-4">
+                      <p className="text-[var(--color-paragraph)] text-xs sm:text-sm leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+        </div>
 
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary)]/10 rounded-full">
+            <MessageCircle className="w-5 h-5 text-[var(--color-primary)]" />
+            <span className="text-[var(--color-foreground)] text-sm font-medium">
+              Still have questions? <Link href="/contact" className="text-[var(--color-primary)] font-bold hover:underline">Contact us</Link>
+            </span>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -68,7 +68,7 @@ export default function HowWeWorkPage() {
         </header>
 
         {/* Steps: alternating number/content layout with compact spacing */}
-        <div className="mt-3 flex flex-col gap-2">
+        <div className="sm:mt-16 mt-5 flex flex-col gap-2">
           {steps.map((s, i) => (
             <StepRow
               key={s._id}
