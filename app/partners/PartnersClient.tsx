@@ -235,7 +235,7 @@ const PartnersClient: React.FC = () => {
           <ProjectCard
             imageSrc="/partners/construction01 (1).png"
             title="Underground Infrastructure Development"
-            description="Collaborating with specialized tunnel engineering firms, we execute complex underground infrastructure projects including metro systems, highway tunnels, and utility corridors."
+            description="Collaborating with tunnel engineering firms, we execute complex underground infrastructure projects including metro systems, and utility corridors."
             budget="$12 million"
             duration="24 Months"
             certifications={["ISO 9001", "LEED Certified", "BIM Level 2"]}

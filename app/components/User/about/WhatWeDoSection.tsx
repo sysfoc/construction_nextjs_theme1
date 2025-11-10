@@ -18,7 +18,7 @@ export default function WhatWeDoSection({ data }: WhatWeDoSectionProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-6 lg:py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-6 lg:py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
         {/* Left Images Grid */}
         <div className="relative w-full h-[450px] sm:h-[500px] lg:h-[600px] order-2 lg:order-1">
@@ -34,41 +34,68 @@ export default function WhatWeDoSection({ data }: WhatWeDoSectionProps) {
         </div>
 
         {/* Right Content */}
-        <div className="w-full order-1 lg:order-2">
-          <div className="max-w-xl">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-(--page-heading) dark:text-hero-heading leading-tight">
-              {data.firstHeading}
-            </h2>
-            <p className="text-paragraph dark:text-paragraph text-sm sm:text-base leading-snug mb-4">
+        <div className="w-full order-1 lg:order-2 space-y-5">
+          {/* First Section Card */}
+          <div className="bg-header-background dark:bg-header-background rounded-xl p-5 border-l-4 border-primary shadow-md">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-(--page-heading) dark:text-hero-heading leading-tight">
+                  {data.firstHeading}
+                </h2>
+              </div>
+            </div>
+            
+            <p className="text-paragraph dark:text-paragraph text-xs sm:text-sm leading-relaxed mb-3 pl-13">
               It is a long established fact that a reader will be distracted by the readable content of a page when
               looking at its layout
             </p>
 
-            <ul className="space-y-1.5 mb-5">
+            <div className="space-y-2 pl-13">
               {data.firstSteps?.map((step, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
-                  <span className="text-header-text dark:text-header-text text-sm sm:text-base leading-snug">
+                <div key={index} className="flex items-start gap-2.5 group">
+                  <div className="w-5 h-5 rounded-md bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary transition-all">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:bg-primary-foreground"></div>
+                  </div>
+                  <span className="text-header-text dark:text-header-text text-xs sm:text-sm leading-relaxed">
                     {step}
                   </span>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
+          </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-(--page-heading) dark:text-hero-heading leading-tight">
-              {data.secondHeading}
-            </h2>
+          {/* Second Section Card */}
+          <div className="bg-gradient-to-br from-header-background to-header-background/70 dark:from-header-background dark:to-header-background/70 rounded-xl p-5 border-l-4 border-primary shadow-md">
+            <div className="flex items-start gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-(--page-heading) dark:text-hero-heading leading-tight">
+                  {data.secondHeading}
+                </h2>
+              </div>
+            </div>
 
-            <ul className="space-y-1.5 mb-5">
+            <div className="space-y-2 pl-13">
               {data.secondSteps?.map((step, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
-                  <span className="text-header-text dark:text-header-text text-sm sm:text-base leading-snug">
+                <div key={index} className="flex items-start gap-2.5 group">
+                  <div className="w-5 h-5 rounded-md bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary transition-all">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary group-hover:bg-primary-foreground"></div>
+                  </div>
+                  <span className="text-header-text dark:text-header-text text-xs sm:text-sm leading-relaxed">
                     {step}
                   </span>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
