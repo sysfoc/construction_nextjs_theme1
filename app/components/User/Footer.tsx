@@ -53,6 +53,8 @@ const QUICK_LINKS = [
   { name: "News letter", href: "/newsletter" },
   { name: "How we work", href: "/how-we-work" },
   { name: "FAQ", href: "/faqs" },
+  { name: "Terms & conditions", href: "/terms-and-conditions" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
 ];
 
 const SHOWCASE_LINKS = [
