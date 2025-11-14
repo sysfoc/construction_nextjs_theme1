@@ -111,184 +111,182 @@ export default function JobApply() {
           </p>
         </div>
 
-        {/* Form Card */}
-        <div className="bg-[var(--background)] border border-[var(--border-color)] rounded-lg p-6 shadow-sm">
-          <div className="space-y-6">
-            {/* Personal Information Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
-                Personal Information
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label htmlFor="fname" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="fname"
-                    name="fname"
-                    required
-                    autoComplete="on"
-                    placeholder="Enter first name"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="lname" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lname"
-                    name="lname"
-                    required
-                    autoComplete="on"
-                    placeholder="Enter last name"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Information Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
-                Contact Information
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    autoComplete="on"
-                    placeholder="your.email@example.com"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="phone" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    autoComplete="on"
-                    placeholder="+1 (555) 000-0000"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
-                  />
-                </div>
-                <div className="space-y-1.5 md:col-span-2">
-                  <label htmlFor="location" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                    Location (City) *
-                  </label>
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    required
-                    autoComplete="on"
-                    placeholder="Enter your city"
-                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Position & Documents Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
-                Position & Documents
-              </h3>
-              <div className="space-y-4">
-                <div className="space-y-1.5">
-                  <label htmlFor="position" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                    Applying For *
-                  </label>
-                  <div className="relative">
+        {/* Form Card - WRAPPED WITH FORM TAG */}
+        <form onSubmit={handleSubmit}>
+          <div className="bg-[var(--background)] border border-[var(--border-color)] rounded-lg p-6 shadow-sm">
+            <div className="space-y-6">
+              {/* Personal Information Section */}
+              <div>
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
+                  Personal Information
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="fname" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                      First Name *
+                    </label>
                     <input
                       type="text"
-                      id="position"
-                      name="position"
-                      value={position}
-                      readOnly
-                      className="border border-[var(--border-color)] bg-gray-50 dark:bg-gray-800 text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 cursor-not-allowed outline-none"
+                      id="fname"
+                      name="fname"
+                      required
+                      autoComplete="on"
+                      placeholder="Enter first name"
+                      className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
                     />
-                    <Briefcase className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--primary)]" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="lname" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lname"
+                      name="lname"
+                      required
+                      autoComplete="on"
+                      placeholder="Enter last name"
+                      className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
+                    />
                   </div>
                 </div>
-                
-                <div className="space-y-1.5">
-                  <label htmlFor="cv" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide flex items-center gap-2">
-                    <Upload className="w-4 h-4" />
-                    Upload CV/Resume *
-                  </label>
-                  <input
-                    type="file"
-                    id="cv"
-                    name="cv"
-                    accept=".pdf,.doc,.docx"
-                    required
-                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[var(--primary)] file:text-[var(--primary-foreground)] hover:file:bg-opacity-90"
-                  />
-                  <p className="text-xs text-[var(--paragraph-color)] mt-1">Accepted formats: PDF, DOC, DOCX</p>
+              </div>
+
+              {/* Contact Information Section */}
+              <div>
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
+                  Contact Information
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      autoComplete="on"
+                      placeholder="your.email@example.com"
+                      className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="phone" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      autoComplete="on"
+                      placeholder="+1 (555) 000-0000"
+                      className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div className="space-y-1.5 md:col-span-2">
+                    <label htmlFor="location" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                      Location (City) *
+                    </label>
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      required
+                      autoComplete="on"
+                      placeholder="Enter your city"
+                      className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Cover Letter Section */}
-            <div>
-              <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
-                Cover Letter
-              </h3>
-              <div className="space-y-1.5">
-                <label htmlFor="coverLetter" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
-                  Tell us about yourself *
-                </label>
-                <textarea
-                  id="coverLetter"
-                  name="coverLetter"
-                  required
-                  rows={6}
-                  placeholder="Tell us why you're interested in this position and what makes you a great fit..."
-                  className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent resize-none transition-all"
-                ></textarea>
+              {/* Position & Documents Section */}
+              <div>
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
+                  Position & Documents
+                </h3>
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="position" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                      Applying For *
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        id="position"
+                        name="position"
+                        value={position}
+                        readOnly
+                        className="border border-[var(--border-color)] bg-gray-50 dark:bg-gray-800 text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 cursor-not-allowed outline-none"
+                      />
+                      <Briefcase className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--primary)]" />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-1.5">
+                    <label htmlFor="cv" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide flex items-center gap-2">
+                      <Upload className="w-4 h-4" />
+                      Upload CV/Resume *
+                    </label>
+                    <input
+                      type="file"
+                      id="cv"
+                      name="cv"
+                      accept=".pdf,.doc,.docx"
+                      required
+                      className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[var(--primary)] file:text-[var(--primary-foreground)] hover:file:bg-opacity-90"
+                    />
+                    <p className="text-xs text-[var(--paragraph-color)] mt-1">Accepted formats: PDF, DOC, DOCX</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cover Letter Section */}
+              <div>
+                <h3 className="text-lg font-semibold text-[var(--foreground)] mb-4 pb-2 border-b border-[var(--border-color)]">
+                  Cover Letter
+                </h3>
+                <div className="space-y-1.5">
+                  <label htmlFor="coverLetter" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wide">
+                    Tell us about yourself *
+                  </label>
+                  <textarea
+                    id="coverLetter"
+                    name="coverLetter"
+                    required
+                    rows={6}
+                    placeholder="Tell us why you're interested in this position and what makes you a great fit..."
+                    className="border border-[var(--border-color)] text-[var(--foreground)] text-sm rounded-md w-full px-3 py-2.5 placeholder:text-[var(--paragraph-color)] outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent resize-none transition-all"
+                  ></textarea>
+                </div>
+              </div>
+
+              {/* Submit Button - REMOVED onClick HANDLER */}
+              <div className="pt-4 border-t border-[var(--border-color)]">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full md:w-auto bg-[var(--primary)] hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-[var(--primary-foreground)] text-sm font-semibold px-8 py-3 rounded-md uppercase flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md"
+                >
+                  {loading ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      Submit Application
+                    </>
+                  )}
+                </button>
               </div>
             </div>
-
-            {/* Submit Button */}
-            <div className="pt-4 border-t border-[var(--border-color)]">
-              <button
-                type="submit"
-                disabled={loading}
-                onClick={(e) => {
-                  const form = e.currentTarget.closest('form');
-                  if (form) handleSubmit(e as any);
-                }}
-                className="w-full md:w-auto bg-[var(--primary)] hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-[var(--primary-foreground)] text-sm font-semibold px-8 py-3 rounded-md uppercase flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md"
-              >
-                {loading ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Submit Application
-                  </>
-                )}
-              </button>
-            </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   )
