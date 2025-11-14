@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isPageVisible } from "@/lib/api/pageVisibility";
 import { Shield } from "lucide-react";
-import Loader from "../components/General/Loader";
 
 
 interface PrivacyPolicy {
@@ -55,7 +54,7 @@ export default function PrivacyPolicyPage() {
   if (loading) {
     return (
       <div className="flex items-start mt-20 justify-center min-h-screen">
-        <Loader />
+        Loading Privacy policy...
       </div>
     );
   }
