@@ -20,7 +20,7 @@ export default function Header() {
 
   const navLinks = [
     {
-      name: "Pages",
+      name: "Overview",
       sublinks: [
         { name: "Our Team", href: "/team" },
         { name: "Careers", href: "/careers" },
