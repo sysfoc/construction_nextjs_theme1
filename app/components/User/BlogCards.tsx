@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import SlantedButton from "../General/buttons/SlantedButton";
 import Link from "next/link";
+import Loader from "../General/Loader";
 
 interface BlogPost {
   image: string;
@@ -15,26 +16,41 @@ interface BlogPost {
 
 const BlogCards: React.FC = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        setIsLoading(true);
         const res = await fetch("/api/blog/all");
         const data = await res.json();
         setBlogPosts(data.blogs.slice(0, 3));
       } catch (error) {
         console.error("Error fetching blogs:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchBlogs();
   }, []);
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[452px]">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full py-12 px-4">
+    <div className="w-full py-12 px-4 min-h-[452px]">
       {/* View All Blogs */}
       <div className="mb-6 flex justify-end">
-        <SlantedButton text="View all Blogs" onClick={() => router.push("/blogs")} />
+        <SlantedButton
+          text="View all Blogs"
+          onClick={() => router.push("/blogs")}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -53,9 +69,13 @@ const BlogCards: React.FC = () => {
                   />
                   {/* Date Badge */}
                   <div className="absolute top-3 left-3 bg-[var(--color-primary)] text-[var(--color-primary-foreground)] font-bold w-14 h-14 flex flex-col items-center justify-center text-center transform -skew-x-6">
-                    <span className="text-xl">{new Date(post.createdAt).getDate()}</span>
+                    <span className="text-xl">
+                      {new Date(post.createdAt).getDate()}
+                    </span>
                     <span className="text-xs">
-                      {new Date(post.createdAt).toLocaleDateString("en-US", { month: "short" })}
+                      {new Date(post.createdAt).toLocaleDateString("en-US", {
+                        month: "short",
+                      })}
                     </span>
                   </div>
                 </div>

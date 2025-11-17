@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Loader from "../General/Loader";
 
 interface Testimonial {
   id: string;
@@ -15,26 +16,38 @@ interface Testimonial {
 const ConstructionTestimonial: React.FC = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
+        setIsLoading(true);
         const response = await fetch("/api/testimonials");
         const data = await response.json();
         setTestimonials(data.testimonials?.slice(0, 3) || []);
       } catch (error) {
         console.error("Failed to fetch testimonials:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchTestimonials();
   }, []);
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[420px]">
+        <Loader />
+      </div>
+    );
+  }
+
   if (!testimonials.length) return null;
   const selectedTestimonial = testimonials[selectedIndex];
 
   return (
-    <section className="relative w-full min-h-[45vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full sm:min-h-[50vh] flex items-center justify-center overflow-hidden min-h-[420px]">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image

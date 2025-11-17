@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
+import Loader from "../General/Loader";
 
 interface FAQItem {
   _id: string;
@@ -49,14 +50,14 @@ const AgencyFAQ: React.FC = () => {
   ];
 
   return (
-    <div className="w-full bg-[var(--color-background)] text-[var(--color-foreground)] py-6 px-6">
+    <div className="w-full bg-[var(--color-background)] text-[var(--color-foreground)] my-10 py-6 px-6 min-h-[472px]">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - FAQ */}
           <div className="space-y-4">
             {loading ? (
-              <div className="text-center py-4 text-sm text-[var(--color-paragraph)]">
-                Loading FAQs...
+              <div className="flex items-center justify-center min-h-screen">
+                <Loader />
               </div>
             ) : (
               faqs.map((faq, index) => (

@@ -6,6 +6,7 @@ import { MapPin } from "lucide-react";
 import Link from "next/link";
 import { isPageVisible } from "@/lib/api/pageVisibility";
 import { useRouter } from "next/navigation";
+import Loader from "../components/General/Loader";
 
 interface Testimonial {
   id: string;
@@ -157,10 +158,8 @@ const TestimonialsClient: React.FC = () => {
           </div>
 
           {loading ? (
-            <div className="text-center py-12">
-              <p className="text-[var(--paragraph-color)]">
-                Loading testimonials...
-              </p>
+            <div className="flex items-start mt-20 justify-center min-h-screen">
+              <Loader />
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import SlantedButton from "../General/buttons/SlantedButton";
 import Link from "next/link";
+import Loader from "../General/Loader";
 
 interface Service {
   id: string;
@@ -47,12 +48,8 @@ export default function ServicesGrid() {
 
   if (loading) {
     return (
-      <div className="py-10 dark:bg-gray-900">
-        <div className="container mx-auto px-5 sm:px-16 flex items-center justify-center min-h-80">
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            Loading services...
-          </p>
-        </div>
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader />
       </div>
     );
   }

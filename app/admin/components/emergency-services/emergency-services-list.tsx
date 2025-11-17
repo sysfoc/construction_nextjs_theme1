@@ -1,6 +1,8 @@
 "use client"
 
+import Loader from "@/app/components/General/Loader"
 import type { EmergencyService } from "./emergency-services-form"
+import Image from "next/image"
 
 interface ServicesListProps {
   services: EmergencyService[]
@@ -24,7 +26,9 @@ export function EmergencyServicesList({ services, loading, onEdit, onDelete, onA
       </div>
 
       {loading ? (
-        <div className="p-4 sm:p-8 text-center">Loading services...</div>
+        <div className="flex items-start mt-20 justify-center min-h-screen">
+                <Loader/>
+              </div>
       ) : services.length === 0 ? (
         <div className="p-4 sm:p-8 text-center">No services created yet</div>
       ) : (
@@ -57,6 +61,13 @@ export function EmergencyServicesList({ services, loading, onEdit, onDelete, onA
               </div>
 
               <div className="mb-4">
+                <Image
+                src={service.image}
+                alt="service images"
+                width={150}
+                height={150}
+                className="my-2"
+                />
                 <p className="text-sm mb-1">What We Help With:</p>
                 <div className="flex flex-wrap gap-1">
                   {service.whatWeHelpWith.map((item: string, idx: number) => (

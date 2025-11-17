@@ -5,6 +5,7 @@ import { isPageVisible } from "@/lib/api/pageVisibility"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { Play, ImageIcon, Grid3x3 } from "lucide-react"
+import Loader from "../components/General/Loader"
 
 interface GalleryCategory {
   _id: string
@@ -67,16 +68,9 @@ export default function Gallery() {
 
   if (loading) {
     return (
-      <main className="min-h-screen text-gray-900 dark:text-gray-100 px-6 py-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">Loading gallery...</p>
-            </div>
-          </div>
-        </div>
-      </main>
+      <div className="flex items-start mt-20 justify-center min-h-screen">
+        <Loader />
+      </div>
     )
   }
 

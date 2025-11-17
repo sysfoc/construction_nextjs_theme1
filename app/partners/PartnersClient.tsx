@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Users, Award, Shield, Clock } from "lucide-react";
+import Loader from "../components/General/Loader";
 
 interface ProjectCardProps {
   imageSrc: string;
@@ -47,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-        
+
         {/* Title overlay on image */}
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
@@ -63,7 +64,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
       </div>
-      
+
       {/* Content below image */}
       <div className="bg-background/90 p-4 rounded-b border-x border-b border-[var(--border-color)]">
         <p className="text-sm text-[var(--paragraph-color)] mb-3 leading-relaxed">
@@ -122,12 +123,16 @@ const PartnersClient: React.FC = () => {
       {/* Hero Banner with Background Pattern */}
       <div className="relative bg-gradient-to-br from-background via-background/95 to-background overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, currentColor 35px, currentColor 36px)',
-            color: 'var(--primary)'
-          }}></div>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(45deg, transparent, transparent 35px, currentColor 35px, currentColor 36px)",
+              color: "var(--primary)",
+            }}
+          ></div>
         </div>
-        
+
         <div className="relative max-w-6xl mx-auto px-4 py-8">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--primary)]/10 rounded-full mb-3">
@@ -137,14 +142,21 @@ const PartnersClient: React.FC = () => {
               Strategic Partnerships
             </h2>
             <p className="text-sm text-[var(--paragraph-color)] leading-relaxed mb-6">
-              We forge strategic alliances with industry-leading construction firms, engineering consultancies, and infrastructure developers. Our partnership framework emphasizes collaborative project delivery, risk mitigation, and value engineering to achieve superior outcomes.
+              We forge strategic alliances with industry-leading construction
+              firms, engineering consultancies, and infrastructure developers.
+              Our partnership framework emphasizes collaborative project
+              delivery, risk mitigation, and value engineering to achieve
+              superior outcomes.
             </p>
           </div>
 
           {/* Stats Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-4xl mx-auto">
             {stats.map((stat) => (
-              <div key={stat.id} className="relative bg-background/90 backdrop-blur-sm rounded border border-[var(--border-color)] p-3 text-center group hover:border-[var(--primary)] transition-colors">
+              <div
+                key={stat.id}
+                className="relative bg-background/90 backdrop-blur-sm rounded border border-[var(--border-color)] p-3 text-center group hover:border-[var(--primary)] transition-colors"
+              >
                 <div className="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity">
                   <Award className="w-5 h-5 text-[var(--primary)]" />
                 </div>
@@ -172,8 +184,8 @@ const PartnersClient: React.FC = () => {
           </div>
 
           {partnersLoading ? (
-            <div className="flex items-center justify-center py-8">
-              <p className="text-[var(--paragraph-color)] text-sm">Loading Partners...</p>
+            <div className="flex items-start mt-20 justify-center min-h-screen">
+              <Loader />
             </div>
           ) : (
             <div className="relative overflow-hidden">
@@ -212,8 +224,12 @@ const PartnersClient: React.FC = () => {
 
           <style jsx>{`
             @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
             }
             .animate-marquee {
               animation: marquee 30s linear infinite;
@@ -230,7 +246,7 @@ const PartnersClient: React.FC = () => {
           </h3>
           <div className="w-16 h-1 bg-[var(--primary)] mx-auto rounded-full"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <ProjectCard
             imageSrc="/partners/construction01 (1).png"
@@ -248,7 +264,11 @@ const PartnersClient: React.FC = () => {
             description="Partnering with renowned architectural firms and structural engineers, we deliver landmark commercial buildings and high-rise developments."
             budget="$12 million"
             duration="18 Months"
-            certifications={["OSHA Compliant", "Green Building", "Quality Assured"]}
+            certifications={[
+              "OSHA Compliant",
+              "Green Building",
+              "Quality Assured",
+            ]}
             imagePosition="left"
           />
         </div>
