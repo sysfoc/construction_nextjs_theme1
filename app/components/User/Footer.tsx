@@ -52,7 +52,7 @@ const QUICK_LINKS = [
   { name: "Contact", href: "/contact" },
   { name: "News letter", href: "/newsletter" },
   { name: "How we work", href: "/how-we-work" },
-  { name: "FAQ", href: "/faqs" },
+  { name: "FAQ", href: "/FAQs" },
   { name: "Terms & conditions", href: "/terms-and-conditions" },
   { name: "Privacy Policy", href: "/privacy-policy" },
 ];

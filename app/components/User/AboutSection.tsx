@@ -72,9 +72,9 @@ export default function AboutSection() {
             </div>
 
             {/* CTA Button */}
-            <div className="flex justify-center lg:justify-start pt-2 gap-3">
+            <div className="flex sm:flex-row flex-col w-fit justify-center lg:justify-start pt-2 gap-3">
               <SlantedButton text="Testimonials" onClick={() => router.push("/testimonials")}/>
-              <SlantedButton text="Our Partners" onClick={() => router.push("/partners")}/>
+              <SlantedButton text="Partners" onClick={() => router.push("/partners")}/>
             </div>
           </div>
 
