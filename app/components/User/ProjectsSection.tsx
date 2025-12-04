@@ -74,6 +74,21 @@ export default function ProjectsSection() {
     }
   };
 
+  // Helper function to format date from YYYY-MM-DD to readable format
+const formatDateForDisplay = (dateString: string) => {
+  if (!dateString) return '';
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString;
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      year: 'numeric',
+    });
+  } catch {
+    return dateString;
+  }
+};
+
   if (loading) {
     return <Loader height="623px" />;
   }
@@ -211,7 +226,7 @@ export default function ProjectsSection() {
                       <Calendar className="w-3 h-3 text-primary" />
                     </div>
                     <span className="text-xs text-paragraph dark:text-gray-400 truncate">
-                      {project.startDate}
+                    {formatDateForDisplay(project.startDate)}
                     </span>
                   </div>
                 </div>

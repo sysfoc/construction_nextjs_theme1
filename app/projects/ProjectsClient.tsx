@@ -1,7 +1,13 @@
 // app/projects/page.tsx
 "use client";
 import { useState, useEffect } from "react";
-import { Calendar, MapPin, Users, FolderKanban, TrendingUp } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  Users,
+  FolderKanban,
+  TrendingUp,
+} from "lucide-react";
 import type { ProjectData } from "@/lib/models/Project";
 import { isPageVisible } from "@/lib/api/pageVisibility";
 import { useRouter } from "next/navigation";
@@ -15,12 +21,14 @@ const statusConfig = {
   },
   completed: {
     label: "Completed",
-    color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+    color:
+      "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
     dotColor: "bg-green-500",
   },
   upcoming: {
     label: "Upcoming",
-    color: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
+    color:
+      "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
     dotColor: "bg-amber-500",
   },
 };
@@ -72,6 +80,21 @@ export default function ProjectsClient() {
     }
   };
 
+  // Helper function to format date from YYYY-MM-DD to readable format
+  const formatDateForDisplay = (dateString: string) => {
+    if (!dateString) return "";
+    try {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return dateString;
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        year: "numeric",
+      });
+    } catch {
+      return dateString;
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-start mt-20 justify-center min-h-screen">
@@ -79,7 +102,7 @@ export default function ProjectsClient() {
       </div>
     );
   }
-  
+
   if (!isVisible) {
     return null;
   }
@@ -90,19 +113,33 @@ export default function ProjectsClient() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-background rounded-lg p-4 text-center border border-gray-200 dark:border-gray-700">
           <p className="text-2xl font-bold text-primary">{projects.length}</p>
-          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">Total</p>
+          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">
+            Total
+          </p>
         </div>
         <div className="bg-background rounded-lg p-4 text-center border border-gray-200 dark:border-gray-700">
-          <p className="text-2xl font-bold text-blue-600">{projects.filter(p => p.status === 'ongoing').length}</p>
-          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">Ongoing</p>
+          <p className="text-2xl font-bold text-blue-600">
+            {projects.filter((p) => p.status === "ongoing").length}
+          </p>
+          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">
+            Ongoing
+          </p>
         </div>
         <div className="bg-background rounded-lg p-4 text-center border border-gray-200 dark:border-gray-700">
-          <p className="text-2xl font-bold text-green-600">{projects.filter(p => p.status === 'completed').length}</p>
-          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">Completed</p>
+          <p className="text-2xl font-bold text-green-600">
+            {projects.filter((p) => p.status === "completed").length}
+          </p>
+          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">
+            Completed
+          </p>
         </div>
         <div className="bg-background rounded-lg p-4 text-center border border-gray-200 dark:border-gray-700">
-          <p className="text-2xl font-bold text-amber-600">{projects.filter(p => p.status === 'upcoming').length}</p>
-          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">Upcoming</p>
+          <p className="text-2xl font-bold text-amber-600">
+            {projects.filter((p) => p.status === "upcoming").length}
+          </p>
+          <p className="text-xs text-paragraph dark:text-gray-400 uppercase">
+            Upcoming
+          </p>
         </div>
       </div>
 
@@ -112,7 +149,9 @@ export default function ProjectsClient() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <FolderKanban className="w-5 h-5 text-primary" />
-              <span className="text-primary text-xs font-bold uppercase">Our Projects</span>
+              <span className="text-primary text-xs font-bold uppercase">
+                Our Projects
+              </span>
             </div>
             <h2 className="text-3xl font-bold text-page-heading dark:text-white">
               Project Portfolio
@@ -182,7 +221,11 @@ export default function ProjectsClient() {
                 />
                 {/* Status Dot */}
                 <div className="absolute top-3 left-3">
-                  <span className={`w-3 h-3 rounded-full ${statusConfig[project.status].dotColor} block shadow-lg`}></span>
+                  <span
+                    className={`w-3 h-3 rounded-full ${
+                      statusConfig[project.status].dotColor
+                    } block shadow-lg`}
+                  ></span>
                 </div>
               </div>
 
@@ -198,41 +241,52 @@ export default function ProjectsClient() {
                         {project.description}
                       </p>
                     </div>
-                    <span className={`ml-3 px-3 py-1 rounded-full text-xs font-bold ${statusConfig[project.status].color}`}>
+                    <span
+                      className={`ml-3 px-3 py-1 rounded-full text-xs font-bold ${
+                        statusConfig[project.status].color
+                      }`}
+                    >
                       {statusConfig[project.status].label}
                     </span>
                   </div>
 
                   {/* Progress Bar */}
-                  {project.status === "ongoing" && project.progress !== undefined && (
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="flex items-center gap-1">
-                          <TrendingUp className="w-3 h-3 text-primary" />
-                          <span className="text-xs font-semibold text-paragraph dark:text-gray-300">Progress</span>
+                  {project.status === "ongoing" &&
+                    project.progress !== undefined && (
+                      <div className="mb-3">
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-1">
+                            <TrendingUp className="w-3 h-3 text-primary" />
+                            <span className="text-xs font-semibold text-paragraph dark:text-gray-300">
+                              Progress
+                            </span>
+                          </div>
+                          <span className="text-xs font-bold text-primary">
+                            {project.progress}%
+                          </span>
                         </div>
-                        <span className="text-xs font-bold text-primary">{project.progress}%</span>
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                          <div
+                            className="bg-primary h-1.5 rounded-full transition-all"
+                            style={{ width: `${project.progress}%` }}
+                          ></div>
+                        </div>
                       </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                        <div
-                          className="bg-primary h-1.5 rounded-full transition-all"
-                          style={{ width: `${project.progress}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  )}
+                    )}
                 </div>
 
                 {/* Bottom Info Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-xs text-paragraph/70 dark:text-gray-400 truncate">{project.location}</span>
+                    <span className="text-xs text-paragraph/70 dark:text-gray-400 truncate">
+                      {project.location}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-xs text-paragraph/70 dark:text-gray-400 truncate">
-                      {project.startDate}
+                    <span className="text-xs text-paragraph/70 truncate">
+                      {formatDateForDisplay(project.startDate)}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
