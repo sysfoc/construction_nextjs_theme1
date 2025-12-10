@@ -77,7 +77,7 @@ const BlogDetail = ({ blog }) => {
         </div>
         <div>
           <div className='flex flex-row items-center gap-3'>
-            <Button className='bg-red-600 hover:!bg-red-700' size='sm'>
+            <Button className='bg-primary' size='sm'>
               Construction
             </Button>
             <div className='flex items-center gap-2'>
@@ -165,7 +165,7 @@ const BlogDetail = ({ blog }) => {
                   type='submit'
                   disabled={loading}
                   size={"md"}
-                  className=' mt-5 bg-red-600 hover:!bg-red-700'
+                  className=' mt-5 bg-primary'
                 >
                   Add Comment
                 </Button>
